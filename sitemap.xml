@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.icland.xyz/posts/</loc>
+    <loc>https://blog.icland.xyz/post/</loc>
     <lastmod>2021-02-11T21:03:03+08:00</lastmod>
   </url>
   
@@ -13,12 +13,13 @@
   </url>
   
   <url>
-    <loc>https://blog.icland.xyz/posts/my-first-post/</loc>
+    <loc>https://blog.icland.xyz/post/my-first-post/</loc>
     <lastmod>2021-02-11T21:03:03+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.icland.xyz/posts/Candy-SS/</loc>
+    <loc>https://blog.icland.xyz/post/Candy-SS/</loc>
+    <lastmod>2020-01-01T21:03:03+08:00</lastmod>
   </url>
   
   <url>
