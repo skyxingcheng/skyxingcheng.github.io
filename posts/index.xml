@@ -2,45 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 蝴蝶飞不过沧海 | Blog</title>
-    <link>https://example.com/posts/</link>
+    <link>https://blog.icland.xyz/posts/</link>
     <description>Recent content in Posts on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 11 Feb 2021 21:03:03 +0800</lastBuildDate><atom:link href="https://example.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Feb 2021 21:03:03 +0800</lastBuildDate><atom:link href="https://blog.icland.xyz/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>默认文档</title>
-      <link>https://example.com/posts/my-first-post/</link>
+      <link>https://blog.icland.xyz/posts/my-first-post/</link>
       <pubDate>Thu, 11 Feb 2021 21:03:03 +0800</pubDate>
       
-      <guid>https://example.com/posts/my-first-post/</guid>
+      <guid>https://blog.icland.xyz/posts/my-first-post/</guid>
       <description>默认文档</description>
     </item>
     
     <item>
-      <title>Golang Gin 实战（五）| 接收数组和 Map</title>
-      <link>https://example.com/2019/12/18/golang-gin-query-parameters-array-map.html</link>
-      <pubDate>Wed, 18 Dec 2019 21:55:00 +0800</pubDate>
+      <title></title>
+      <link>https://blog.icland.xyz/posts/Candy-SS/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://example.com/2019/12/18/golang-gin-query-parameters-array-map.html</guid>
-      <description>标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容</description>
-    </item>
-    
-    <item>
-      <title>Golang Gin 实战（三）| 路由参数</title>
-      <link>https://example.com/posts/2019-12-13-golang-gin-parameters-in-path/</link>
-      <pubDate>Fri, 13 Dec 2019 21:00:00 +0800</pubDate>
-      
-      <guid>https://example.com/posts/2019-12-13-golang-gin-parameters-in-path/</guid>
-      <description>标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容</description>
-    </item>
-    
-    <item>
-      <title>Golang Gin 实战（三）| 路由参数</title>
-      <link>https://example.com/posts/2019-12-15-golang-gin-query-parameters-source-code-analysis/</link>
-      <pubDate>Fri, 13 Dec 2019 21:00:00 +0800</pubDate>
-      
-      <guid>https://example.com/posts/2019-12-15-golang-gin-query-parameters-source-code-analysis/</guid>
-      <description>标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容 标题 段落内容</description>
+      <guid>https://blog.icland.xyz/posts/Candy-SS/</guid>
+      <description>Candy-ServerStatus 糖果服务器云探针 2020 07 14 在线展示 https://icland.xyz/status/ 基于修改&amp;amp;优化&amp;amp;去杂 1 2 3 4 5 6 7 /client/* /server/src/main.h /server/src/main.cpp /web/index.html /web/css/hotaru_fix.css /web/js/serverstatus.js /web/img/* 食用方法: 1 2 3 4 git clone https://github.com/skyxingcheng/Candy-ServerStatus.git cd /Candy-ServerStatus/server make ./sergate -c config -d /usr/share/wwwroot/ -p 35601 客户端使用linux或跨平台的python文件直接启动即可 注意配置服务器和用户名密码 支持ipv4和ipv6支持检测双线 需在客户端设置自定义</description>
     </item>
     
   </channel>
