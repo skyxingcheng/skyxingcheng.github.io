@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Wed, 10 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 12 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>置顶#关于本站</title>
       <link>https://blog.icland.xyz/post/about/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://blog.icland.xyz/post/about/</guid>
       <description>感谢您访问我的博客 | Thank you for your visit! 蝴蝶飞不过沧海 | Blog 您在浏览文章有任何问题可以通过以下方式找到我! QQ@🥕zhou Email@skyxingcheng233@outlook.com CSDN@skyxingcheng HostGitHub PoweredHugo Modify蝴蝶飞不过沧海 DesignMaupassant</description>
+    </item>
+    
+    <item>
+      <title>使用GitHub&#43;hugo搭建静态个人博客</title>
+      <link>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8GitHub&#43;hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8GitHub&#43;hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>使用GitHub+hugo搭建静态个人博客 前言 全是静态文件，访问速度快； 免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台； 可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的； 数据绝对安全，基于github的版本管理，想恢复到哪个</description>
     </item>
     
     <item>
@@ -212,6 +221,15 @@
       
       <guid>https://blog.icland.xyz/post/Candy-ServerStatus/</guid>
       <description>Candy-ServerStatus 糖果服务器云探针 2020 07 14 在线展示 https://icland.xyz/status/ 基于修改&amp;amp;优化&amp;amp;去杂 1 2 3 4 5 6 7 /client/* /server/src/main.h /server/src/main.cpp /web/index.html /web/css/hotaru_fix.css /web/js/serverstatus.js /web/img/* 食用方法: 1 2 3 4 git clone https://github.com/skyxingcheng/Candy-ServerStatus.git cd /Candy-ServerStatus/server make ./sergate -c config -d /usr/share/wwwroot/ -p 35601 客户端使用linux或跨平台的python文件直接启动即可 注意配置服务器和用户名密码 支持ipv4和ipv6支持检测双线 需在客户端设置自定义</description>
+    </item>
+    
+    <item>
+      <title>A PAGE</title>
+      <link>https://blog.icland.xyz/post/my-first-post/</link>
+      <pubDate>Mon, 10 Jan 2000 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/my-first-post/</guid>
+      <description>TITLE line</description>
     </item>
     
   </channel>

@@ -10,20 +10,20 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
     
 
-    <title>解决树莓派重启后mac地址自动变更 | 蝴蝶飞不过沧海 | Blog</title>
-    <meta property="og:title" content="解决树莓派重启后mac地址自动变更 - 蝴蝶飞不过沧海 | Blog">
+    <title>使用GitHub&#43;hugo搭建静态个人博客 | 蝴蝶飞不过沧海 | Blog</title>
+    <meta property="og:title" content="使用GitHub&#43;hugo搭建静态个人博客 - 蝴蝶飞不过沧海 | Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-02-10T00:00:00&#43;08:00'>
+    <meta property="article:published_time" content='2021-02-12T00:00:00&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-02-10T00:00:00&#43;08:00'>
+    <meta property="article:modified_time" content='2021-02-12T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="">
-    <meta name="description" content="解决树莓派重启后mac地址自动变更">
+    <meta name="description" content="使用GitHub&#43;hugo搭建静态个人博客">
         
     <meta name="author" content="蝴蝶飞不过沧海">
-    <meta property="og:url" content="https://blog.icland.xyz/post/%E8%A7%A3%E5%86%B3%E6%A0%91%E8%8E%93%E6%B4%BE%E9%87%8D%E5%90%AF%E5%90%8Emac%E5%9C%B0%E5%9D%80%E8%87%AA%E5%8A%A8%E5%8F%98%E6%9B%B4/">
+    <meta property="og:url" content="https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8GitHub&#43;hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">
     <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
 
     <link rel="stylesheet" href='/css/normalize.css'>
@@ -138,7 +138,18 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#准备工作">准备工作</a></li>
+    <li><a href="#创建仓库">创建仓库</a></li>
+    <li><a href="#绑定域名">绑定域名</a></li>
+    <li><a href="#配置文件夹及git用户登录">配置文件夹及Git用户登录</a></li>
+    <li><a href="#配置hugo初始化">配置Hugo初始化</a></li>
+    <li><a href="#安装主题">安装主题</a></li>
+    <li><a href="#本地测试">本地测试</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -170,10 +181,10 @@
 </script>
     <article class="post">
         <header>
-            <h1 class="post-title">解决树莓派重启后mac地址自动变更</h1>
+            <h1 class="post-title">使用GitHub&#43;hugo搭建静态个人博客</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2021年2月12日
         </date>
         
         
@@ -184,27 +195,77 @@
         
         
         <div class="post-content">
-            <blockquote>
-<p><a href="https://www.cnblogs.com/mph666/p/13256548.html">https://www.cnblogs.com/mph666/p/13256548.html</a></p>
-</blockquote>
-<p><strong>创建或编辑</strong> <code>/etc/NetworkManager/conf.d/100-disable-wifi-mac-randomization.conf</code></p>
-<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
-<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
-</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
-</span></code></pre></td>
-<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
-<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>connection<span style="color:#000;font-weight:bold">]</span>
-wifi.mac-address-randomization<span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
-
-<span style="color:#000;font-weight:bold">[</span>device<span style="color:#000;font-weight:bold">]</span>
-wifi.scan-rand-mac-address<span style="color:#000;font-weight:bold">=</span>no
-</code></pre></td></tr></table>
-</div>
-</div><p>重启树莓派</p>
+            <h1 id="使用githubhugo搭建静态个人博客">使用GitHub+hugo搭建静态个人博客</h1>
+<h2 id="前言">前言</h2>
+<pre><code>全是静态文件，访问速度快；
+免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；
+可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；
+数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；
+博客内容可以轻松打包、转移、发布到其它平台；
+</code></pre><h2 id="准备工作">准备工作</h2>
+<p>已注册并验证邮箱的<a href="https://github.com">GitHub</a>账号</p>
+<p>确保您已安装<a href="https://git-scm.com/download/win">Git for Windows</a></p>
+<p>确保您的<code>Powershell</code>或<code>cmd</code>正常调用<code>Git</code>软件包</p>
+<p>您若使用<code>Powershell</code>请在打开窗口后输入<code>cmd</code>切换的命令行</p>
+<p>您已下载合适版本的<a href="https://github.com/gohugoio/hugo">Hugo</a></p>
+<img src="../../images/2021-02-12 222801.png">
+<h2 id="创建仓库">创建仓库</h2>
+<p>新建一个名为<code>&lt;你的用户名&gt;.github.io</code>的公开仓库，比如说，如果你的github用户名是test，那么你就新建test.github.io的仓库</p>
+<p><font color="#AA0000">必须是你的用户名，其它名称无效</font></p>
+<p><font color="#AA0000">必须是公开仓库，私有无效</font></p>
+<p>你的网站访问地址就是 <code>http://test.github.io</code></p>
+<p>由此可见，每一个github账户最多只能创建一个这样可以直接使用域名访问的仓库。</p>
+<h2><font color="#AA0000">几个注意的地方</h2>
+<pre><code>注册的邮箱一定要验证，否则不会成功；
+仓库名字必须是：username.github.io，其中username是你的用户名；
+仓库创建成功不会立即生效，需要过一段时间，大概10-30分钟，或者更久
+</code></pre></font>
+<h2 id="绑定域名">绑定域名</h2>
+<p>当然，你不绑定域名肯定也是可以的，就用默认的 xxx.github.io 来访问，如果你想更个性一点，想拥有一个属于自己的域名，那也是OK的。</p>
+<p>首先你要注册一个域名，自己百度！</p>
+<p>绑定域名分2种情况：带www和不带www的。</p>
+<p>域名配置最常见有2种方式，CNAME和A记录，CNAME填写域名，A记录填写IP，</p>
+<p>如果设置顶级域名，即不带www方式只能采用A记录，所以必须先ping一下你的用户名.github.io的IP，然后到你的域名DNS设置页，将A记录指向你ping出来的IP</p>
+<p>将CNAME指向你的用户名.github.io</p>
+<p>然后到你的github项目根目录新建一个名为CNAME的文件（无后缀），里面填写你的域名，例如</p>
+<pre><code>https://blog.icland.xyz/
+</code></pre><p><font color="#AA0000">另外说一句，在你绑定了新域名之后，原来的你的用户名.github.io就无法访问了，必须用你绑定的域名</font></p>
+<img src="../../images/2021-02-12 230737.png">
+<h2 id="配置文件夹及git用户登录">配置文件夹及Git用户登录</h2>
+<p>新建一个你喜欢的目录</p>
+<p>在该目录下shift+右键打开powershell</p>
+<p>输入以下命令</p>
+<pre><code>git config --global user.name &quot;abcdef&quot;// 你的github用户名，非昵称
+git config --global user.email  &quot;xxx@qq.com&quot;// 填写你的github注册邮箱
+git init
+git clone https://github.com/skyxingcheng/skyxingcheng.github.io.git //替换为你仓库的地址
+git pull
+</code></pre><h2 id="配置hugo初始化">配置Hugo初始化</h2>
+<p>解压你下载的<a href="https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_0.80.0_Windows-64bit.zip">hugo_0.80.0_Windows-64bit.zip</a>得到hugo.exe</p>
+<pre><code>hugo version //通过检查版本号验证hugo是否运行正常
+hugo new site quickstart //在quickstart目录创建网站
+</code></pre><p>完成上述步骤请讲quickstart目录所有文件复制出来，即其上一级目录</p>
+<p>你的文件目录结构就像这样</p>
+<img src="../../images/2021-02-12 232427.png">
+<h2 id="安装主题">安装主题</h2>
+<pre><code>git submodule add https://github.com/JokerQyou/maupassant-hugo.git themes/maupassant
+</code></pre><p>在根目录下的 <code>config.toml</code> 文件中添加一行</p>
+<pre><code>echo 'theme = &quot;maupassant&quot;' &gt;&gt; config.toml
+</code></pre><h2 id="本地测试">本地测试</h2>
+<p>创建一个示例文章</p>
+<pre><code>hugo new content/post/my-first-post.md
+echo ---&gt;content/post/my-first-post.md
+echo title: &quot;A PAGE&quot;&gt;&gt;content/post/my-first-post.md
+echo date: 2000-01-10&gt;&gt;content/post/my-first-post.md
+echo ---&gt;&gt;content/post/my-first-post.md
+echo # TITLE&gt;&gt;content/post/my-first-post.md
+echo line&gt;&gt;content/post/my-first-post.md
+</code></pre><p>启动Hugo</p>
+<pre><code>hugo server
+</code></pre><p>使用浏览器访问<code>localhost:1313</code></p>
+<p>即可打开本地预览</p>
+<p><font color="#FF55FF">未完待续</font>
+<font color="#FF55FF">End For Page</font></p>
 
         </div>
 
@@ -212,7 +273,7 @@ wifi.scan-rand-mac-address<span style="color:#000;font-weight:bold">=</span>no
 <div class="post-archive">
     <ul class="post-copyright">
         <li><strong>原文作者：</strong><a rel="author" href="https://blog.icland.xyz">蝴蝶飞不过沧海</a></li>
-        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.icland.xyz/post/%E8%A7%A3%E5%86%B3%E6%A0%91%E8%8E%93%E6%B4%BE%E9%87%8D%E5%90%AF%E5%90%8Emac%E5%9C%B0%E5%9D%80%E8%87%AA%E5%8A%A8%E5%8F%98%E6%9B%B4/">https://blog.icland.xyz/post/%E8%A7%A3%E5%86%B3%E6%A0%91%E8%8E%93%E6%B4%BE%E9%87%8D%E5%90%AF%E5%90%8Emac%E5%9C%B0%E5%9D%80%E8%87%AA%E5%8A%A8%E5%8F%98%E6%9B%B4/</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8GitHub&#43;hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/">https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8GitHub&#43;hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</a></li>
         <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
     </ul>
 </div>
