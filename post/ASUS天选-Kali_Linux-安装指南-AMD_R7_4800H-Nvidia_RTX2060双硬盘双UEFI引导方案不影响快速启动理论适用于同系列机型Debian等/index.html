@@ -1,0 +1,635 @@
+<!doctype html>
+<html lang="zh-CN">
+<link rel="icon" type="image/x-icon" href= "/images/logo.png" sizes="64x64">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等 | 蝴蝶飞不过沧海 | Blog</title>
+    <meta property="og:title" content="ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等 - 蝴蝶飞不过沧海 | Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-02-10T00:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-02-10T00:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等">
+        
+    <meta name="author" content="蝴蝶飞不过沧海">
+    <meta property="og:url" content="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://blog.icland.xyz">
+                        蝴蝶飞不过沧海 | Blog
+                    </a>
+                
+                <p class="description">(bushi)专注于Java、Linux运维、Minecraft服务器搭建、等瞎搞操作</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://blog.icland.xyz">首页</a>
+                    
+                    <a  href="https://blog.icland.xyz/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://blog.icland.xyz/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://blog.icland.xyz/post/about" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#准备环境">准备环境</a></li>
+    <li><a href="#基本系统安装">基本系统安装</a></li>
+    <li><a href="#重启到pe注意不是kali也不是win10">重启到PE，注意不是Kali，也不是win10</a></li>
+    <li><a href="#重启疯狂按f2进入bios再按f8选择kali并回车">重启疯狂按F2进入BIOS再按F8选择Kali并回车</a></li>
+    <li><a href="#重启到kali">重启到Kali</a></li>
+    <li><a href="#按电源键强制重启-在grub引导界面按e进入编辑">按电源键强制重启 在grub引导界面按E进入编辑</a></li>
+    <li><a href="#成功进入系统但无法启动图形界面-ohhhhhhhhhh">成功进入系统但无法启动图形界面 ohhhhhhhhhh</a></li>
+    <li><a href="#建议修改语言为英文防止乱码可跳过">建议修改语言为英文，防止乱码，可跳过</a></li>
+    <li><a href="#进行整机更新">进行整机更新</a></li>
+    <li><a href="#更新完后卸载无线网卡驱动防止日志那边输出报错">更新完后卸载无线网卡驱动，防止日志那边输出报错。。。</a></li>
+    <li><a href="#重启系统不用加额外参数你会发现可以进入图形界面了-ohhhhhhhhhhh">重启系统，不用加额外参数，你会发现可以进入图形界面了 ohhhhhhhhhhh</a></li>
+    <li><a href="#安装nvidia显卡驱动">安装NVIDIA显卡驱动</a></li>
+    <li><a href="#至此就没什么问题了">至此就没什么问题了</a></li>
+    <li><a href="#the-end">THE END</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年2月10日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="准备环境">准备环境</h2>
+<p><code>使用双硬盘方案为了不影响Win10的快速启动</code>
+<code>注意：若要使用Linux写入NTFS硬盘您必须选择在Win10系统重启再进入Linux</code></p>
+<p><strong>安装时无线网卡不可用，请使用有线网络！！！</strong></p>
+<p><code>请点此链接下载有线网卡补充驱动</code> <a href="https://packages.debian.org/buster/all/firmware-realtek/download">Firmware-Realtek</a>
+<code>并解包deb文件\data.tar\.\lib\firmware\* 放到安装U盘\firmware\*目录下</code></p>
+<p>下载最新Kali Linux系统镜像 <a href="https://www.kali.org/downloads/">Kali官网下载</a>
+将硬盘分出Kali的空间，并创建第二EFI分区（本文示例100G）
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827184836861.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+用UltraISO将kali写入到U盘
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827185403199.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    </p>
+<h2 id="基本系统安装">基本系统安装</h2>
+<p>win10设置——更新和安全——恢复——高级启动——立即重新启动——疑难解答——高级选项——重启到UEFI固件设置
+在BIOS界面按F8选择Kali的安装U盘启动
+然后就一直下一步就行了
+这边放一些截图
+简体中文 然后一直下一步
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827190453300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+<strong>提示缺少文件</strong> 请<code>确保</code>您已在<code>准备工作</code>时将文件解包并放到<code>/firmware</code>让后选择<code>是</code>并重新搜索</p>
+<p>
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827190659718.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+<strong>硬盘分区一定要手动！！！</strong>
+
+        <img class="mx-auto" alt="请添加图片描述" src="https://img-blog.csdnimg.cn/20200827190732795.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+
+        <img class="mx-auto" alt="请添加图片描述" src="https://img-blog.csdnimg.cn/2020082719073341.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827190806336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+软件安装默认即可 然后开始长达30分钟的等待&hellip;..
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/2020082719081065.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+安装完是这样的
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/2020082719085827.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    </p>
+<h2 id="重启到pe注意不是kali也不是win10">重启到PE，注意不是Kali，也不是win10</h2>
+<p><strong>将固态ESP分区生成的efi文件复制到机械的ESP分区
+注意路径需要一致 没有则创建路径 然后删除固态下的/EFI/Kali文件夹</strong>
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827191023863.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+<strong>使用BOOTICE修改UEFI引导，设置Kali指向机械的ESP分区，（记得保存。。）</strong>
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827191227525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    </p>
+<p><strong>为了方便 建议将kali设置为第一启动项</strong></p>
+<h2 id="重启疯狂按f2进入bios再按f8选择kali并回车">重启疯狂按F2进入BIOS再按F8选择Kali并回车</h2>
+<h2 id="重启到kali">重启到Kali</h2>
+<p>你会发现无法启动系统，就像这样，哈哈哈哈哈哈哈哈哈隔~
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827191628623.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    </p>
+<h2 id="按电源键强制重启-在grub引导界面按e进入编辑">按电源键强制重启 在grub引导界面按E进入编辑</h2>
+<p>设置Linux行 末尾参数为 <code>ro text nomodeset</code> 然后按F10引导
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827192306188.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    </p>
+<h2 id="成功进入系统但无法启动图形界面-ohhhhhhhhhh">成功进入系统但无法启动图形界面 ohhhhhhhhhh</h2>
+<p><strong>按CTRL+ALT+F1进入命令行模式
+使用你设置的用户名和密码登录
+修改ROOT密码</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo passwd root
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注销并重新以root身份登录</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">logout</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>修改软件源</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/apt/sources.list
+</code></pre></td></tr></table>
+</div>
+</div><p>本文改为阿里云的</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">deb http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+deb-src http://mirrors.aliyun.com/kali kali-rolling main non-free contrib
+</code></pre></td></tr></table>
+</div>
+</div><p>小提示： 按 <strong>i</strong> 进入编辑模式 使用 <strong>#</strong> 注释掉官方源 输入完成后按ESC并键入 <strong>:wq!</strong> 进行保存</p>
+<h2 id="建议修改语言为英文防止乱码可跳过">建议修改语言为英文，防止乱码，可跳过</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dpkg-reconfigure locales
+</code></pre></td></tr></table>
+</div>
+</div><p>使用空格键选择
+en_US.UTF-8,UTF-8
+zh_CN.GBK,GBK
+zh_CN.UTF-8,UTF-8
+选完按TAB选择左边的选项并回车
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827193811737.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+<strong>选择第一个，设置为缺省并回车</strong>
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827193915379.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    
+然后重启一下</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get install ttf-wqy-microhei ttf-wqy-zenhei xfonts-wqy <span style="color:#998;font-style:italic">#顺便安装中文字体</span>
+reboot
+</code></pre></td></tr></table>
+</div>
+</div><p>注意设置启动时的参数<code>ro text nomodeset</code>
+以及CTRL+ALT+F1进入命令行模式</p>
+<h2 id="进行整机更新">进行整机更新</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get update
+apt-get dist-upgrade
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>再次进入漫长的等待 如遇升级提示一律YES或ALL什么的就行了</strong>
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827194214379.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    </p>
+<h2 id="更新完后卸载无线网卡驱动防止日志那边输出报错">更新完后卸载无线网卡驱动，防止日志那边输出报错。。。</h2>
+<p>目前没有找到<strong>RTL8822CE</strong>无线网卡解决方案</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get remove --purge firmware-realtek
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="重启系统不用加额外参数你会发现可以进入图形界面了-ohhhhhhhhhhh">重启系统，不用加额外参数，你会发现可以进入图形界面了 ohhhhhhhhhhh</h2>
+<h2 id="安装nvidia显卡驱动">安装NVIDIA显卡驱动</h2>
+<p>CTRL+ALT+F1进入命令行模式
+<strong>停止图形界面服务</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">service lightdm stop
+</code></pre></td></tr></table>
+</div>
+</div><p>修改文件</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/modprobe.d/amd64-microcode-blacklist.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>追加如下代码</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">blacklist nouveau
+</code></pre></td></tr></table>
+</div>
+</div><p>执行此命令使<code>nouveau</code>驱动禁用</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">update-initramfs -u
+</code></pre></td></tr></table>
+</div>
+</div><p>然后重启系统</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">reboot
+</code></pre></td></tr></table>
+</div>
+</div><p>重启之后，可以查看<code>nouveau</code>有没有运行</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lsmod | grep nouveau  <span style="color:#998;font-style:italic"># 没输出代表禁用生效</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>使用apt安装NVIDIA驱动 当然你可以手动安装，自己百度喽</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">apt-get install nvidia-driver
+</code></pre></td></tr></table>
+</div>
+</div><p>安装完再次重启并进入图形界面
+你会发现开始菜单多了NVIDIA xserver settings
+打开是这样的 证明你的RTX ON！!！了
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200827200701789.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70#pic_center" />   
+    </p>
+<h2 id="至此就没什么问题了">至此就没什么问题了</h2>
+<p>简单修复一下AMDGPU模块缺失问题 不弄也没问题
+访问此网站<code>https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/tree/amdgpu/</code>
+下载所有<code>navi12*.bin</code>的文件 并移动到 <code>/lib/firmware/amdgpu</code> 目录下
+至于那个a什么的文件缺失我也不知道咋办 反正不影响</p>
+<h2 id="the-end">THE END</h2>
+<p>用到的文章</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/wf19930209/article/details/81877822">https://blog.csdn.net/wf19930209/article/details/81877822</a>
+&hellip;</p>
+</blockquote>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://blog.icland.xyz">蝴蝶飞不过沧海</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/">https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://blog.icland.xyz">蝴蝶飞不过沧海 | Blog By 蝴蝶飞不过沧海</a>
+        
+    </div>
+    <br />
+    
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://blog.icland.xyz/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://blog.icland.xyz">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/about/" title="置顶#关于本站">置顶#关于本站</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/" title="ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3">ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/" title="ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等">ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" title="Centos7自动root登录(GNOME桌面环境)">Centos7自动root登录(GNOME桌面环境)</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/" title="Debian10以root用户自动登录">Debian10以root用户自动登录</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/" title="Kali Linux xfce4无法使用fn进行屏幕亮度调节">Kali Linux xfce4无法使用fn进行屏幕亮度调节</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" title="Kali xfce4终端不能用TAB自动补全">Kali xfce4终端不能用TAB自动补全</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/" title="Kali安装后合上盖子不休眠问题">Kali安装后合上盖子不休眠问题</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/" title="Kali设置启动时输出日志，不显示logo">Kali设置启动时输出日志，不显示logo</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%96%87%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%87%8F%E5%B0%91%E5%8D%A0%E7%94%A8/" title="Kali设置默认启动文本模式，不启动图形界面，减少占用">Kali设置默认启动文本模式，不启动图形界面，减少占用</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://blog.icland.xyz/" title="蝴蝶飞不过沧海 | Blog">蝴蝶飞不过沧海 | Blog</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://blog.icland.xyz/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+        
+		
+		
+		<script src="/js/mouse_click.js"></script>
+		
+		<script src="/js/mouse_line.js"></script>
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+        <meting-js server="netease" id="573903952" autoplay="true" type="playlist" fixed="true" listfolded="true" order="random" theme="#F58EA8"></meting-js>
+		
+        <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+
+    </div>
+</body>
+
+</html>

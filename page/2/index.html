@@ -74,23 +74,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/about/" title="置顶#关于本站">置顶#关于本站</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2000年1月1日
-        </date>
-        
-        <div class="post-content">
-            感谢您访问我的博客 | Thank you for your visit! 蝴蝶飞不过沧海 | Blog 您在浏览文章有任何问题可以通过以下方式找到我! QQ@🥕zhou Email@skyxingcheng233@outlook.com CSDN@skyxingcheng HostGitHub PoweredHugo Modify蝴蝶飞不过沧海 DesignMaupassant……
-        </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/about/">阅读全文</a></p>
-    </article>
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/" title="ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3">ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</a>
+                <a href="https://blog.icland.xyz/post/Linux%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE/" title="Linux基础设置">Linux基础设置</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -98,15 +82,15 @@
         </date>
         
         <div class="post-content">
-            1.更新gcc编译器 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 yum install -y gcc gcc-c++ cmake ncurses ncurses-devel bison #先检查一下依赖 cd /usr/src wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.gz tar -zvxf gcc-7.3.0.tar.gz cd gcc-7.3.0 ./contrib/download_prerequisites ./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib make -j8 #八线程编译模式 CPU不行就低一些 这个实在是太慢了 rpm -q gcc #寻找已安装的gcc rpm -q gcc-c++ #寻找已安装的c++ rpm -e [包名] #上一部显示啥就卸载啥 make install #执行安装 which gcc……
+            更新软件包 1 apt-get update &amp;&amp; apt-get upgrade -y 1 apt-get -y install vim #先来个vim舒服一下 1 vi ~/.vimrc 启用鼠标 1 :set mouse-=a 粘贴以下内容 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 if has(&#39;mouse&#39;) set mouse-=a endif syntax on filetype indent on set showcmd set showmatch set incsearch set syn=cpp set nu! set hlsearch set nobackup set ruler colorscheme evening set autoindent set smartindent set tabstop=4 set shiftwidth=4 set enc=utf-8 set fenc=utf-8 set fencs=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 set langmenu=zh_CN.UTF-8 set helplang=cn 保存走你 1 2 vi /etc/bash.bashrc vi ~/.bashrc 找到并注释掉类似于如下内容 1 2 3……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/Linux%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/" title="ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等">ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</a>
+                <a href="https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/" title="Nginx使用OpenSSL库报错问题 _ 树莓派折腾日记#3">Nginx使用OpenSSL库报错问题 _ 树莓派折腾日记#3</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -114,15 +98,15 @@
         </date>
         
         <div class="post-content">
-            准备环境 使用双硬盘方案为了不影响Win10的快速启动 注意：若要使用Linux写入NTFS硬盘您必须选择在Win10系统重启再进入Linux 安装时无线网卡不可用，请使用有线网络！！！ 请点此链接下载有线网卡补充驱动 Firmware-Realtek 并解包deb文件\data.tar\.\lib\firmware\*……
+            修改Nginx源码 1 vi /usr/local/src/nginx-1.17.10/auto/lib/openssl/conf 找到 1 2 3 4 5 CORE_INCS=&#34;$CORE_INCS$OPENSSL/.openssl/include&#34; CORE_DEPS=&#34;$CORE_DEPS$OPENSSL/.openssl/include/openssl/ssl.h&#34; CORE_LIBS=&#34;$CORE_LIBS$OPENSSL/.openssl/lib/libssl.a&#34; CORE_LIBS=&#34;$CORE_LIBS$OPENSSL/.openssl/lib/libcrypto.a&#34; CORE_LIBS=&#34;$CORE_LIBS$NGX_LIBDL&#34; 修改为 1 2 3 4 5 CORE_INCS=&#34;$CORE_INCS$OPENSSL/.openssl/include&#34; CORE_DEPS=&#34;$CORE_DEPS$OPENSSL/include/openssl/ssl.h&#34; CORE_LIBS=&#34;$CORE_LIBS$OPENSSL/lib/libssl.a&#34; CORE_LIBS=&#34;$CORE_LIBS$OPENSSL/lib/libcrypto.a&#34; CORE_LIBS=&#34;$CORE_LIBS$NGX_LIBDL&#34; 编译Nginx时指定OpenSSL安装位置 1 ./configure --prefix=/usr/local/nginx --with-http_auth_request_module --with-http_ssl_module --with-http_v2_module --with-http_gunzip_module --with-pcre --with-pcre-jit --with-threads --with-ipv6 --with-http_realip_module --with-openssl=/usr/local/openssl/lib 1 make &amp;&amp; make install Enjoy :)……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" title="Centos7自动root登录(GNOME桌面环境)">Centos7自动root登录(GNOME桌面环境)</a>
+                <a href="https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/" title="OpenSSL编译报错：unknown architecture `armv8-a&#43;crypto&#39; _ 树莓派折腾日记#2">OpenSSL编译报错：unknown architecture `armv8-a&#43;crypto&#39; _ 树莓派折腾日记#2</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -130,15 +114,15 @@
         </date>
         
         <div class="post-content">
-            vim /etc/gdm/custom.conf 在daemon下面添加 1 2 AutomaticLoginEnable=True AutomaticLogin=root……
+            RT 先说明，本人小白，搞树莓派的OpenSSL头都大了 这特喵是什么神奇的报错 1 unknown architecture `armv8-a+crypto&#39; ?????OpenSSL不支持armv8指令集???? 解决如下 1 2 3 4 5 6 7 8 cd /usr/src wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz tar -zvxf openssl-1.1.1g.tar.gz cd openssl-1.1.1g ./config no-asm shared zlib --prefix=/usr/local/openssl make depend make #别test了 慢的要死 make install 1 apt-get install libxml2-dev……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/" title="Debian10以root用户自动登录">Debian10以root用户自动登录</a>
+                <a href="https://blog.icland.xyz/post/Windows10%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%88%87%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7%E5%B9%B6%E8%AE%BE%E7%BD%AE%E8%BD%AF%E4%BB%B6%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8/" title="Windows10子系统切换默认用户，并设置软件开机自启动">Windows10子系统切换默认用户，并设置软件开机自启动</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -146,15 +130,15 @@
         </date>
         
         <div class="post-content">
-            Debian 10 root用户自动登录： 注释掉 /etc/pam.d/gdm-autologin和/etc/pam.d/gdm-password文件中： 1 #auth required pam_succeed_if.so user != root quiet_success 注释掉。 在本行前加#，取消Debian不让root登录的限制。 修改gdm3的设定文件/etc/gdm3/daemon.conf 1……
+            切换默认用户: 1 debian config --default-user root 开机自启动： 创建一个vbs脚本文件放到C:\Users\用户名\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup 快捷打开以上目录:Win+R---&gt;&gt;&gt; shell:startup 1 2 Set ws = WScript.CreateObject(&#34;WScript.Shell&#34;) ws.run &#34;C:\Windows\System32\bash.exe -c &#39;/etc/init.wsl&#39;&#34;,0 你的开机启动文件名位置可以自定义……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/Windows10%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%88%87%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7%E5%B9%B6%E8%AE%BE%E7%BD%AE%E8%BD%AF%E4%BB%B6%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/" title="Kali Linux xfce4无法使用fn进行屏幕亮度调节">Kali Linux xfce4无法使用fn进行屏幕亮度调节</a>
+                <a href="https://blog.icland.xyz/post/Windows10%E6%9C%80%E6%96%B020H2%E7%89%88%E6%9C%AC%E5%85%B3%E9%97%ADMicrosoft-Defender%E9%98%B2%E7%97%85%E6%AF%92%E7%A8%8B%E5%BA%8F/" title="Windows10最新20H2版本关闭Microsoft Defender防病毒程序">Windows10最新20H2版本关闭Microsoft Defender防病毒程序</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -162,15 +146,15 @@
         </date>
         
         <div class="post-content">
-            检查xfce4的电源管理器是否禁用掉了按键 保持 管理显示器亮度调节按键(K) 为打开状态即可……
+            管理器身份运行cmd并执行以下命令 reg add “HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows Defender” /v “DisableAntiSpyware” /d 1 /t REG_DWORD /f gpedit.msc打开组策略编辑器 如图设置即可……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/Windows10%E6%9C%80%E6%96%B020H2%E7%89%88%E6%9C%AC%E5%85%B3%E9%97%ADMicrosoft-Defender%E9%98%B2%E7%97%85%E6%AF%92%E7%A8%8B%E5%BA%8F/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" title="Kali xfce4终端不能用TAB自动补全">Kali xfce4终端不能用TAB自动补全</a>
+                <a href="https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8-Linux-deploy-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84Nginx&#43;PHP-Web%E6%9C%8D%E5%8A%A1%E5%99%A8FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/" title="使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP">使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -178,15 +162,15 @@
         </date>
         
         <div class="post-content">
-            1、用编辑器打开 /etc/bash.bashrc文件 2、找到文件中的下列代码 1 2 3 4 5 6 7 8 #enable bash completion in interactive shells #if ! shopt -oq posix; then # if [-f /usr/share/bash-completion/bash_completion ]; then # . /usr/share/bash-completion/bash_completion # elif [ -f /etc/bash_completion]; then # . /etc/bash_completion # fi #fi 将注释符号#去掉，即改成 1 2 3 4 5 6 7 8 #enable bash completion in interactive shells if ! shopt -oq posix; then if [-f /usr/share/bash-completion/bash_completion ]; then . /usr/share/bash-completion/bash_completion elif [ -f /etc/bash_completion]; then . /etc/bash_completion fi fi 3、最后 source一下 /……
+            前言 第一次写文章，有问题请见谅，文章有错误请指出，本文末尾会贴出所有用到的文章，感谢各位大佬。 所需软件: Busybox，Linux deploy 本文所用均为最新版 (都需要ROOT完整权限，没有root建议别浪费时间了) 测试环境: Mi6 — MIUI 11 开发版，Android 9.0，MagiskSU，6GB物……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8-Linux-deploy-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84Nginx&#43;PHP-Web%E6%9C%8D%E5%8A%A1%E5%99%A8FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/" title="Kali安装后合上盖子不休眠问题">Kali安装后合上盖子不休眠问题</a>
+                <a href="https://blog.icland.xyz/post/%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3/" title="关闭小米路由器防火墙 放行端口">关闭小米路由器防火墙 放行端口</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -194,15 +178,15 @@
         </date>
         
         <div class="post-content">
-            转载于 https://www.jianshu.com/p/f4f1ba2e92cf 安装工具包： 1 apt-get install pm-utils laptop-mode-tools -y 修改配置文件/etc/laptop-mode/laptop-mode.conf 1 2 3 ENABLE_LAPTOP_MODE_ON_BATTERY=1 #使用电池 ENABLE_LAPTOP_MODE_ON_AC=1 #使用电源 ENABLE_LAPTOP_MODE_WHEN_LID_CLOSED=1 #合上屏幕 重启服务 1 2 /etc/init.d/laptop-mode restart cat /proc/sys/vm/laptop_mode #检查配置 输出不是0就行 THE END 若要设置不休眠 修改 /etc/systemd/logind.conf 1 HandleLidSwitch=ignore 然后重启服务 1 systemctl restart systemd-logind.service……
+            1.刷开发版并开启ssh 自行百度 2.使用ssh登录路由器 1 vi /etc/config/firewall 修改default如下 1 2 3 4 5 6 7 config defaults option syn_flood &#39;0&#39; option input &#39;ACCEPT&#39; option output &#39;ACCEPT&#39; option forward &#39;ACCEPT&#39; option drop_invalid &#39;0&#39; option disable_ipv6 &#39;0&#39; 3.重启防火墙 1 /etc/init.d/firewall restart 不要自作聪明直接关掉防火墙，会造成无法访问互联网 。。。。。。。。。。 参考文章 https://www.cnblogs.com/EasonJim/p/9238533.html……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/" title="Kali设置启动时输出日志，不显示logo">Kali设置启动时输出日志，不显示logo</a>
+                <a href="https://blog.icland.xyz/post/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89Samba%E8%B7%AF%E5%BE%84%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE%E7%A3%81%E7%9B%98%E6%A0%B9%E7%9B%AE%E5%BD%95/" title="小米路由器，设置自定义Samba路径，直接访问磁盘根目录">小米路由器，设置自定义Samba路径，直接访问磁盘根目录</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -210,15 +194,15 @@
         </date>
         
         <div class="post-content">
-            编辑文件vi /boot/grub/grub.cfg 去掉linux行的splash参数即可 图片仅供参考……
+            确保您已开启SSH 确保您的外设正常使用且Samba插件可正常开启 首先关闭Samba插件 使用scp登录您的路由器 修改配置文件\extdisks\sda1\xiaomi_router\config\smb.conf 追加代码 1 2 3 4 5 6 7 8 [root] path = /extdisks/sda1 read only = no guest ok = yes create mask = 0666 directory mask = 0777 browseable = yes……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89Samba%E8%B7%AF%E5%BE%84%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE%E7%A3%81%E7%9B%98%E6%A0%B9%E7%9B%AE%E5%BD%95/">阅读全文</a></p>
     </article>
     
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%96%87%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%87%8F%E5%B0%91%E5%8D%A0%E7%94%A8/" title="Kali设置默认启动文本模式，不启动图形界面，减少占用">Kali设置默认启动文本模式，不启动图形界面，减少占用</a>
+                <a href="https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/" title="无法运行apt-key命令检查数字签名 _ Couldn&#39;t execute _usr_bin_apt-key to check">无法运行apt-key命令检查数字签名 _ Couldn&#39;t execute _usr_bin_apt-key to check</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -226,9 +210,25 @@
         </date>
         
         <div class="post-content">
-            一个命令搞定！ 1 systemctl set-default multi-user.target 改回用这个 1 systemctl set-default graphical.target 转载于 https://blog.csdn.net/Alpha_B612/article/details/81053789?utm_source=blogxgwz8……
+            某日随便敲apt-get命令发现如下错误 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 获取:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB] 错误:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease Couldn&#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspbian_raspbian_dists_buster_InRelease 获取:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease [25.2 kB] 错误:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease Couldn&#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspberrypi_dists_buster_InRelease 正在读取软件包列表... 完成 W: GPG 错误：http://mirror.tuna.tsinghua.edu.cn/raspbia……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%96%87%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%87%8F%E5%B0%91%E5%8D%A0%E7%94%A8/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/">阅读全文</a></p>
+    </article>
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/" title="树莓派折腾日记#1">树莓派折腾日记#1</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年2月10日
+        </date>
+        
+        <div class="post-content">
+            boot分区下新建文件 ssh 来启用ssh boot分区编辑config.txt最后一行加上 1 arm_64bit=1 来启用64位内核 使用 pi raspberry 登陆系统 修改密码并解锁root账户 1 2 3 sudo passwd pi #修改pi的密码 sudo passwd root #修改root的密码 sudo passwd --unlock root #解锁root用户 然后使用root登陆 备份镜像源 1 2 cp /etc/apt/sources.list /etc/apt/sources.list.bak cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak 修改软件……
+        </div>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/">阅读全文</a></p>
     </article>
     
     
@@ -237,13 +237,17 @@
 
 <ol class="page-navigator">
     
+    <li class="prev">
+        <a href="https://blog.icland.xyz/">上一页</a>
+    </li>
+    
 
     
-    <li  class="current">
+    <li >
         <a href="https://blog.icland.xyz/">1</a>
     </li>
     
-    <li >
+    <li  class="current">
         <a href="https://blog.icland.xyz/page/2/">2</a>
     </li>
     
@@ -254,7 +258,7 @@
 
     
     <li class="next">
-        <a href="https://blog.icland.xyz/page/2/">下一页</a>
+        <a href="https://blog.icland.xyz/page/3/">下一页</a>
     </li>
     
 </ol>

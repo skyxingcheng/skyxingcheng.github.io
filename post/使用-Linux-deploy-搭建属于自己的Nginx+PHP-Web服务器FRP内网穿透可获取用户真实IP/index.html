@@ -1,0 +1,1464 @@
+<!doctype html>
+<html lang="zh-CN">
+<link rel="icon" type="image/x-icon" href= "/images/logo.png" sizes="64x64">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP | 蝴蝶飞不过沧海 | Blog</title>
+    <meta property="og:title" content="使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP - 蝴蝶飞不过沧海 | Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-02-10T00:00:00&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-02-10T00:00:00&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP">
+        
+    <meta name="author" content="蝴蝶飞不过沧海">
+    <meta property="og:url" content="https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8-Linux-deploy-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84Nginx&#43;PHP-Web%E6%9C%8D%E5%8A%A1%E5%99%A8FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://blog.icland.xyz">
+                        蝴蝶飞不过沧海 | Blog
+                    </a>
+                
+                <p class="description">(bushi)专注于Java、Linux运维、Minecraft服务器搭建、等瞎搞操作</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="current" href="https://blog.icland.xyz">首页</a>
+                    
+                    <a  href="https://blog.icland.xyz/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://blog.icland.xyz/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://blog.icland.xyz/post/about" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#前言">前言</a></li>
+    <li><a href="#1软件安装与配置">1.软件安装与配置</a></li>
+    <li><a href="#2基本系统安装与调试">2.基本系统安装与调试</a></li>
+    <li><a href="#3终端配色与基本美化">3.终端配色与基本美化</a></li>
+    <li><a href="#4编译安装所需依赖包">4.编译安装所需依赖包</a></li>
+    <li><a href="#5编译安装pure-ftpd">5.编译安装Pure-ftpd</a></li>
+    <li><a href="#6编译安装nginx">6.编译安装Nginx</a></li>
+    <li><a href="#7编译安装php7">7.编译安装PHP7</a></li>
+    <li><a href="#8关联nginx与php">8.关联Nginx与PHP</a></li>
+    <li><a href="#9验证nginx与php环境是否正常">9.验证Nginx与PHP环境是否正常</a></li>
+    <li><a href="#10frp内网穿透获取用户真实ip">10.frp内网穿透，获取用户真实IP</a></li>
+    <li><a href="#后记">后记</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年2月10日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <h2 id="前言">前言</h2>
+<p>第一次写文章，有问题请见谅，文章有错误请指出，本文末尾会贴出所有用到的文章，感谢各位大佬。</p>
+<p>所需软件: Busybox，Linux deploy 本文所用均为最新版 (都需要ROOT完整权限，没有root建议别浪费时间了)
+测试环境: Mi6 — MIUI 11 开发版，Android 9.0，MagiskSU，6GB物理内存，64GB存储空间，32GB分配空间</p>
+<p>Linux deploy 下载地址: <a href="https://github.com/meefik/linuxdeploy/releases">https://github.com/meefik/linuxdeploy/releases</a>
+Busybox 去某安搜索就行了 第一个就是
+====================本文以CentOS7作为演示====================</p>
+<h2 id="1软件安装与配置">1.软件安装与配置</h2>
+<p>首先打开busybox 安装位置选择 /system/xbin 点击 install 安装 (当然别的位置也行 与Linux deploy的位置一致就行)
+<img src="https://img-blog.csdnimg.cn/2020042120025185.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+然后就是Linux deploy了 打开软件 选择左上角三道杠 点击配置文件 写一个你喜欢的名字就行
+<img src="https://img-blog.csdnimg.cn/20200421201012976.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://img-blog.csdnimg.cn/20200421201314289.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+然后点击设置 勾选 锁定wifi，cpu唤醒 ，联网更新，ENV目录不用管它，path变量设置为busybox的安装目录，然后点击一次更新操作环境，最下面有个调试模式最好也勾选上，方便看信息
+<img src="https://img-blog.csdnimg.cn/20200421201745674.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://img-blog.csdnimg.cn/20200421201814416.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+然后我们回到主界面选择右下角三道杠 如图设置即可
+源地址设置为阿里云：https://mirrors.aliyun.com/centos-altarch/
+镜像大小根据所需设置 我这里是32GB
+至于安装类型，，，基本用不到，(其他安装类型一个也没成功&hellip;)
+用户名密码自己设置就行了 (ps:截图的源地址打错了)
+<img src="https://img-blog.csdnimg.cn/20200421202733502.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+勾选启用挂载和启用ssh 添加一个挂载点方便访问sd卡
+<img src="https://img-blog.csdnimg.cn/20200421203119672.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://img-blog.csdnimg.cn/2020042120334638.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+至此基本配置就完成了</p>
+<h2 id="2基本系统安装与调试">2.基本系统安装与调试</h2>
+<p>回到主界面 选择右上角三个点 点击安装 然后等待安装完毕即可 理论应该不会出现什么问题
+安装完毕回显 &laquo;&lt;deploy 就可以了
+<img src="https://img-blog.csdnimg.cn/20200421204938114.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+然后我们点击启动 再用ssh工具连接 就和普通的没什么两样了 qwq
+<img src="https://img-blog.csdnimg.cn/20200421205143377.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+设备内网IP:22
+<img src="https://img-blog.csdnimg.cn/20200421205302296.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="50%">
+用户名密码为软件中设置的密码
+<img src="https://img-blog.csdnimg.cn/20200421205506802.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="80%">
+<strong>更换YUM软件源</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /etc/yum.repos.d/
+mkdir old
+mv * old
+vi CentOS-Base.repo  <span style="color:#998;font-style:italic">#添加如下代码</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic"># CentOS-Base.repo</span>
+<span style="color:#998;font-style:italic">#</span>
+<span style="color:#998;font-style:italic"># The mirror system uses the connecting IP address of the client and the</span>
+<span style="color:#998;font-style:italic"># update status of each mirror to pick mirrors that are updated to and</span>
+<span style="color:#998;font-style:italic"># geographically close to the client.  You should use this for CentOS updates</span>
+<span style="color:#998;font-style:italic"># unless you are manually picking other mirrors.</span>
+<span style="color:#998;font-style:italic">#</span>
+<span style="color:#998;font-style:italic"># If the mirrorlist= does not work for you, as a fall back you can try the </span>
+<span style="color:#998;font-style:italic"># remarked out baseurl= line instead.</span>
+<span style="color:#998;font-style:italic">#</span>
+<span style="color:#998;font-style:italic">#</span>
+ 
+<span style="color:#000;font-weight:bold">[</span>base<span style="color:#000;font-weight:bold">]</span>
+<span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span>CentOS-<span style="color:#008080">$releasever</span> - Base
+<span style="color:#008080">baseurl</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.aliyun.com/centos-altarch/<span style="color:#008080">$releasever</span>/os/<span style="color:#008080">$basearch</span>/
+<span style="color:#008080">gpgcheck</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+<span style="color:#008080">gpgkey</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+ 
+<span style="color:#998;font-style:italic">#released updates </span>
+<span style="color:#000;font-weight:bold">[</span>updates<span style="color:#000;font-weight:bold">]</span>
+<span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span>CentOS-<span style="color:#008080">$releasever</span> - Updates
+<span style="color:#008080">baseurl</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.aliyun.com/centos-altarch/<span style="color:#008080">$releasever</span>/updates/<span style="color:#008080">$basearch</span>/
+<span style="color:#008080">gpgcheck</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+<span style="color:#008080">gpgkey</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+ 
+<span style="color:#998;font-style:italic">#additional packages that may be useful</span>
+<span style="color:#000;font-weight:bold">[</span>extras<span style="color:#000;font-weight:bold">]</span>
+<span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span>CentOS-<span style="color:#008080">$releasever</span> - Extras
+<span style="color:#008080">baseurl</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.aliyun.com/centos-altarch/<span style="color:#008080">$releasever</span>/extras/<span style="color:#008080">$basearch</span>/
+<span style="color:#008080">gpgcheck</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+<span style="color:#008080">gpgkey</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+<span style="color:#008080">enabled</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+ 
+<span style="color:#998;font-style:italic">#additional packages that extend functionality of existing packages</span>
+<span style="color:#000;font-weight:bold">[</span>centosplus<span style="color:#000;font-weight:bold">]</span>
+<span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span>CentOS-<span style="color:#008080">$releasever</span> - Plus
+<span style="color:#008080">baseurl</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.aliyun.com/centos-altarch/<span style="color:#008080">$releasever</span>/centosplus/<span style="color:#008080">$basearch</span>/
+<span style="color:#008080">gpgcheck</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+<span style="color:#008080">enabled</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>
+<span style="color:#008080">gpgkey</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.aliyun.com/centos/RPM-GPG-KEY-CentOS-7
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi epel.repo		<span style="color:#998;font-style:italic">#添加如下代码</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>epel<span style="color:#000;font-weight:bold">]</span>
+<span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span>Extra Packages <span style="color:#000;font-weight:bold">for</span> Enterprise Linux <span style="color:#099">7</span> - <span style="color:#008080">$basearch</span>
+<span style="color:#008080">baseurl</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.tuna.tsinghua.edu.cn/epel/7/<span style="color:#008080">$basearch</span>
+<span style="color:#008080">failovermethod</span><span style="color:#000;font-weight:bold">=</span>priority
+<span style="color:#008080">enabled</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+<span style="color:#008080">gpgcheck</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+<span style="color:#008080">gpgkey</span><span style="color:#000;font-weight:bold">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+ 
+<span style="color:#000;font-weight:bold">[</span>epel-debuginfo<span style="color:#000;font-weight:bold">]</span>
+<span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span>Extra Packages <span style="color:#000;font-weight:bold">for</span> Enterprise Linux <span style="color:#099">7</span> - <span style="color:#008080">$basearch</span> - Debug
+<span style="color:#008080">baseurl</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.tuna.tsinghua.edu.cn/epel/7/<span style="color:#008080">$basearch</span>/debug
+<span style="color:#008080">failovermethod</span><span style="color:#000;font-weight:bold">=</span>priority
+<span style="color:#008080">enabled</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>
+<span style="color:#008080">gpgkey</span><span style="color:#000;font-weight:bold">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+<span style="color:#008080">gpgcheck</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+ 
+<span style="color:#000;font-weight:bold">[</span>epel-source<span style="color:#000;font-weight:bold">]</span>
+<span style="color:#008080">name</span><span style="color:#000;font-weight:bold">=</span>Extra Packages <span style="color:#000;font-weight:bold">for</span> Enterprise Linux <span style="color:#099">7</span> - <span style="color:#008080">$basearch</span> - Source
+<span style="color:#008080">baseurl</span><span style="color:#000;font-weight:bold">=</span>https://mirrors.tuna.tsinghua.edu.cn/epel/7/SRPMS
+<span style="color:#008080">failovermethod</span><span style="color:#000;font-weight:bold">=</span>priority
+<span style="color:#008080">enabled</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">0</span>
+<span style="color:#008080">gpgkey</span><span style="color:#000;font-weight:bold">=</span>file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+<span style="color:#008080">gpgcheck</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">1</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /etc/pki/rpm-gpg/
+mkdir old
+mv * old
+wget https://mirrors.aliyun.com/centos-altarch/7/os/aarch64/RPM-GPG-KEY-CentOS-7
+wget https://mirrors.aliyun.com/centos-altarch/7/os/aarch64/RPM-GPG-KEY-CentOS-7-aarch64
+wget https://archive.fedoraproject.org/pub/epel/RPM-GPG-KEY-EPEL-7 <span style="color:#998;font-style:italic">#网络不好可能下载不来</span>
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7-aarch64
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-7
+rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
+yum makecache		<span style="color:#998;font-style:italic">#生成缓存</span>
+</code></pre></td></tr></table>
+</div>
+</div><img src="https://img-blog.csdnimg.cn/20200421212014948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="99%">
+<h2 id="3终端配色与基本美化">3.终端配色与基本美化</h2>
+<p><strong>终端配色</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/bashrc
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic">#添加如下代码</span>
+<span style="color:#0086b3">export</span> <span style="color:#008080">PS1</span><span style="color:#000;font-weight:bold">=</span><span style="color:#d14">&#34;\[\e[37;1m\][\[\e[35;1m\]\u\[\e[32;1m\]@\[\e[34;1m\]\h \[\e[31;1m\]\w \[\e[33;1m\]\t\[\e[37;1m\]]\[\e[32;1m\]\$\[\e[m\]&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">source</span> /etc/bashrc
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>vi编辑器设置</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install vim-enhanced
+<span style="color:#0086b3">alias</span> <span style="color:#008080">vi</span><span style="color:#000;font-weight:bold">=</span>vim
+vi ~/.vimrc
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic">#添加如下代码</span>
+syntax on
+filetype indent on
+<span style="color:#0086b3">set</span> showcmd
+<span style="color:#0086b3">set</span> showmatch
+<span style="color:#0086b3">set</span> incsearch
+<span style="color:#0086b3">set</span> <span style="color:#008080">syn</span><span style="color:#000;font-weight:bold">=</span>cpp
+<span style="color:#0086b3">set</span> nu!
+<span style="color:#0086b3">set</span> hlsearch
+<span style="color:#0086b3">set</span> nobackup
+<span style="color:#0086b3">set</span> ruler
+colorscheme evening
+<span style="color:#0086b3">set</span> autoindent
+<span style="color:#0086b3">set</span> smartindent
+<span style="color:#0086b3">set</span> <span style="color:#008080">tabstop</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4</span>
+<span style="color:#0086b3">set</span> <span style="color:#008080">shiftwidth</span><span style="color:#000;font-weight:bold">=</span><span style="color:#099">4</span>
+<span style="color:#0086b3">set</span> <span style="color:#008080">enc</span><span style="color:#000;font-weight:bold">=</span>utf-8
+<span style="color:#0086b3">set</span> <span style="color:#008080">fenc</span><span style="color:#000;font-weight:bold">=</span>utf-8
+<span style="color:#0086b3">set</span> <span style="color:#008080">fencs</span><span style="color:#000;font-weight:bold">=</span>utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+<span style="color:#0086b3">set</span> <span style="color:#008080">langmenu</span><span style="color:#000;font-weight:bold">=</span>zh_CN.UTF-8
+<span style="color:#0086b3">set</span> <span style="color:#008080">helplang</span><span style="color:#000;font-weight:bold">=</span>cn
+</code></pre></td></tr></table>
+</div>
+</div><p>SSH登陆信息修改</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/motd <span style="color:#998;font-style:italic">#随你怎么设置都行</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>操作完一波后就会像这样啦
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200421214549900.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+    </p>
+<h2 id="4编译安装所需依赖包">4.编译安装所需依赖包</h2>
+<p><strong>请按本文顺序安装
+确保安装以下基本软件</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yum -y install wget net-tools gcc clang curl make gcc-c++ unzip
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意</strong> 本文以下所有安装的软件源码目录均为</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /usr/src
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>编译安装Perl</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /usr/src
+wget https://www.cpan.org/src/5.0/perl-5.30.2.tar.gz
+tar -zvxf perl-5.30.2.tar.gz
+<span style="color:#0086b3">cd</span> perl-5.30.2
+./Configure -des -Dprefix<span style="color:#000;font-weight:bold">=</span>/usr/local/perl
+make
+make <span style="color:#0086b3">test</span> <span style="color:#998;font-style:italic">#可以先测试一下</span>
+make install
+mv /usr/bin/perl /usr/bin/perl.bak
+ln -s /usr/local/perl/bin/perl /usr/bin/perl
+perl -v
+</code></pre></td></tr></table>
+</div>
+</div><p>emmmm 121w这个数字是真的恐怖&hellip;.
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200421233722761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+    
+<strong>编译安装Pcre</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /usr/src
+wget https://nchc.dl.sourceforge.net/project/pcre/pcre/8.44/pcre-8.44.tar.gz
+tar -zvxf pcre-8.44.tar.gz
+<span style="color:#0086b3">cd</span> pcre-8.44
+./configure --enable-utf8
+make
+make check
+make install
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>编译安装zlib</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /usr/src
+wget http://www.zlib.net/zlib-1.2.11.tar.gz
+tar -zvxf zlib-1.2.11.tar.gz
+<span style="color:#0086b3">cd</span> zlib-1.2.11
+./configure
+make
+make install
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>编译安装OpenSSL</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /usr/src
+wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz
+tar -zvxf openssl-1.1.1g.tar.gz
+<span style="color:#0086b3">cd</span> openssl-1.1.1g
+./config shared --openssldir<span style="color:#000;font-weight:bold">=</span>/usr/local/openssl --prefix<span style="color:#000;font-weight:bold">=</span>/usr/local/openssl
+make
+make install
+vi /etc/ld.so.conf
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic">#添加如下代码</span>
+/usr/local/openssl/lib
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ldconfig -v
+ln -s /usr/local/openssl/bin/openssl  /usr/local/bin/openssl
+ln -s /usr/local/openssl/bin/openssl  /usr/bin/openssl
+openssl version -a
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="5编译安装pure-ftpd">5.编译安装Pure-ftpd</h2>
+<p>vsftpd因为Android限制用不来 大佬可以试试</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /usr/src
+wget https://download.pureftpd.org/pub/pure-ftpd/releases/pure-ftpd-1.0.49.tar.gz
+tar -zvxf pure-ftpd-1.0.49.tar.gz
+<span style="color:#0086b3">cd</span> pure-ftpd-1.0.49
+./configure --prefix<span style="color:#000;font-weight:bold">=</span>/usr/local/pureftpd --without-inetd --with-altlog --with-puredb --with-throttling --with-peruserlimits --with-tls --with-everything
+./configure --prefix<span style="color:#000;font-weight:bold">=</span>/usr/local/pureftpd --with-everything <span style="color:#998;font-style:italic">#这里是否需要执行两次，我也不知道qwq</span>
+make
+make install	<span style="color:#998;font-style:italic">#说明一下，我这边测试配置文件是不需要任何改动的</span>
+ln -s /usr/local/pureftpd/sbin/pure-ftpd /usr/bin/pure-ftpd
+pure-ftpd &amp;
+netstat -antup | grep <span style="color:#099">21</span> <span style="color:#998;font-style:italic">#检查21端口</span>
+ln -s /usr/src/ /root/src
+ln -s /home/ /root/home
+ln -s /local-sd/ /root/local-sd
+ln -s /usr/local/ /root/local		<span style="color:#998;font-style:italic">#创建四个软连接方便访问</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>连接测试正常 读写正常
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422003618666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+    </p>
+<h2 id="6编译安装nginx">6.编译安装Nginx</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /usr/src
+wget http://www.nginx.org/download/nginx-1.17.10.tar.gz
+tar -zvxf nginx-1.17.10.tar.gz
+<span style="color:#0086b3">cd</span> nginx-1.17.10
+./configure --prefix<span style="color:#000;font-weight:bold">=</span>/usr/local/nginx --with-http_auth_request_module --with-http_ssl_module --with-http_v2_module --with-http_gunzip_module  --with-pcre --with-pcre-jit --with-threads --with-ipv6 --with-http_realip_module --with-openssl<span style="color:#000;font-weight:bold">=</span>/usr/src/openssl-1.1.1g <span style="color:#998;font-style:italic">#这里需要指定一下OpenSSL的解压位置</span>
+make
+make install
+ln -s /usr/local/nginx/sbin/nginx /usr/bin/nginx
+nginx &amp;
+netstat -antup | grep <span style="color:#099">80</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>浏览器打开看见如下界面 证明Nginx已经成功启动了
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422010203856.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+    </p>
+<h2 id="7编译安装php7">7.编译安装PHP7</h2>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#998;font-style:italic">#再安装一遍依赖</span>
+yum install -y gcc gcc-c++ make zlib zlib-devel pcre pcre-devel libjpeg libjpeg-devel libpng libpng-devel freetype freetype-devel libxml2 libxml2-devel glibc glibc-devel glib2 glib2-devel bzip2 bzip2-devel ncurses ncurses-devel curl curl-devel e2fsprogs e2fsprogs-devel krb5 krb5-devel openssl openssl-devel openldap openldap-devel nss_ldap openldap-clients openldap-servers
+<span style="color:#998;font-style:italic">#不用担心重复安装YUM会自动判断</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#0086b3">cd</span> /usr/src
+wget http://cn2.php.net/distributions/php-7.3.2.tar.gz
+tar -zvxf php-7.3.2.tar.gz
+<span style="color:#0086b3">cd</span> php-7.3.2
+./configure --prefix<span style="color:#000;font-weight:bold">=</span>/usr/local/php7 --exec-prefix<span style="color:#000;font-weight:bold">=</span>/usr/local/php7 --bindir<span style="color:#000;font-weight:bold">=</span>/usr/local/php7/bin --sbindir<span style="color:#000;font-weight:bold">=</span>/usr/local/php7/sbin --includedir<span style="color:#000;font-weight:bold">=</span>/usr/local/php7/include --libdir<span style="color:#000;font-weight:bold">=</span>/usr/local/php7/lib/php --mandir<span style="color:#000;font-weight:bold">=</span>/usr/local/php7/php/man --with-config-file-path<span style="color:#000;font-weight:bold">=</span>/usr/local/php7/etc --enable-fpm --with-mysqli --with-openssl --with-pdo-mysql --enable-mbstring --with-gd --with-tokenizer
+make
+make install
+cp php.ini-production /usr/local/php7/etc/php.ini
+cp /usr/local/php7/etc/php-fpm.conf.default  /usr/local/php7/etc/php-fpm.conf
+cp /usr/local/php7/etc/php-fpm.d/www.conf.default  /usr/local/php7/etc/php-fpm.d/www.conf
+<span style="color:#0086b3">echo</span> <span style="color:#d14">&#34;export PATH=</span><span style="color:#008080">$PATH</span><span style="color:#d14">:/usr/local/php7/bin/:/usr/local/php7/sbin/&#34;</span>&gt;&gt;/etc/profile.d/php.sh
+<span style="color:#0086b3">source</span> /etc/profile.d/php.sh
+php -v
+php-fpm -v
+</code></pre></td></tr></table>
+</div>
+</div><p>
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422102836815.png" />   
+    </p>
+<h2 id="8关联nginx与php">8.关联Nginx与PHP</h2>
+<p>新建一个你喜欢的目录 设置权限 并创建软连接</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /usr/share/wwwroot
+chown nobody:nobody /usr/share/wwwroot
+chmod <span style="color:#099">777</span> /usr/share/wwwroot
+ln -s /usr/share/wwwroot /root/wwwroot
+</code></pre></td></tr></table>
+</div>
+</div><p>结束一些不必要的进程</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkill php-fpm
+pkill php
+pkill nginx
+</code></pre></td></tr></table>
+</div>
+</div><p>配置Nginx</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /usr/local/nginx/conf/nginx.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>代码如下</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">70
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">71
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">72
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">73
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">74
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">75
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">76
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">77
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">78
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">79
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">80
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">81
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">82
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">83
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">84
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">85
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">86
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">user  root;
+
+worker_processes 4;
+<span style="color:#998;font-style:italic">#error_log  logs/error.log;</span>
+<span style="color:#998;font-style:italic">#error_log  logs/error.log  notice;</span>
+<span style="color:#998;font-style:italic">#error_log  logs/error.log  info;</span>
+<span style="color:#998;font-style:italic">#pid        logs/nginx.pid;</span>
+
+events <span style="color:#000;font-weight:bold">{</span>
+     worker_connections 40960;
+<span style="color:#000;font-weight:bold">}</span>
+
+http <span style="color:#000;font-weight:bold">{</span>
+    include       mime.types;
+    default_type  application/octet-stream;
+    <span style="color:#998;font-style:italic">#log_format  main  &#39;$remote_addr - $remote_user [$time_local] &#34;$request&#34; &#39;</span>
+    <span style="color:#998;font-style:italic">#                  &#39;$status $body_bytes_sent &#34;$http_referer&#34; &#39;</span>
+    <span style="color:#998;font-style:italic">#                  &#39;&#34;$http_user_agent&#34; &#34;$http_x_forwarded_for&#34;&#39;;</span>
+    <span style="color:#998;font-style:italic">#access_log  logs/access.log  main;</span>
+    sendfile  on;
+    <span style="color:#998;font-style:italic">#tcp_nopush     on;</span>
+    keepalive_timeout 65;
+    
+    <span style="color:#998;font-style:italic">#gzip  on;</span>
+    
+    <span style="color:#998;font-style:italic"># another virtual host using mix of IP-, name-, and port-based configuration</span>
+    <span style="color:#998;font-style:italic">#server {</span>
+    <span style="color:#998;font-style:italic">#    listen       8000;</span>
+    <span style="color:#998;font-style:italic">#    listen       somename:8080;</span>
+    <span style="color:#998;font-style:italic">#    server_name  somename  alias  another.alias;</span>
+    <span style="color:#998;font-style:italic">#    location / {</span>
+    <span style="color:#998;font-style:italic">#        root   html;</span>
+    <span style="color:#998;font-style:italic">#        index  index.html index.htm;</span>
+    <span style="color:#998;font-style:italic">#    }</span>
+    <span style="color:#998;font-style:italic">#}</span>
+    
+    map <span style="color:#008080">$time_iso8601</span> <span style="color:#008080">$logdate</span> <span style="color:#000;font-weight:bold">{</span>
+        <span style="color:#d14">&#39;~^(?&lt;ymd&gt;\\d{4}-\\d{2}-\\d{2})&#39;</span> <span style="color:#008080">$ymd</span>;
+        default                       <span style="color:#d14">&#39;date-not-found&#39;</span>;
+    <span style="color:#000;font-weight:bold">}</span>
+	include vhosts/*.conf;
+
+    <span style="color:#998;font-style:italic"># HTTPS server</span>
+
+    <span style="color:#998;font-style:italic">#server {</span>
+    <span style="color:#998;font-style:italic">#    listen       443 ssl;</span>
+    <span style="color:#998;font-style:italic">#    server_name  localhost;</span>
+    <span style="color:#998;font-style:italic">#    ssl_certificate      cert.pem;</span>
+    <span style="color:#998;font-style:italic">#    ssl_certificate_key  cert.key;</span>
+    <span style="color:#998;font-style:italic">#    ssl_session_cache    shared:SSL:1m;</span>
+    <span style="color:#998;font-style:italic">#    ssl_session_timeout  5m;</span>
+    <span style="color:#998;font-style:italic">#    ssl_ciphers  HIGH:!aNULL:!MD5;</span>
+    <span style="color:#998;font-style:italic">#    ssl_prefer_server_ciphers  on;</span>
+    <span style="color:#998;font-style:italic">#    location / {</span>
+    <span style="color:#998;font-style:italic">#        root   html;</span>
+    <span style="color:#998;font-style:italic">#        index  index.html index.htm;</span>
+    <span style="color:#998;font-style:italic">#    }</span>
+    <span style="color:#998;font-style:italic">#}</span>
+
+     client_max_body_size 50m;
+     client_body_buffer_size 60k;
+     client_body_timeout 60;
+     client_header_buffer_size 64k;
+     client_header_timeout 60;
+     error_page <span style="color:#099">400</span> error/400.html;
+     error_page <span style="color:#099">403</span> error/403.html;
+     error_page <span style="color:#099">404</span> error/404.html;
+     error_page <span style="color:#099">500</span> error/500.html;
+     error_page <span style="color:#099">501</span> error/501.html;
+     error_page <span style="color:#099">502</span> error/502.html;
+     error_page <span style="color:#099">503</span> error/503.html;
+     error_page <span style="color:#099">504</span> error/504.html;
+     error_page <span style="color:#099">505</span> error/505.html;
+     error_page <span style="color:#099">506</span> error/506.html;
+     error_page <span style="color:#099">507</span> error/507.html;
+     error_page <span style="color:#099">509</span> error/509.html;
+     error_page <span style="color:#099">510</span> error/510.html;
+     
+     keepalive_requests 100;
+     large_client_header_buffers <span style="color:#099">4</span> 64k;
+     reset_timedout_connection on;
+     send_timeout 60;
+     sendfile_max_chunk 512k;
+     server_names_hash_bucket_size 256;
+<span style="color:#000;font-weight:bold">}</span>
+     worker_rlimit_nofile 100000;
+</code></pre></td></tr></table>
+</div>
+</div><p>创建用来运行的Nginx配置文件</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /usr/local/nginx/conf/vhosts
+vi /usr/local/nginx/conf/vhosts/def.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>添加如下代码</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">server <span style="color:#000;font-weight:bold">{</span>
+		listen	      80;
+		<span style="color:#998;font-style:italic">#listen        80 proxy_protocol;</span>
+        server_name  localhost;
+        root   <span style="color:#d14">&#34;/usr/share/wwwroot&#34;</span>;
+        location / <span style="color:#000;font-weight:bold">{</span>
+        try_files <span style="color:#008080">$uri</span> <span style="color:#008080">$uri</span>/ /index.php?<span style="color:#008080">$query_string</span>;
+            index index.php index.html error/index.html;
+            <span style="color:#998;font-style:italic">#set_real_ip_from 193.110.203.248;</span>
+            <span style="color:#998;font-style:italic">#set_real_ip_from 127.0.0.1;</span>
+            <span style="color:#998;font-style:italic">#real_ip_header   proxy_protocol;</span>
+            <span style="color:#998;font-style:italic">#real_ip_recursive on;</span>
+            error_page <span style="color:#099">400</span> /400.html;
+            error_page <span style="color:#099">403</span> /403.html;
+            error_page <span style="color:#099">404</span> /404.html;
+            error_page <span style="color:#099">500</span> /500.html;
+            error_page <span style="color:#099">501</span> /501.html;
+            error_page <span style="color:#099">502</span> /502.html;
+            error_page <span style="color:#099">503</span> /503.html;
+            error_page <span style="color:#099">504</span> /504.html;
+            error_page <span style="color:#099">505</span> /505.html;
+            error_page <span style="color:#099">506</span> /506.html;
+            error_page <span style="color:#099">507</span> /507.html;
+            error_page <span style="color:#099">509</span> /509.html;
+            error_page <span style="color:#099">510</span> /510.html;
+            autoindex  off;
+        <span style="color:#000;font-weight:bold">}</span>
+        location ~ <span style="color:#d14">\.</span>php<span style="color:#000;font-weight:bold">(</span>.*<span style="color:#000;font-weight:bold">)</span>$ <span style="color:#000;font-weight:bold">{</span>
+            <span style="color:#998;font-style:italic">#set_real_ip_from 193.110.203.248;</span>
+            <span style="color:#998;font-style:italic">#set_real_ip_from 127.0.0.1;</span>
+            <span style="color:#998;font-style:italic">#real_ip_header   proxy_protocol;</span>
+            <span style="color:#998;font-style:italic">#real_ip_recursive on;</span>
+            error_page <span style="color:#099">400</span> /400.html;
+            error_page <span style="color:#099">403</span> /403.html;
+            error_page <span style="color:#099">404</span> /404.html;
+            error_page <span style="color:#099">500</span> /500.html;
+            error_page <span style="color:#099">501</span> /501.html;
+            error_page <span style="color:#099">502</span> /502.html;
+            error_page <span style="color:#099">503</span> /503.html;
+            error_page <span style="color:#099">504</span> /504.html;
+            error_page <span style="color:#099">505</span> /505.html;
+            error_page <span style="color:#099">506</span> /506.html;
+            error_page <span style="color:#099">507</span> /507.html;
+            error_page <span style="color:#099">509</span> /509.html;
+            error_page <span style="color:#099">510</span> /510.html;
+            fastcgi_pass   127.0.0.1:9000;
+            fastcgi_index  index.php;
+            fastcgi_split_path_info  ^<span style="color:#000;font-weight:bold">((</span>?U<span style="color:#000;font-weight:bold">)</span>.+<span style="color:#d14">\.</span>php<span style="color:#000;font-weight:bold">)(</span>/?.+<span style="color:#000;font-weight:bold">)</span>$;
+            fastcgi_param  SCRIPT_FILENAME  <span style="color:#008080">$document_root$fastcgi_script_name</span>;
+            fastcgi_param  PATH_INFO  <span style="color:#008080">$fastcgi_path_info</span>;
+            fastcgi_param  PATH_TRANSLATED  <span style="color:#008080">$document_root$fastcgi_path_info</span>;
+            include        fastcgi_params;
+        <span style="color:#000;font-weight:bold">}</span>
+            <span style="color:#998;font-style:italic">#access_log /tmp/nginx/def.log;</span>
+<span style="color:#000;font-weight:bold">}</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注：PHP的配置文件基本不用修改 如有需要请自行修改</strong></p>
+<h2 id="9验证nginx与php环境是否正常">9.验证Nginx与PHP环境是否正常</h2>
+<p>启动Nginx与php-fpm 然后扔一个PHP探针到网站目录</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pureftpd &amp;
+nginx &amp;
+php-fpm &amp;
+<span style="color:#0086b3">cd</span> /usr/share/wwwroot
+wget http://www.yahei.net/tz/tz.zip
+unzip tz.zip
+mv tz.php index.php
+netstat -an | grep <span style="color:#099">80</span> <span style="color:#998;font-style:italic">#检查80端口</span>
+netstat -an | grep <span style="color:#099">9000</span> <span style="color:#998;font-style:italic">#检查9000端口</span>
+netstat -an | grep <span style="color:#099">21</span> <span style="color:#998;font-style:italic">#检查21端口</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>浏览器打开设备IP:80 不出意外就OK啦
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422132116381.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+    </p>
+<h2 id="10frp内网穿透获取用户真实ip">10.frp内网穿透，获取用户真实IP</h2>
+<p><strong>frp</strong>内网穿透原理自行百度
+编辑你的<strong>frp</strong>配置文件
+添加一行代码启用 <strong>proxy_protocol</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#008080">proxy_protocol_version</span> <span style="color:#000;font-weight:bold">=</span> v2
+</code></pre></td></tr></table>
+</div>
+</div><p>你的<strong>frp</strong>配置文件就像这样</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#000;font-weight:bold">[</span>something<span style="color:#000;font-weight:bold">]</span>
+...
+<span style="color:#0086b3">type</span> <span style="color:#000;font-weight:bold">=</span> http
+<span style="color:#008080">local_ip</span> <span style="color:#000;font-weight:bold">=</span> 127.0.0.1
+<span style="color:#008080">local_port</span> <span style="color:#000;font-weight:bold">=</span> <span style="color:#099">80</span>
+<span style="color:#008080">proxy_protocol_version</span> <span style="color:#000;font-weight:bold">=</span> v2
+<span style="color:#008080">custom_domains</span> <span style="color:#000;font-weight:bold">=</span> xxx.xxx
+...
+</code></pre></td></tr></table>
+</div>
+</div><p>继续编辑<strong>Nginx</strong>配置文件</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /usr/local/nginx/conf/vhosts/def.conf
+</code></pre></td></tr></table>
+</div>
+</div><p>设置<strong>listen</strong>为这样</p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">listen        <span style="color:#099">80</span> proxy_protocol;
+</code></pre></td></tr></table>
+</div>
+</div><p>取消如下注释 并设置<strong>set_real_ip_from</strong>为你的<strong>frp</strong>服务器<strong>IP</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">set_real_ip_from 193.110.203.248; <span style="color:#998;font-style:italic">#你的frp服务器IP</span>
+set_real_ip_from 127.0.0.1;		  <span style="color:#998;font-style:italic">#不用改</span>
+real_ip_header   proxy_protocol;
+real_ip_recursive on;
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>注意看配置文件下面还有一段这样的注释也取消掉并设置为一样的内容</strong>
+<strong>启动你的frp客户端，创建隧道，重载Nginx</strong></p>
+<div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
+<table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
+</span><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./frpc_linux_arm64 -c frpc.ini <span style="color:#998;font-style:italic">#frpc_linux_arm64这个文件在哪里?去找你的frp服务商喽</span>
+nginx -s reload
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>温馨提示：</strong> 由于启用了 <strong>proxy_protocol_v2</strong> 协议只能使用域名访问 内网IP不行的哦
+浏览器打开就看到你的真实IP地址了
+
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422134530613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+    </p>
+<h2 id="后记">后记</h2>
+<p>由于MIUI系统限制，屏幕熄灭会限制wlan活动 所以我个人不建议使用MIUI
+从开始折腾到写完本文共耗时四天时间
+感谢各路大佬们
+本文所参考的部分文章：</p>
+<blockquote>
+<p><a href="https://blog.csdn.net/weixin_42930696/article/details/89327107">https://blog.csdn.net/weixin_42930696/article/details/89327107</a>
+<a href="https://blog.csdn.net/smart9527_zc/article/details/84976097">https://blog.csdn.net/smart9527_zc/article/details/84976097</a>
+<a href="https://xmyunwei.com/1794.html">https://xmyunwei.com/1794.html</a>
+<a href="https://blog.csdn.net/KimBing/article/details/81779768">https://blog.csdn.net/KimBing/article/details/81779768</a>
+<a href="https://blog.csdn.net/DurexAir/article/details/102498126">https://blog.csdn.net/DurexAir/article/details/102498126</a>
+<a href="https://blog.csdn.net/weixin_33843409/article/details/93010639">https://blog.csdn.net/weixin_33843409/article/details/93010639</a>
+<a href="https://www.cnblogs.com/ceyin/p/10695391.html">https://www.cnblogs.com/ceyin/p/10695391.html</a>
+<a href="https://www.cnblogs.com/shihaiming/p/6281628.html">https://www.cnblogs.com/shihaiming/p/6281628.html</a>
+<a href="https://blog.csdn.net/u013310119/article/details/81031613">https://blog.csdn.net/u013310119/article/details/81031613</a>
+<a href="https://www.cnblogs.com/yunfan1024/p/11504039.html">https://www.cnblogs.com/yunfan1024/p/11504039.html</a>
+<a href="https://blog.csdn.net/DurexAir/article/details/102498126">https://blog.csdn.net/DurexAir/article/details/102498126</a>
+<a href="https://blog.csdn.net/wz392949231/article/details/86136450">https://blog.csdn.net/wz392949231/article/details/86136450</a>
+<a href="https://blog.csdn.net/yelllowcong/article/details/76382900">https://blog.csdn.net/yelllowcong/article/details/76382900</a>
+<a href="http://blog.chinaunix.net/uid-2274226-id-5756596.html">http://blog.chinaunix.net/uid-2274226-id-5756596.html</a>
+<a href="https://blog.csdn.net/wyl_0728/article/details/76451466">https://blog.csdn.net/wyl_0728/article/details/76451466</a>
+<a href="https://www.cnblogs.com/guiyishanren/p/11098506.html">https://www.cnblogs.com/guiyishanren/p/11098506.html</a>
+<a href="https://www.yangshujing.com/114.html">https://www.yangshujing.com/114.html</a>
+<a href="https://www.cnblogs.com/ryanlamp/p/8872376.html">https://www.cnblogs.com/ryanlamp/p/8872376.html</a>
+<a href="https://blog.csdn.net/cs_ing/article/details/8728769">https://blog.csdn.net/cs_ing/article/details/8728769</a></p>
+</blockquote>
+<p><strong>向各路大佬们致敬！！</strong></p>
+
+        </div>
+
+        
+<div class="post-archive">
+    <ul class="post-copyright">
+        <li><strong>原文作者：</strong><a rel="author" href="https://blog.icland.xyz">蝴蝶飞不过沧海</a></li>
+        <li style="word-break:break-all"><strong>原文链接：</strong><a href="https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8-Linux-deploy-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84Nginx&#43;PHP-Web%E6%9C%8D%E5%8A%A1%E5%99%A8FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/">https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8-Linux-deploy-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84Nginx&#43;PHP-Web%E6%9C%8D%E5%8A%A1%E5%99%A8FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/</a></li>
+        <li><strong>版权声明：</strong>本作品采用<a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可，非商业转载请注明出处（作者，原文链接），商业转载请联系作者获得授权。</li>
+    </ul>
+</div>
+<br/>
+
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://blog.icland.xyz">蝴蝶飞不过沧海 | Blog By 蝴蝶飞不过沧海</a>
+        
+    </div>
+    <br />
+    
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://blog.icland.xyz/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://blog.icland.xyz">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/about/" title="置顶#关于本站">置顶#关于本站</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/" title="ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3">ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/" title="ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等">ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" title="Centos7自动root登录(GNOME桌面环境)">Centos7自动root登录(GNOME桌面环境)</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/" title="Debian10以root用户自动登录">Debian10以root用户自动登录</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/" title="Kali Linux xfce4无法使用fn进行屏幕亮度调节">Kali Linux xfce4无法使用fn进行屏幕亮度调节</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" title="Kali xfce4终端不能用TAB自动补全">Kali xfce4终端不能用TAB自动补全</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/" title="Kali安装后合上盖子不休眠问题">Kali安装后合上盖子不休眠问题</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/" title="Kali设置启动时输出日志，不显示logo">Kali设置启动时输出日志，不显示logo</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%96%87%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%87%8F%E5%B0%91%E5%8D%A0%E7%94%A8/" title="Kali设置默认启动文本模式，不启动图形界面，减少占用">Kali设置默认启动文本模式，不启动图形界面，减少占用</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://blog.icland.xyz/" title="蝴蝶飞不过沧海 | Blog">蝴蝶飞不过沧海 | Blog</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://blog.icland.xyz/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+        
+		
+		
+		<script src="/js/mouse_click.js"></script>
+		
+		<script src="/js/mouse_line.js"></script>
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+        <meting-js server="netease" id="573903952" autoplay="true" type="playlist" fixed="true" listfolded="true" order="random" theme="#F58EA8"></meting-js>
+		
+        <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+
+    </div>
+</body>
+
+</html>
