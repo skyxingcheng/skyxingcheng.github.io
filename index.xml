@@ -232,14 +232,5 @@
       <description>Candy-ServerStatus 糖果服务器云探针 2020 07 14 在线展示 https://icland.xyz/status/ 基于修改&amp;amp;优化&amp;amp;去杂 1 2 3 4 5 6 7 /client/* /server/src/main.h /server/src/main.cpp /web/index.html /web/css/hotaru_fix.css /web/js/serverstatus.js /web/img/* 食用方法: 1 2 3 4 git clone https://github.com/skyxingcheng/Candy-ServerStatus.git cd /Candy-ServerStatus/server make ./sergate -c config -d /usr/share/wwwroot/ -p 35601 客户端使用linux或跨平台的python文件直接启动即可 注意配置服务器和用户名密码 支持ipv4和ipv6支持检测双线 需在客户端设置自定义</description>
     </item>
     
-    <item>
-      <title>A PAGE</title>
-      <link>https://blog.icland.xyz/post/my-first-post/</link>
-      <pubDate>Mon, 10 Jan 2000 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/my-first-post/</guid>
-      <description>TITLE line</description>
-    </item>
-    
   </channel>
 </rss>
