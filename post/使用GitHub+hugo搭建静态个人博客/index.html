@@ -140,7 +140,7 @@
     <div class="post-toc-content">
         <nav id="TableOfContents">
   <ul>
-    <li><a href="#前言">前言</a></li>
+    <li><a href="#优点">优点</a></li>
     <li><a href="#准备工作">准备工作</a></li>
     <li><a href="#创建仓库">创建仓库</a></li>
     <li><a href="#绑定域名">绑定域名</a></li>
@@ -148,6 +148,7 @@
     <li><a href="#配置hugo初始化">配置Hugo初始化</a></li>
     <li><a href="#安装主题">安装主题</a></li>
     <li><a href="#本地测试">本地测试</a></li>
+    <li><a href="#实战操作">实战操作</a></li>
   </ul>
 </nav>
     </div>
@@ -196,7 +197,7 @@
         
         <div class="post-content">
             <h1 id="使用githubhugo搭建静态个人博客">使用GitHub+hugo搭建静态个人博客</h1>
-<h2 id="前言">前言</h2>
+<h2 id="优点">优点</h2>
 <pre><code>全是静态文件，访问速度快；
 免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；
 可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；
@@ -206,7 +207,7 @@
 <p>已注册并验证邮箱的<a href="https://github.com">GitHub</a>账号</p>
 <p>确保您已安装<a href="https://git-scm.com/download/win">Git for Windows</a></p>
 <p>确保您的<code>Powershell</code>或<code>cmd</code>正常调用<code>Git</code>软件包</p>
-<p>您若使用<code>Powershell</code>请在打开窗口后输入<code>cmd</code>切换的命令行</p>
+<p>您若使用<code>Powershell</code>请在打开窗口后输入<code>cmd</code>切换到命令行</p>
 <p>您已下载合适版本的<a href="https://github.com/gohugoio/hugo">Hugo</a></p>
 <img src="../../images/2021-02-12 222801.png">
 <h2 id="创建仓库">创建仓库</h2>
@@ -235,37 +236,45 @@
 <p>新建一个你喜欢的目录</p>
 <p>在该目录下shift+右键打开powershell</p>
 <p>输入以下命令</p>
-<pre><code>git config --global user.name &quot;abcdef&quot;// 你的github用户名，非昵称
-git config --global user.email  &quot;xxx@qq.com&quot;// 填写你的github注册邮箱
-git init
-git clone https://github.com/skyxingcheng/skyxingcheng.github.io.git //替换为你仓库的地址
-git pull
+<pre><code>git config --global user.name &quot;abcdef&quot; # 你的github用户名，非昵称
+git config --global user.email  &quot;xxx@qq.com&quot; # 填写你的github注册邮箱
+git init # 初始化目录
+git clone https://github.com/skyxingcheng/skyxingcheng.github.io.git # 替换为你仓库的地址
+git pull # 将仓库文件都拉到本地目录
 </code></pre><h2 id="配置hugo初始化">配置Hugo初始化</h2>
 <p>解压你下载的<a href="https://github.com/gohugoio/hugo/releases/download/v0.80.0/hugo_0.80.0_Windows-64bit.zip">hugo_0.80.0_Windows-64bit.zip</a>得到hugo.exe</p>
-<pre><code>hugo version //通过检查版本号验证hugo是否运行正常
-hugo new site quickstart //在quickstart目录创建网站
-</code></pre><p>完成上述步骤请讲quickstart目录所有文件复制出来，即其上一级目录</p>
-<p>你的文件目录结构就像这样</p>
+<pre><code>hugo version #通过检查版本号验证hugo是否运行正常
+hugo new site ./ --force #强制在当前目录创建网站
+</code></pre><p>你的文件目录结构就像这样</p>
 <img src="../../images/2021-02-12 232427.png">
 <h2 id="安装主题">安装主题</h2>
-<pre><code>git submodule add https://github.com/JokerQyou/maupassant-hugo.git themes/maupassant
+<pre><code>git clone https://github.com/flysnow-org/maupassant-hugo.git themes/maupassant
 </code></pre><p>在根目录下的 <code>config.toml</code> 文件中添加一行</p>
-<pre><code>echo 'theme = &quot;maupassant&quot;' &gt;&gt; config.toml
+<pre><code>echo theme = &quot;maupassant&quot;&gt;&gt; config.toml # 启用主题
 </code></pre><h2 id="本地测试">本地测试</h2>
 <p>创建一个示例文章</p>
-<pre><code>hugo new content/post/my-first-post.md
-echo ---&gt;content/post/my-first-post.md
-echo title: &quot;A PAGE&quot;&gt;&gt;content/post/my-first-post.md
-echo date: 2000-01-10&gt;&gt;content/post/my-first-post.md
-echo ---&gt;&gt;content/post/my-first-post.md
-echo # TITLE&gt;&gt;content/post/my-first-post.md
-echo line&gt;&gt;content/post/my-first-post.md
-</code></pre><p>启动Hugo</p>
+<pre><code>hugo new post/my-first-post.md
+</code></pre><p>然后打开<code>post/my-first-post.md</code>文件将<code>draft: true</code>改为<code>draft: false</code> # 该选项为草稿不可见</p>
+<p>在下面几行随便写点东西</p>
+<p><img src="../../images/2021-02-13 111959.png" /></p>
+<p>启动Hugo</p>
 <pre><code>hugo server
 </code></pre><p>使用浏览器访问<code>localhost:1313</code></p>
 <p>即可打开本地预览</p>
-<p><font color="#FF55FF">未完待续</font>
-<font color="#FF55FF">End For Page</font></p>
+<p><img src="../../images/2021-02-13 112251.png" /></p>
+<h2 id="实战操作">实战操作</h2>
+<p>执行命令编译网站</p>
+<pre><code>hugo -d skyxingcheng.github.io # 替换你自己的目录 该目录为Git项目名，在前面你已经clone到本地
+</code></pre><p><font color="#FFAA00">执行命令上载到GitHub</font></p>
+<pre><code>cd skyxingcheng.github.io # 进入仓库目录
+git pull # 拉回并更新本地文件
+git add * # 添加本地文件
+git commit -m &quot;updates $(date)&quot; # 添加上载信息
+git push # 推送到GitHub
+</code></pre><p>若绑定好域名则使用自定义域名访问反之使用<code>&lt;username&gt;.github.io</code>访问</p>
+<p>至此基本操作已完成</p>
+<p><font color="#FF55FF">未完待续</font></p>
+<p><font color="#FF55FF">End For Page</font></p>
 
         </div>
 
