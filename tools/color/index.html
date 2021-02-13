@@ -1,0 +1,1293 @@
+<!doctype html>
+<html lang="zh-CN">
+<link rel="icon" type="image/x-icon" href= "/images/logo.png" sizes="64x64">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    
+
+    <title>十六进制颜色码表 | 蝴蝶飞不过沧海 | Blog</title>
+    <meta property="og:title" content="十六进制颜色码表 - 蝴蝶飞不过沧海 | Blog">
+    <meta property="og:type" content="article">
+        
+    <meta property="article:published_time" content='2021-02-13T13:17:58&#43;08:00'>
+        
+        
+    <meta property="article:modified_time" content='2021-02-13T13:17:58&#43;08:00'>
+        
+    <meta name="Keywords" content="">
+    <meta name="description" content="十六进制颜色码表">
+        
+    <meta name="author" content="蝴蝶飞不过沧海">
+    <meta property="og:url" content="https://blog.icland.xyz/tools/color/">
+    <link rel="shortcut icon" href='/favicon.ico'  type="image/x-icon">
+
+    <link rel="stylesheet" href='/css/normalize.css'>
+    <link rel="stylesheet" href='/css/style.css'>
+    <script type="text/javascript" src="//cdn.bootcdn.net/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    
+    
+    
+    
+    
+    
+</head>
+
+
+<body>
+    <header id="header" class="clearfix">
+    <div class="container">
+        <div class="col-group">
+            <div class="site-name ">
+                
+                    <a id="logo" href="https://blog.icland.xyz">
+                        蝴蝶飞不过沧海 | Blog
+                    </a>
+                
+                <p class="description">(bushi)专注于Java、Linux运维、Minecraft服务器搭建、等瞎搞操作</p>
+            </div>
+            <div>
+                <nav id="nav-menu" class="clearfix">
+                    <a class="" href="https://blog.icland.xyz">首页</a>
+                    
+                    <a  href="https://blog.icland.xyz/tools/" title="工具">工具</a>
+                    
+                    <a  href="https://blog.icland.xyz/archives/" title="归档">归档</a>
+                    
+                    <a  href="https://blog.icland.xyz/post/about" title="关于">关于</a>
+                    
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+    <div id="body">
+        <div class="container">
+            <div class="col-group">
+
+                <div class="col-8" id="main">
+                    
+<div class="res-cons">
+    <style type="text/css">
+    .post-toc {
+        position: fixed;
+        width: 200px;
+        margin-left: -210px;
+        padding: 5px 10px;
+        font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+        font-size: 12px;
+        border: 1px solid rgba(0, 0, 0, .07);
+        border-radius: 5px;
+        background-color: rgba(255, 255, 255, 0.98);
+        background-clip: padding-box;
+        -webkit-box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        box-shadow: 1px 1px 2px rgba(0, 0, 0, .125);
+        word-wrap: break-word;
+        white-space: nowrap;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        z-index: 999;
+        cursor: pointer;
+        max-height: 70%;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    .post-toc .post-toc-title {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 20px;
+        font-weight: 400;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .post-toc .post-toc-content {
+        font-size: 15px;
+    }
+
+    .post-toc .post-toc-content>nav>ul {
+        margin: 10px 0;
+    }
+
+    .post-toc .post-toc-content ul {
+        padding-left: 20px;
+        list-style: square;
+        margin: 0.5em;
+        line-height: 1.8em;
+    }
+
+    .post-toc .post-toc-content ul ul {
+        padding-left: 15px;
+        display: none;
+    }
+
+    @media print,
+    screen and (max-width:1057px) {
+        .post-toc {
+            display: none;
+        }
+    }
+</style>
+<div class="post-toc" style="position: absolute; top: 188px;">
+    <h2 class="post-toc-title">文章目录</h2>
+    <div class="post-toc-content">
+        <nav id="TableOfContents"></nav>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var postToc = $(".post-toc");
+        if (postToc.length) {
+            var leftPos = $("#main").offset().left;
+            if(leftPos<220){
+                postToc.css({"width":leftPos-10,"margin-left":(0-leftPos)})
+            }
+
+            var t = postToc.offset().top - 20,
+                a = {
+                    start: {
+                        position: "absolute",
+                        top: t
+                    },
+                    process: {
+                        position: "fixed",
+                        top: 20
+                    },
+                };
+            $(window).scroll(function () {
+                var e = $(window).scrollTop();
+                e < t ? postToc.css(a.start) : postToc.css(a.process)
+            })
+        }
+    })
+</script>
+    <article class="post">
+        <header>
+            <h1 class="post-title">十六进制颜色码表</h1>
+        </header>
+        <date class="post-meta meta-date">
+            2021年2月13日
+        </date>
+        
+        
+        <div class="post-meta">
+            <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
+                    阅读</span></span>
+        </div>
+        
+        
+        <div class="post-content">
+            <table style="width: 98%" cellspacing="1" cellpadding="1" align="center">
+<tbody>
+<tr>
+<td>
+<table style="width: 100%" border="0" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td bgcolor="#336699"><strong>16位进制代码</strong></td>
+<td bgcolor="#336699"><strong>颜色效果</strong></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>#FFFFFF</td>
+<td bgcolor="#ffffff">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFFFCC</td>
+<td bgcolor="#ffffcc">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFFF99</td>
+<td bgcolor="#ffff99">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFFF66</td>
+<td bgcolor="#ffff66">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFFF33</td>
+<td bgcolor="#ffff33">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFFF00</td>
+<td bgcolor="#ffff00">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFCCFF</td>
+<td bgcolor="#ffccff">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFCCCC</td>
+<td bgcolor="#ffcccc">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFCC99</td>
+<td bgcolor="#ffcc99">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFCC66</td>
+<td bgcolor="#ffcc66">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFCC33</td>
+<td bgcolor="#ffcc33">&nbsp;</td>
+</tr>
+<tr>
+<td>#FFCC00</td>
+<td bgcolor="#ffcc00">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF99FF</td>
+<td bgcolor="#ff99ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF99CC</td>
+<td bgcolor="#ff99cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF9999</td>
+<td bgcolor="#ff9999">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF9966</td>
+<td bgcolor="#ff9966">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF9933</td>
+<td bgcolor="#ff9933">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF9900</td>
+<td bgcolor="#ff9900">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF66FF</td>
+<td bgcolor="#ff66ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF66CC</td>
+<td bgcolor="#ff66cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF6699</td>
+<td bgcolor="#ff6699">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF6666</td>
+<td bgcolor="#ff6666">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF6633</td>
+<td bgcolor="#ff6633">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF6600</td>
+<td bgcolor="#ff6600">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF33FF</td>
+<td bgcolor="#ff33ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF33CC</td>
+<td bgcolor="#ff33cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF3399</td>
+<td bgcolor="#ff3399">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF3366</td>
+<td bgcolor="#ff3366">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF3333</td>
+<td bgcolor="#ff3333">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF3300</td>
+<td bgcolor="#ff3300">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF00FF</td>
+<td bgcolor="#ff00ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF00CC</td>
+<td bgcolor="#ff00cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF0099</td>
+<td bgcolor="#ff0099">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF0066</td>
+<td bgcolor="#ff0066">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF0033</td>
+<td bgcolor="#ff0033">&nbsp;</td>
+</tr>
+<tr>
+<td>#FF0000</td>
+<td bgcolor="#ff0000">&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#336699"><strong>Hex Code</strong></td>
+<td bgcolor="#336699"><strong>Color</strong></td>
+</tr>
+<tr>
+<td>#66FFFF</td>
+<td bgcolor="#66ffff">&nbsp;</td>
+</tr>
+<tr>
+<td>#66FFCC</td>
+<td bgcolor="#66ffcc">&nbsp;</td>
+</tr>
+<tr>
+<td>#66FF99</td>
+<td bgcolor="#66ff99">&nbsp;</td>
+</tr>
+<tr>
+<td>#66FF66</td>
+<td bgcolor="#66ff66">&nbsp;</td>
+</tr>
+<tr>
+<td>#66FF33</td>
+<td bgcolor="#66ff33">&nbsp;</td>
+</tr>
+<tr>
+<td>#66FF00</td>
+<td bgcolor="#66ff00">&nbsp;</td>
+</tr>
+<tr>
+<td>#66CCFF</td>
+<td bgcolor="#66ccff">&nbsp;</td>
+</tr>
+<tr>
+<td>#66CCCC</td>
+<td bgcolor="#66cccc">&nbsp;</td>
+</tr>
+<tr>
+<td>#66CC99</td>
+<td bgcolor="#66cc99">&nbsp;</td>
+</tr>
+<tr>
+<td>#66CC66</td>
+<td bgcolor="#66cc66">&nbsp;</td>
+</tr>
+<tr>
+<td>#66CC33</td>
+<td bgcolor="#66cc33">&nbsp;</td>
+</tr>
+<tr>
+<td>#66CC00</td>
+<td bgcolor="#66cc00">&nbsp;</td>
+</tr>
+<tr>
+<td>#6699FF</td>
+<td bgcolor="#6699ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#6699CC</td>
+<td bgcolor="#6699cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#669999</td>
+<td bgcolor="#669999">&nbsp;</td>
+</tr>
+<tr>
+<td>#669966</td>
+<td bgcolor="#669966">&nbsp;</td>
+</tr>
+<tr>
+<td>#669933</td>
+<td bgcolor="#669933">&nbsp;</td>
+</tr>
+<tr>
+<td>#669900</td>
+<td bgcolor="#669900">&nbsp;</td>
+</tr>
+<tr>
+<td>#6666FF</td>
+<td bgcolor="#6666ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#6666CC</td>
+<td bgcolor="#6666cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#666699</td>
+<td bgcolor="#666699">&nbsp;</td>
+</tr>
+<tr>
+<td>#666666</td>
+<td bgcolor="#666666">&nbsp;</td>
+</tr>
+<tr>
+<td>#666633</td>
+<td bgcolor="#666633">&nbsp;</td>
+</tr>
+<tr>
+<td>#666600</td>
+<td bgcolor="#666600">&nbsp;</td>
+</tr>
+<tr>
+<td>#6633FF</td>
+<td bgcolor="#6633ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#6633CC</td>
+<td bgcolor="#6633cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#663399</td>
+<td bgcolor="#663399">&nbsp;</td>
+</tr>
+<tr>
+<td>#663366</td>
+<td bgcolor="#663366">&nbsp;</td>
+</tr>
+<tr>
+<td>#663333</td>
+<td bgcolor="#663333">&nbsp;</td>
+</tr>
+<tr>
+<td>#663300</td>
+<td bgcolor="#663300">&nbsp;</td>
+</tr>
+<tr>
+<td>#6600FF</td>
+<td bgcolor="#6600ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#6600CC</td>
+<td bgcolor="#6600cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#660099</td>
+<td bgcolor="#660099">&nbsp;</td>
+</tr>
+<tr>
+<td>#660066</td>
+<td bgcolor="#660066">&nbsp;</td>
+</tr>
+<tr>
+<td>#660033</td>
+<td bgcolor="#660033">&nbsp;</td>
+</tr>
+<tr>
+<td>#660000</td>
+<td bgcolor="#660000">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;</p>
+</td>
+<td>&nbsp;</td>
+<td valign="top">
+<table style="width: 100%" border="0" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td bgcolor="#336699"><strong>16位进制代码</strong></td>
+<td bgcolor="#336699"><strong>颜色效果</strong></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>#CCFFFF</td>
+<td bgcolor="#ccffff">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCFFCC</td>
+<td bgcolor="#ccffcc">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCFF99</td>
+<td bgcolor="#ccff99">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCFF66</td>
+<td bgcolor="#ccff66">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCFF33</td>
+<td bgcolor="#ccff33">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCFF00</td>
+<td bgcolor="#ccff00">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCCCFF</td>
+<td bgcolor="#ccccff">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCCCCC</td>
+<td bgcolor="#cccccc">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCCC99</td>
+<td bgcolor="#cccc99">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCCC66</td>
+<td bgcolor="#cccc66">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCCC33</td>
+<td bgcolor="#cccc33">&nbsp;</td>
+</tr>
+<tr>
+<td>#CCCC00</td>
+<td bgcolor="#cccc00">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC99FF</td>
+<td bgcolor="#cc99ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC99CC</td>
+<td bgcolor="#cc99cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC9999</td>
+<td bgcolor="#cc9999">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC9966</td>
+<td bgcolor="#cc9966">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC9933</td>
+<td bgcolor="#cc9933">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC9900</td>
+<td bgcolor="#cc9900">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC66FF</td>
+<td bgcolor="#cc66ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC66CC</td>
+<td bgcolor="#cc66cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC6699</td>
+<td bgcolor="#cc6699">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC6666</td>
+<td bgcolor="#cc6666">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC6633</td>
+<td bgcolor="#cc6633">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC6600</td>
+<td bgcolor="#cc6600">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC33FF</td>
+<td bgcolor="#cc33ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC33CC</td>
+<td bgcolor="#cc33cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC3399</td>
+<td bgcolor="#cc3399">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC3366</td>
+<td bgcolor="#cc3366">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC3333</td>
+<td bgcolor="#cc3333">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC3300</td>
+<td bgcolor="#cc3300">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC00FF</td>
+<td bgcolor="#cc00ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC00CC</td>
+<td bgcolor="#cc00cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC0099</td>
+<td bgcolor="#cc0099">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC0066</td>
+<td bgcolor="#cc0066">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC0033</td>
+<td bgcolor="#cc0033">&nbsp;</td>
+</tr>
+<tr>
+<td>#CC0000</td>
+<td bgcolor="#cc0000">&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#336699"><strong>Hex Code</strong></td>
+<td bgcolor="#336699"><strong>Color</strong></td>
+</tr>
+<tr>
+<td>#33FFFF</td>
+<td bgcolor="#33ffff">&nbsp;</td>
+</tr>
+<tr>
+<td>#33FFCC</td>
+<td bgcolor="#33ffcc">&nbsp;</td>
+</tr>
+<tr>
+<td>#33FF99</td>
+<td bgcolor="#33ff99">&nbsp;</td>
+</tr>
+<tr>
+<td>#33FF66</td>
+<td bgcolor="#33ff66">&nbsp;</td>
+</tr>
+<tr>
+<td>#33FF33</td>
+<td bgcolor="#33ff33">&nbsp;</td>
+</tr>
+<tr>
+<td>#33FF00</td>
+<td bgcolor="#33ff00">&nbsp;</td>
+</tr>
+<tr>
+<td>#33CCFF</td>
+<td bgcolor="#33ccff">&nbsp;</td>
+</tr>
+<tr>
+<td>#33CCCC</td>
+<td bgcolor="#33cccc">&nbsp;</td>
+</tr>
+<tr>
+<td>#33CC99</td>
+<td bgcolor="#33cc99">&nbsp;</td>
+</tr>
+<tr>
+<td>#33CC66</td>
+<td bgcolor="#33cc66">&nbsp;</td>
+</tr>
+<tr>
+<td>#33CC33</td>
+<td bgcolor="#33cc33">&nbsp;</td>
+</tr>
+<tr>
+<td>#33CC00</td>
+<td bgcolor="#33cc00">&nbsp;</td>
+</tr>
+<tr>
+<td>#3399FF</td>
+<td bgcolor="#3399ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#3399CC</td>
+<td bgcolor="#3399cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#339999</td>
+<td bgcolor="#339999">&nbsp;</td>
+</tr>
+<tr>
+<td>#339966</td>
+<td bgcolor="#339966">&nbsp;</td>
+</tr>
+<tr>
+<td>#339933</td>
+<td bgcolor="#339933">&nbsp;</td>
+</tr>
+<tr>
+<td>#339900</td>
+<td bgcolor="#339900">&nbsp;</td>
+</tr>
+<tr>
+<td>#3366FF</td>
+<td bgcolor="#3366ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#3366CC</td>
+<td bgcolor="#3366cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#336699</td>
+<td bgcolor="#336699">&nbsp;</td>
+</tr>
+<tr>
+<td>#336666</td>
+<td bgcolor="#336666">&nbsp;</td>
+</tr>
+<tr>
+<td>#336633</td>
+<td bgcolor="#336633">&nbsp;</td>
+</tr>
+<tr>
+<td>#336600</td>
+<td bgcolor="#336600">&nbsp;</td>
+</tr>
+<tr>
+<td>#3333FF</td>
+<td bgcolor="#3333ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#3333CC</td>
+<td bgcolor="#3333cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#333399</td>
+<td bgcolor="#333399">&nbsp;</td>
+</tr>
+<tr>
+<td>#333366</td>
+<td bgcolor="#333366">&nbsp;</td>
+</tr>
+<tr>
+<td>#333333</td>
+<td bgcolor="#333333">&nbsp;</td>
+</tr>
+<tr>
+<td>#333300</td>
+<td bgcolor="#333300">&nbsp;</td>
+</tr>
+<tr>
+<td>#3300FF</td>
+<td bgcolor="#3300ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#3300CC</td>
+<td bgcolor="#3300cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#330099</td>
+<td bgcolor="#330099">&nbsp;</td>
+</tr>
+<tr>
+<td>#330066</td>
+<td bgcolor="#330066">&nbsp;</td>
+</tr>
+<tr>
+<td>#330033</td>
+<td bgcolor="#330033">&nbsp;</td>
+</tr>
+<tr>
+<td>#330000</td>
+<td bgcolor="#330000">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+<td>&nbsp;</td>
+<td valign="top">
+<table style="width: 100%" border="0" cellspacing="2" cellpadding="2">
+<tbody>
+<tr>
+<td bgcolor="#336699"><strong>16位进制代码</strong></td>
+<td bgcolor="#336699"><strong>颜色效果</strong></td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td>#99FFFF</td>
+<td bgcolor="#99ffff">&nbsp;</td>
+</tr>
+<tr>
+<td>#99FFCC</td>
+<td bgcolor="#99ffcc">&nbsp;</td>
+</tr>
+<tr>
+<td>#99FF99</td>
+<td bgcolor="#99ff99">&nbsp;</td>
+</tr>
+<tr>
+<td>#99FF66</td>
+<td bgcolor="#99ff66">&nbsp;</td>
+</tr>
+<tr>
+<td>#99FF33</td>
+<td bgcolor="#99ff33">&nbsp;</td>
+</tr>
+<tr>
+<td>#99FF00</td>
+<td bgcolor="#99ff00">&nbsp;</td>
+</tr>
+<tr>
+<td>#99CCFF</td>
+<td bgcolor="#99ccff">&nbsp;</td>
+</tr>
+<tr>
+<td>#99CCCC</td>
+<td bgcolor="#99cccc">&nbsp;</td>
+</tr>
+<tr>
+<td>#99CC99</td>
+<td bgcolor="#99cc99">&nbsp;</td>
+</tr>
+<tr>
+<td>#99CC66</td>
+<td bgcolor="#99cc66">&nbsp;</td>
+</tr>
+<tr>
+<td>#99CC33</td>
+<td bgcolor="#99cc33">&nbsp;</td>
+</tr>
+<tr>
+<td>#99CC00</td>
+<td bgcolor="#99cc00">&nbsp;</td>
+</tr>
+<tr>
+<td>#9999FF</td>
+<td bgcolor="#9999ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#9999CC</td>
+<td bgcolor="#9999cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#999999</td>
+<td bgcolor="#999999">&nbsp;</td>
+</tr>
+<tr>
+<td>#999966</td>
+<td bgcolor="#999966">&nbsp;</td>
+</tr>
+<tr>
+<td>#999933</td>
+<td bgcolor="#999933">&nbsp;</td>
+</tr>
+<tr>
+<td>#999900</td>
+<td bgcolor="#999900">&nbsp;</td>
+</tr>
+<tr>
+<td>#9966FF</td>
+<td bgcolor="#9966ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#9966CC</td>
+<td bgcolor="#9966cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#996699</td>
+<td bgcolor="#996699">&nbsp;</td>
+</tr>
+<tr>
+<td>#996666</td>
+<td bgcolor="#996666">&nbsp;</td>
+</tr>
+<tr>
+<td>#996633</td>
+<td bgcolor="#996633">&nbsp;</td>
+</tr>
+<tr>
+<td>#996600</td>
+<td bgcolor="#996600">&nbsp;</td>
+</tr>
+<tr>
+<td>#9933FF</td>
+<td bgcolor="#9933ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#9933CC</td>
+<td bgcolor="#9933cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#993399</td>
+<td bgcolor="#993399">&nbsp;</td>
+</tr>
+<tr>
+<td>#993366</td>
+<td bgcolor="#993366">&nbsp;</td>
+</tr>
+<tr>
+<td>#993333</td>
+<td bgcolor="#993333">&nbsp;</td>
+</tr>
+<tr>
+<td>#993300</td>
+<td bgcolor="#993300">&nbsp;</td>
+</tr>
+<tr>
+<td>#9900FF</td>
+<td bgcolor="#9900ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#9900CC</td>
+<td bgcolor="#9900cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#990099</td>
+<td bgcolor="#990099">&nbsp;</td>
+</tr>
+<tr>
+<td>#990066</td>
+<td bgcolor="#990066">&nbsp;</td>
+</tr>
+<tr>
+<td>#990033</td>
+<td bgcolor="#990033">&nbsp;</td>
+</tr>
+<tr>
+<td>#990000</td>
+<td bgcolor="#990000">&nbsp;</td>
+</tr>
+<tr>
+<td>&nbsp;</td>
+</tr>
+<tr>
+<td bgcolor="#336699"><strong>Hex Code</strong></td>
+<td bgcolor="#336699"><strong>Color</strong></td>
+</tr>
+<tr>
+<td>#00FFFF</td>
+<td bgcolor="#00ffff">&nbsp;</td>
+</tr>
+<tr>
+<td>#00FFCC</td>
+<td bgcolor="#00ffcc">&nbsp;</td>
+</tr>
+<tr>
+<td>#00FF99</td>
+<td bgcolor="#00ff99">&nbsp;</td>
+</tr>
+<tr>
+<td>#00FF66</td>
+<td bgcolor="#00ff66">&nbsp;</td>
+</tr>
+<tr>
+<td>#00FF33</td>
+<td bgcolor="#00ff33">&nbsp;</td>
+</tr>
+<tr>
+<td>#00FF00</td>
+<td bgcolor="#00ff00">&nbsp;</td>
+</tr>
+<tr>
+<td>#00CCFF</td>
+<td bgcolor="#00ccff">&nbsp;</td>
+</tr>
+<tr>
+<td>#00CCCC</td>
+<td bgcolor="#00cccc">&nbsp;</td>
+</tr>
+<tr>
+<td>#00CC99</td>
+<td bgcolor="#00cc99">&nbsp;</td>
+</tr>
+<tr>
+<td>#00CC66</td>
+<td bgcolor="#00cc66">&nbsp;</td>
+</tr>
+<tr>
+<td>#00CC33</td>
+<td bgcolor="#00cc33">&nbsp;</td>
+</tr>
+<tr>
+<td>#00CC00</td>
+<td bgcolor="#00cc00">&nbsp;</td>
+</tr>
+<tr>
+<td>#0099FF</td>
+<td bgcolor="#0099ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#0099CC</td>
+<td bgcolor="#0099cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#009999</td>
+<td bgcolor="#009999">&nbsp;</td>
+</tr>
+<tr>
+<td>#009966</td>
+<td bgcolor="#009966">&nbsp;</td>
+</tr>
+<tr>
+<td>#009933</td>
+<td bgcolor="#009933">&nbsp;</td>
+</tr>
+<tr>
+<td>#009900</td>
+<td bgcolor="#009900">&nbsp;</td>
+</tr>
+<tr>
+<td>#0066FF</td>
+<td bgcolor="#0066ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#0066CC</td>
+<td bgcolor="#0066cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#006699</td>
+<td bgcolor="#006699">&nbsp;</td>
+</tr>
+<tr>
+<td>#006666</td>
+<td bgcolor="#006666">&nbsp;</td>
+</tr>
+<tr>
+<td>#006633</td>
+<td bgcolor="#006633">&nbsp;</td>
+</tr>
+<tr>
+<td>#006600</td>
+<td bgcolor="#006600">&nbsp;</td>
+</tr>
+<tr>
+<td>#0033FF</td>
+<td bgcolor="#0033ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#0033CC</td>
+<td bgcolor="#0033cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#003399</td>
+<td bgcolor="#003399">&nbsp;</td>
+</tr>
+<tr>
+<td>#003366</td>
+<td bgcolor="#003366">&nbsp;</td>
+</tr>
+<tr>
+<td>#003333</td>
+<td bgcolor="#003333">&nbsp;</td>
+</tr>
+<tr>
+<td>#003300</td>
+<td bgcolor="#003300">&nbsp;</td>
+</tr>
+<tr>
+<td>#0000FF</td>
+<td bgcolor="#0000ff">&nbsp;</td>
+</tr>
+<tr>
+<td>#0000CC</td>
+<td bgcolor="#0000cc">&nbsp;</td>
+</tr>
+<tr>
+<td>#000099</td>
+<td bgcolor="#000099">&nbsp;</td>
+</tr>
+<tr>
+<td>#000066</td>
+<td bgcolor="#000066">&nbsp;</td>
+</tr>
+<tr>
+<td>#000033</td>
+<td bgcolor="#000033">&nbsp;</td>
+</tr>
+<tr>
+<td>#000000</td>
+<td bgcolor="#000000">&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</td>
+</tr>
+</tbody>
+</table>
+
+        </div>
+
+        
+
+
+        
+
+
+        <div class="post-meta meta-tags">
+            
+            没有标签
+            
+        </div>
+    </article>
+    
+    
+
+    
+    
+</div>
+
+                    <footer id="footer">
+    <div>
+        &copy; 2021 <a href="https://blog.icland.xyz">蝴蝶飞不过沧海 | Blog By 蝴蝶飞不过沧海</a>
+        
+    </div>
+    <br />
+    
+</footer>
+
+
+    
+    <script type="text/javascript">
+        window.MathJax = {
+            tex2jax: {
+                inlineMath: [['$', '$']],
+                processEscapes: true
+                }
+            };
+    </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+
+<a id="rocket" href="#top"></a>
+<script type="text/javascript" src='/js/totop.js?v=0.0.0' async=""></script>
+
+
+
+    <script type="text/javascript" src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script>
+
+
+
+
+                </div>
+
+                <div id="secondary">
+    <section class="widget">
+        <form id="search" action='https://blog.icland.xyz/search/' method="get" accept-charset="utf-8" target="_blank" _lpchecked="1">
+      
+      <input type="text" name="q" maxlength="20" placeholder="Search">
+      <input type="hidden" name="sitesearch" value="https://blog.icland.xyz">
+      <button type="submit" class="submit icon-search"></button>
+</form>
+    </section>
+    
+    <section class="widget">
+        <h3 class="widget-title">最近文章</h3>
+<ul class="widget-list">
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/about/" title="置顶#关于本站">置顶#关于本站</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8GitHub&#43;hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/" title="使用GitHub&#43;hugo搭建静态个人博客">使用GitHub&#43;hugo搭建静态个人博客</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/" title="ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3">ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/" title="ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等">ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" title="Centos7自动root登录(GNOME桌面环境)">Centos7自动root登录(GNOME桌面环境)</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/" title="Debian10以root用户自动登录">Debian10以root用户自动登录</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/" title="Kali Linux xfce4无法使用fn进行屏幕亮度调节">Kali Linux xfce4无法使用fn进行屏幕亮度调节</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" title="Kali xfce4终端不能用TAB自动补全">Kali xfce4终端不能用TAB自动补全</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/" title="Kali安装后合上盖子不休眠问题">Kali安装后合上盖子不休眠问题</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/" title="Kali设置启动时输出日志，不显示logo">Kali设置启动时输出日志，不显示logo</a>
+    </li>
+    
+</ul>
+    </section>
+
+    
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
+<ul class="widget-list">
+    
+</ul>
+    </section>
+
+    <section class="widget">
+        <h3 class="widget-title"><a href='/tags/'>标签</a></h3>
+<div class="tagcloud">
+    
+</div>
+    </section>
+
+    
+<section class="widget">
+    <h3 class="widget-title">友情链接</h3>
+    <ul class="widget-list">
+        
+        <li>
+            <a target="_blank" href="https://blog.icland.xyz/" title="蝴蝶飞不过沧海 | Blog">蝴蝶飞不过沧海 | Blog</a>
+        </li>
+        
+        <li>
+            <a target="_blank" href="http://yuedu.baidu.com/ebook/14a722970740be1e640e9a3e" title="Android Gradle权威指南">Android Gradle权威指南</a>
+        </li>
+        
+    </ul>
+</section>
+
+
+    <section class="widget">
+        <h3 class="widget-title">其它</h3>
+        <ul class="widget-list">
+            <li><a href="https://blog.icland.xyz/index.xml">文章 RSS</a></li>
+        </ul>
+    </section>
+</div>
+            </div>
+        </div>
+        
+		
+		
+		<script src="/js/mouse_click.js"></script>
+		
+		<script src="/js/mouse_line.js"></script>
+		
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+        <meting-js server="netease" id="573903952" autoplay="true" type="playlist" fixed="true" listfolded="true" order="random" theme="#F58EA8"></meting-js>
+		
+        <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+
+    </div>
+</body>
+
+</html>
