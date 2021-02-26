@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>WEB on 蝴蝶飞不过沧海 | Blog</title>
+    <link>https://blog.icland.xyz/tags/WEB/</link>
+    <description>Recent content in WEB on 蝴蝶飞不过沧海 | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 26 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/tags/WEB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用Cloudflare&#43;Wzfou为自己的网站配置CDN加速</title>
+      <link>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8cloudflare&#43;wzfou%E4%B8%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E9%85%8D%E7%BD%AECDN%E5%8A%A0%E9%80%9F/</link>
+      <pubDate>Fri, 26 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8cloudflare&#43;wzfou%E4%B8%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E9%85%8D%E7%BD%AECDN%E5%8A%A0%E9%80%9F/</guid>
+      <description>泛播 Cloudflare 挖站否 Wzfou 为什么用到挖站否?单独泛播不就可以作cdn加速吗? 众所周知泛播（cloudflare）国外知名免费cdn服务商无需网站备案 但有个缺点就是单独使用泛播，其要求修改域名ns服务器，相对来说很不方便 而Wzfou则可以很好解决这一问题，其可以使用cname记录对网站进行加速</description>
+    </item>
+    
+  </channel>
+</rss>

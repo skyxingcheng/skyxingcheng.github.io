@@ -8,6 +8,41 @@
   </url>
   
   <url>
+    <loc>https://blog.icland.xyz/tags/Cloudflare/</loc>
+    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/post/</loc>
+    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/tags/</loc>
+    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/tags/WEB/</loc>
+    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/tags/Wzfou/</loc>
+    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8cloudflare&#43;wzfou%E4%B8%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E9%85%8D%E7%BD%AECDN%E5%8A%A0%E9%80%9F/</loc>
+    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/</loc>
+    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.icland.xyz/tools/</loc>
     <lastmod>2021-02-13T13:17:58+08:00</lastmod>
   </url>
@@ -15,16 +50,6 @@
   <url>
     <loc>https://blog.icland.xyz/tools/color/</loc>
     <lastmod>2021-02-13T13:17:58+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.icland.xyz/</loc>
-    <lastmod>2021-02-13T13:17:58+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.icland.xyz/post/</loc>
-    <lastmod>2021-02-12T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -144,10 +169,6 @@
   
   <url>
     <loc>https://blog.icland.xyz/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://blog.icland.xyz/tags/</loc>
   </url>
   
 </urlset>
