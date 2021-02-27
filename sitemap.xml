@@ -8,23 +8,48 @@
   </url>
   
   <url>
+    <loc>https://blog.icland.xyz/categories/</loc>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.icland.xyz/tags/Cloudflare/</loc>
-    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/categories/Cloudflare/</loc>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.icland.xyz/post/</loc>
-    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.icland.xyz/tags/</loc>
-    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.icland.xyz/tags/WEB/</loc>
-    <lastmod>2021-02-26T00:00:00+00:00</lastmod>
+    <loc>https://blog.icland.xyz/tags/Web/</loc>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/categories/Web/</loc>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/post/%E6%9C%AA%E5%A4%87%E6%A1%88%E5%9F%9F%E5%90%8D%E4%BD%BF%E7%94%A8Cloudflare%E8%BF%9B%E8%A1%8C301%E9%87%8D%E5%AE%9A%E5%90%91/</loc>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/</loc>
+    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -33,12 +58,12 @@
   </url>
   
   <url>
-    <loc>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8cloudflare&#43;wzfou%E4%B8%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E9%85%8D%E7%BD%AECDN%E5%8A%A0%E9%80%9F/</loc>
+    <loc>https://blog.icland.xyz/categories/Wzfou/</loc>
     <lastmod>2021-02-26T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://blog.icland.xyz/</loc>
+    <loc>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8cloudflare&#43;wzfou%E4%B8%BA%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BD%91%E7%AB%99%E9%85%8D%E7%BD%AECDN%E5%8A%A0%E9%80%9F/</loc>
     <lastmod>2021-02-26T00:00:00+00:00</lastmod>
   </url>
   
@@ -165,10 +190,6 @@
   <url>
     <loc>https://blog.icland.xyz/post/Candy-ServerStatus/</loc>
     <lastmod>2020-07-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.icland.xyz/categories/</loc>
   </url>
   
 </urlset>
