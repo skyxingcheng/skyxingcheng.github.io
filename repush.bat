@@ -1,0 +1,1 @@
+PowerShell -Command "& {git push}"
