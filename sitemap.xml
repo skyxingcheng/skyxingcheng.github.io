@@ -9,7 +9,47 @@
   
   <url>
     <loc>https://blog.icland.xyz/categories/</loc>
-    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/tags/html5/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/categories/html5/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/post/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/tags/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/post/Viewerjs-%E5%BC%BA%E5%A4%A7%E7%9A%84Web%E5%9B%BE%E7%89%87%E6%8F%92%E4%BB%B6/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/tags/Web/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/categories/Web/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.icland.xyz/</loc>
+    <lastmod>2021-02-28T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -23,32 +63,7 @@
   </url>
   
   <url>
-    <loc>https://blog.icland.xyz/post/</loc>
-    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.icland.xyz/tags/</loc>
-    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.icland.xyz/tags/Web/</loc>
-    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.icland.xyz/categories/Web/</loc>
-    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.icland.xyz/post/%E6%9C%AA%E5%A4%87%E6%A1%88%E5%9F%9F%E5%90%8D%E4%BD%BF%E7%94%A8Cloudflare%E8%BF%9B%E8%A1%8C301%E9%87%8D%E5%AE%9A%E5%90%91/</loc>
-    <lastmod>2021-02-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.icland.xyz/</loc>
     <lastmod>2021-02-27T00:00:00+00:00</lastmod>
   </url>
   

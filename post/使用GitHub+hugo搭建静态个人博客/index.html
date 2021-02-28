@@ -207,8 +207,6 @@
 </code></pre><h2 id="准备工作">准备工作</h2>
 <p>已注册并验证邮箱的<a href="https://github.com">GitHub</a>账号</p>
 <p>确保您已安装<a href="https://git-scm.com/download/win">Git for Windows</a></p>
-<p>确保您的<code>Powershell</code>或<code>cmd</code>正常调用<code>Git</code>软件包</p>
-<p>您若使用<code>Powershell</code>请在打开窗口后输入<code>cmd</code>切换到命令行</p>
 <p>您已下载合适版本的<a href="https://github.com/gohugoio/hugo">Hugo</a></p>
 <img src="../../images/2021-02-12 222801.png">
 <h2 id="创建仓库">创建仓库</h2>
@@ -235,7 +233,7 @@
 <img src="../../images/2021-02-12 230737.png">
 <h2 id="配置文件夹及git用户登录">配置文件夹及Git用户登录</h2>
 <p>新建一个你喜欢的目录</p>
-<p>在该目录下shift+右键打开powershell</p>
+<p>在该目录下右键打开<code>Git bash here</code></p>
 <p>输入以下命令</p>
 <pre><code>git config --global user.name &quot;abcdef&quot; # 你的github用户名，非昵称
 git config --global user.email  &quot;xxx@qq.com&quot; # 填写你的github注册邮箱
@@ -360,6 +358,10 @@ git push # 推送到GitHub
     </li>
     
     <li>
+        <a href="https://blog.icland.xyz/post/Viewerjs-%E5%BC%BA%E5%A4%A7%E7%9A%84Web%E5%9B%BE%E7%89%87%E6%8F%92%E4%BB%B6/" title="Viewerjs-强大的Web图片插件">Viewerjs-强大的Web图片插件</a>
+    </li>
+    
+    <li>
         <a href="https://blog.icland.xyz/post/%E6%9C%AA%E5%A4%87%E6%A1%88%E5%9F%9F%E5%90%8D%E4%BD%BF%E7%94%A8Cloudflare%E8%BF%9B%E8%A1%8C301%E9%87%8D%E5%AE%9A%E5%90%91/" title="未备案域名使用Cloudflare进行301重定向">未备案域名使用Cloudflare进行301重定向</a>
     </li>
     
@@ -391,10 +393,6 @@ git push # 推送到GitHub
         <a href="https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/" title="Kali Linux xfce4无法使用fn进行屏幕亮度调节">Kali Linux xfce4无法使用fn进行屏幕亮度调节</a>
     </li>
     
-    <li>
-        <a href="https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" title="Kali xfce4终端不能用TAB自动补全">Kali xfce4终端不能用TAB自动补全</a>
-    </li>
-    
 </ul>
     </section>
 
@@ -406,9 +404,11 @@ git push # 推送到GitHub
     
     <li><a href="https://blog.icland.xyz/categories/Cloudflare/">Cloudflare (2)</a></li>
     
-    <li><a href="https://blog.icland.xyz/categories/Web/">Web (2)</a></li>
+    <li><a href="https://blog.icland.xyz/categories/Web/">Web (3)</a></li>
     
     <li><a href="https://blog.icland.xyz/categories/Wzfou/">Wzfou (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/html5/">html5 (1)</a></li>
     
 </ul>
     </section>
@@ -422,6 +422,8 @@ git push # 推送到GitHub
     <a href="https://blog.icland.xyz/tags/Web/">Web</a>
     
     <a href="https://blog.icland.xyz/tags/Wzfou/">Wzfou</a>
+    
+    <a href="https://blog.icland.xyz/tags/html5/">html5</a>
     
 </div>
     </section>
@@ -454,9 +456,10 @@ git push # 推送到GitHub
         </div>
         
 		
-		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/css/viewer.css"/>
+		
+		<link  href="//cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.css" rel="stylesheet">
+		<script src="//cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.js"></script>
 		<link rel="stylesheet" href="/css/viewer-main.css"/>
-		<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/viewer.js"></script>
 		<script src="/js/viewer-main.js"></script>
 		
 		<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/mouse_click.js"></script>

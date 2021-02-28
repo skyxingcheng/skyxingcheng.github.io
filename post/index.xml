@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 27 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>置顶#关于本站</title>
       <link>https://blog.icland.xyz/post/about/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://blog.icland.xyz/post/about/</guid>
       <description>感谢您访问我的博客 | Thank you for your visit! 蝴蝶飞不过沧海 | Blog 您在浏览文章有任何问题可以通过以下方式找到我! QQ@🥕zhou Email@skyxingcheng233@outlook.com CSDN@skyxingcheng HostGitHub PoweredHugo Modify蝴蝶飞不过沧海 DesignMaupassant</description>
+    </item>
+    
+    <item>
+      <title>Viewerjs-强大的Web图片插件</title>
+      <link>https://blog.icland.xyz/post/Viewerjs-%E5%BC%BA%E5%A4%A7%E7%9A%84Web%E5%9B%BE%E7%89%87%E6%8F%92%E4%BB%B6/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Viewerjs-%E5%BC%BA%E5%A4%A7%E7%9A%84Web%E5%9B%BE%E7%89%87%E6%8F%92%E4%BB%B6/</guid>
+      <description>Github-ViewerJS ViewerJS是一款过于强大的web前段图片查看插件，强大到不知道怎么使用awa 效果预览 : https://fengyuanchen.github.io/viewerjs/ 简单食用教程 你应正确引入css和js文件 &amp;lt;link href=&amp;quot;//cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;//cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 然后，你需要创建自己的css和js来启用此插件 下面只是例子 CSS .docs-pictures { list-style: none; margin: 0; padding: 0; } JS window.onload = function () { &#39;use strict&#39;; var Viewer = window.Viewer; var console = window.console || { log: function () {} }; var pictures = document.querySelector(&#39;.docs-pictures&#39;); var</description>
     </item>
     
     <item>
