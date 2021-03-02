@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mysql on 蝴蝶飞不过沧海 | Blog</title>
+    <link>https://blog.icland.xyz/categories/mysql/</link>
+    <description>Recent content in mysql on 蝴蝶飞不过沧海 | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 26 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/mysql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</title>
+      <link>https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/</guid>
+      <description>1.更新gcc编译器 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 yum install -y gcc gcc-c++ cmake ncurses ncurses-devel bison #先检查一下依赖 cd /usr/src wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.gz tar -zvxf gcc-7.3.0.tar.gz cd gcc-7.3.0 ./contrib/download_prerequisites ./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib make -j8 #八线程编译模式 CPU不行就低一些 这个实在是太慢了 rpm -q gcc #寻找已安装的gcc rpm -q gcc-c++ #寻找已安装的c++ rpm -e [包名] #上一部显示啥就卸载啥 make install #执行安装 which gcc</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -43,5 +43,77 @@
       <description></description>
     </item>
     
+    <item>
+      <title>debian</title>
+      <link>https://blog.icland.xyz/tags/debian/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/tags/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>https://blog.icland.xyz/tags/linux/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nginx</title>
+      <link>https://blog.icland.xyz/tags/nginx/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/tags/nginx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>php</title>
+      <link>https://blog.icland.xyz/tags/php/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/tags/php/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Raspiberry</title>
+      <link>https://blog.icland.xyz/tags/Raspiberry/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/tags/Raspiberry/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arm</title>
+      <link>https://blog.icland.xyz/tags/arm/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/tags/arm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mysql</title>
+      <link>https://blog.icland.xyz/tags/mysql/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/tags/mysql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>centos</title>
+      <link>https://blog.icland.xyz/tags/centos/</link>
+      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/tags/centos/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

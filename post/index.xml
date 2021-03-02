@@ -53,24 +53,6 @@
     </item>
     
     <item>
-      <title>ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</title>
-      <link>https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/</guid>
-      <description>1.更新gcc编译器 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 yum install -y gcc gcc-c++ cmake ncurses ncurses-devel bison #先检查一下依赖 cd /usr/src wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.gz tar -zvxf gcc-7.3.0.tar.gz cd gcc-7.3.0 ./contrib/download_prerequisites ./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib make -j8 #八线程编译模式 CPU不行就低一些 这个实在是太慢了 rpm -q gcc #寻找已安装的gcc rpm -q gcc-c++ #寻找已安装的c++ rpm -e [包名] #上一部显示啥就卸载啥 make install #执行安装 which gcc</description>
-    </item>
-    
-    <item>
-      <title>ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</title>
-      <link>https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/</guid>
-      <description>准备环境 使用双硬盘方案为了不影响Win10的快速启动 注意：若要使用Linux写入NTFS硬盘您必须选择在Win10系统重启再进入Linux 安装时无线网卡不可用，请使用有线网络！！！ 请点此链接下载有线网卡补充驱动 Firmware-Realtek 并解包deb文件\data.tar\.\lib\firmware\*</description>
-    </item>
-    
-    <item>
       <title>Centos7自动root登录(GNOME桌面环境)</title>
       <link>https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
@@ -143,24 +125,6 @@
     </item>
     
     <item>
-      <title>Nginx使用OpenSSL库报错问题 _ 树莓派折腾日记#3</title>
-      <link>https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/</guid>
-      <description>修改Nginx源码 1 vi /usr/local/src/nginx-1.17.10/auto/lib/openssl/conf 找到 1 2 3 4 5 CORE_INCS=&amp;#34;$CORE_INCS$OPENSSL/.openssl/include&amp;#34; CORE_DEPS=&amp;#34;$CORE_DEPS$OPENSSL/.openssl/include/openssl/ssl.h&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/.openssl/lib/libssl.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/.openssl/lib/libcrypto.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$NGX_LIBDL&amp;#34; 修改为 1 2 3 4 5 CORE_INCS=&amp;#34;$CORE_INCS$OPENSSL/.openssl/include&amp;#34; CORE_DEPS=&amp;#34;$CORE_DEPS$OPENSSL/include/openssl/ssl.h&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/lib/libssl.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/lib/libcrypto.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$NGX_LIBDL&amp;#34; 编译Nginx时指定OpenSSL安装位置 1 ./configure --prefix=/usr/local/nginx --with-http_auth_request_module --with-http_ssl_module --with-http_v2_module --with-http_gunzip_module --with-pcre --with-pcre-jit --with-threads --with-ipv6 --with-http_realip_module --with-openssl=/usr/local/openssl/lib 1 make &amp;amp;&amp;amp; make install Enjoy :)</description>
-    </item>
-    
-    <item>
-      <title>OpenSSL编译报错：unknown architecture `armv8-a&#43;crypto&#39; _ 树莓派折腾日记#2</title>
-      <link>https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/</guid>
-      <description>RT 先说明，本人小白，搞树莓派的OpenSSL头都大了 这特喵是什么神奇的报错 1 unknown architecture `armv8-a+crypto&amp;#39; ?????OpenSSL不支持armv8指令集???? 解决如下 1 2 3 4 5 6 7 8 cd /usr/src wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz tar -zvxf openssl-1.1.1g.tar.gz cd openssl-1.1.1g ./config no-asm shared zlib --prefix=/usr/local/openssl make depend make #别test了 慢的要死 make install 1 apt-get install libxml2-dev</description>
-    </item>
-    
-    <item>
       <title>Windows10子系统切换默认用户，并设置软件开机自启动</title>
       <link>https://blog.icland.xyz/post/Windows10%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%88%87%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7%E5%B9%B6%E8%AE%BE%E7%BD%AE%E8%BD%AF%E4%BB%B6%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
@@ -179,48 +143,12 @@
     </item>
     
     <item>
-      <title>关闭小米路由器防火墙 放行端口</title>
-      <link>https://blog.icland.xyz/post/%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3/</guid>
-      <description>1.刷开发版并开启ssh 自行百度 2.使用ssh登录路由器 1 vi /etc/config/firewall 修改default如下 1 2 3 4 5 6 7 config defaults option syn_flood &amp;#39;0&amp;#39; option input &amp;#39;ACCEPT&amp;#39; option output &amp;#39;ACCEPT&amp;#39; option forward &amp;#39;ACCEPT&amp;#39; option drop_invalid &amp;#39;0&amp;#39; option disable_ipv6 &amp;#39;0&amp;#39; 3.重启防火墙 1 /etc/init.d/firewall restart 不要自作聪明直接关掉防火墙，会造成无法访问互联网 。。。。。。。。。。 参考文章 https://www.cnblogs.com/EasonJim/p/9238533.html</description>
-    </item>
-    
-    <item>
       <title>小米路由器，设置自定义Samba路径，直接访问磁盘根目录</title>
       <link>https://blog.icland.xyz/post/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89Samba%E8%B7%AF%E5%BE%84%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE%E7%A3%81%E7%9B%98%E6%A0%B9%E7%9B%AE%E5%BD%95/</link>
       <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
       
       <guid>https://blog.icland.xyz/post/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89Samba%E8%B7%AF%E5%BE%84%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE%E7%A3%81%E7%9B%98%E6%A0%B9%E7%9B%AE%E5%BD%95/</guid>
       <description>确保您已开启SSH 确保您的外设正常使用且Samba插件可正常开启 首先关闭Samba插件 使用scp登录您的路由器 修改配置文件\extdisks\sda1\xiaomi_router\config\smb.conf 追加代码 1 2 3 4 5 6 7 8 [root] path = /extdisks/sda1 read only = no guest ok = yes create mask = 0666 directory mask = 0777 browseable = yes</description>
-    </item>
-    
-    <item>
-      <title>无法运行apt-key命令检查数字签名 _ Couldn&#39;t execute _usr_bin_apt-key to check</title>
-      <link>https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/</guid>
-      <description>某日随便敲apt-get命令发现如下错误 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 获取:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB] 错误:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease Couldn&amp;#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspbian_raspbian_dists_buster_InRelease 获取:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease [25.2 kB] 错误:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease Couldn&amp;#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspberrypi_dists_buster_InRelease 正在读取软件包列表... 完成 W: GPG 错误：http://mirror.tuna.tsinghua.edu.cn/raspbia</description>
-    </item>
-    
-    <item>
-      <title>树莓派折腾日记#1</title>
-      <link>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/</guid>
-      <description>boot分区下新建文件 ssh 来启用ssh boot分区编辑config.txt最后一行加上 1 arm_64bit=1 来启用64位内核 使用 pi raspberry 登陆系统 修改密码并解锁root账户 1 2 3 sudo passwd pi #修改pi的密码 sudo passwd root #修改root的密码 sudo passwd --unlock root #解锁root用户 然后使用root登陆 备份镜像源 1 2 cp /etc/apt/sources.list /etc/apt/sources.list.bak cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak 修改软件</description>
-    </item>
-    
-    <item>
-      <title>树莓派无线中继为有线网络，第二局域网，DHCP服务器，支持ipv6上网</title>
-      <link>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%97%A0%E7%BA%BF%E4%B8%AD%E7%BB%A7%E4%B8%BA%E6%9C%89%E7%BA%BF%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E5%B1%80%E5%9F%9F%E7%BD%91DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%AF%E6%8C%81ipv6%E4%B8%8A%E7%BD%91/</link>
-      <pubDate>Wed, 10 Feb 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%97%A0%E7%BA%BF%E4%B8%AD%E7%BB%A7%E4%B8%BA%E6%9C%89%E7%BA%BF%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E5%B1%80%E5%9F%9F%E7%BD%91DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%AF%E6%8C%81ipv6%E4%B8%8A%E7%BD%91/</guid>
-      <description>0.环境 光猫&amp;mdash;&amp;gt;主路由器&amp;mdash;&amp;gt;5GWiFi&amp;mdash;&amp;gt;树莓派&amp;mdash;&amp;gt;交换机&amp;mdash;&amp;gt;电脑 1.安装依赖 提前连接好WiFi！！！ 1 apt-get install brctl dnsmasq radvd ndp6 2.配置DHCP与radvd以及nat转发设置 1 vi /etc/dnsmasq.conf 1 2 3 4 5 6 dhcp-sequential-ip dhcp-range=10.96.181.10,10.96.181.240,255.255.255.0,12h dhcp-range=fd00::22, fd00::44,</description>
     </item>
     
     <item>
@@ -233,12 +161,84 @@
     </item>
     
     <item>
+      <title>ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</title>
+      <link>https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/</guid>
+      <description>准备环境 使用双硬盘方案为了不影响Win10的快速启动 注意：若要使用Linux写入NTFS硬盘您必须选择在Win10系统重启再进入Linux 安装时无线网卡不可用，请使用有线网络！！！ 请点此链接下载有线网卡补充驱动 Firmware-Realtek 并解包deb文件\data.tar\.\lib\firmware\*</description>
+    </item>
+    
+    <item>
+      <title>树莓派无线中继为有线网络，第二局域网，DHCP服务器，支持ipv6上网</title>
+      <link>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%97%A0%E7%BA%BF%E4%B8%AD%E7%BB%A7%E4%B8%BA%E6%9C%89%E7%BA%BF%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E5%B1%80%E5%9F%9F%E7%BD%91DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%AF%E6%8C%81ipv6%E4%B8%8A%E7%BD%91/</link>
+      <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%97%A0%E7%BA%BF%E4%B8%AD%E7%BB%A7%E4%B8%BA%E6%9C%89%E7%BA%BF%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E5%B1%80%E5%9F%9F%E7%BD%91DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%AF%E6%8C%81ipv6%E4%B8%8A%E7%BD%91/</guid>
+      <description>0.环境 光猫&amp;mdash;&amp;gt;主路由器&amp;mdash;&amp;gt;5GWiFi&amp;mdash;&amp;gt;树莓派&amp;mdash;&amp;gt;交换机&amp;mdash;&amp;gt;电脑 1.安装依赖 提前连接好WiFi！！！ 1 apt-get install brctl dnsmasq radvd ndp6 2.配置DHCP与radvd以及nat转发设置 1 vi /etc/dnsmasq.conf 1 2 3 4 5 6 dhcp-sequential-ip dhcp-range=10.96.181.10,10.96.181.240,255.255.255.0,12h dhcp-range=fd00::22, fd00::44,</description>
+    </item>
+    
+    <item>
+      <title>关闭小米路由器防火墙 放行端口</title>
+      <link>https://blog.icland.xyz/post/%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3/</link>
+      <pubDate>Sat, 11 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3/</guid>
+      <description>1.刷开发版并开启ssh 自行百度 2.使用ssh登录路由器 1 vi /etc/config/firewall 修改default如下 1 2 3 4 5 6 7 config defaults option syn_flood &amp;#39;0&amp;#39; option input &amp;#39;ACCEPT&amp;#39; option output &amp;#39;ACCEPT&amp;#39; option forward &amp;#39;ACCEPT&amp;#39; option drop_invalid &amp;#39;0&amp;#39; option disable_ipv6 &amp;#39;0&amp;#39; 3.重启防火墙 1 /etc/init.d/firewall restart 不要自作聪明直接关掉防火墙，会造成无法访问互联网 。。。。。。。。。。 参考文章 https://www.cnblogs.com/EasonJim/p/9238533.html</description>
+    </item>
+    
+    <item>
       <title>Candy-ServerStatus 糖果服务器云探针</title>
       <link>https://blog.icland.xyz/post/Candy-ServerStatus/</link>
       <pubDate>Sat, 04 Jul 2020 00:00:00 +0000</pubDate>
       
       <guid>https://blog.icland.xyz/post/Candy-ServerStatus/</guid>
       <description>Candy-ServerStatus 糖果服务器云探针 2020 07 14 在线展示 https://icland.xyz/status/ 基于修改&amp;amp;优化&amp;amp;去杂 1 2 3 4 5 6 7 /client/* /server/src/main.h /server/src/main.cpp /web/index.html /web/css/hotaru_fix.css /web/js/serverstatus.js /web/img/* 食用方法: 1 2 3 4 git clone https://github.com/skyxingcheng/Candy-ServerStatus.git cd /Candy-ServerStatus/server make ./sergate -c config -d /usr/share/wwwroot/ -p 35601 客户端使用linux或跨平台的python文件直接启动即可 注意配置服务器和用户名密码 支持ipv4和ipv6支持检测双线 需在客户端设置自定义</description>
+    </item>
+    
+    <item>
+      <title>无法运行apt-key命令检查数字签名 _ Couldn&#39;t execute _usr_bin_apt-key to check</title>
+      <link>https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/</link>
+      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/</guid>
+      <description>某日随便敲apt-get命令发现如下错误 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 获取:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB] 错误:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease Couldn&amp;#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspbian_raspbian_dists_buster_InRelease 获取:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease [25.2 kB] 错误:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease Couldn&amp;#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspberrypi_dists_buster_InRelease 正在读取软件包列表... 完成 W: GPG 错误：http://mirror.tuna.tsinghua.edu.cn/raspbia</description>
+    </item>
+    
+    <item>
+      <title>Nginx使用OpenSSL库报错问题 _ 树莓派折腾日记#3</title>
+      <link>https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/</link>
+      <pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/</guid>
+      <description>修改Nginx源码 1 vi /usr/local/src/nginx-1.17.10/auto/lib/openssl/conf 找到 1 2 3 4 5 CORE_INCS=&amp;#34;$CORE_INCS$OPENSSL/.openssl/include&amp;#34; CORE_DEPS=&amp;#34;$CORE_DEPS$OPENSSL/.openssl/include/openssl/ssl.h&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/.openssl/lib/libssl.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/.openssl/lib/libcrypto.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$NGX_LIBDL&amp;#34; 修改为 1 2 3 4 5 CORE_INCS=&amp;#34;$CORE_INCS$OPENSSL/.openssl/include&amp;#34; CORE_DEPS=&amp;#34;$CORE_DEPS$OPENSSL/include/openssl/ssl.h&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/lib/libssl.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/lib/libcrypto.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$NGX_LIBDL&amp;#34; 编译Nginx时指定OpenSSL安装位置 1 ./configure --prefix=/usr/local/nginx --with-http_auth_request_module --with-http_ssl_module --with-http_v2_module --with-http_gunzip_module --with-pcre --with-pcre-jit --with-threads --with-ipv6 --with-http_realip_module --with-openssl=/usr/local/openssl/lib 1 make &amp;amp;&amp;amp; make install Enjoy :)</description>
+    </item>
+    
+    <item>
+      <title>OpenSSL编译报错：unknown architecture `armv8-a&#43;crypto&#39; _ 树莓派折腾日记#2</title>
+      <link>https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/</guid>
+      <description>RT 先说明，本人小白，搞树莓派的OpenSSL头都大了 这特喵是什么神奇的报错 1 unknown architecture `armv8-a+crypto&amp;#39; ?????OpenSSL不支持armv8指令集???? 解决如下 1 2 3 4 5 6 7 8 cd /usr/src wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz tar -zvxf openssl-1.1.1g.tar.gz cd openssl-1.1.1g ./config no-asm shared zlib --prefix=/usr/local/openssl make depend make #别test了 慢的要死 make install 1 apt-get install libxml2-dev</description>
+    </item>
+    
+    <item>
+      <title>树莓派折腾日记#1</title>
+      <link>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/</guid>
+      <description>boot分区下新建文件 ssh 来启用ssh boot分区编辑config.txt最后一行加上 1 arm_64bit=1 来启用64位内核 使用 pi raspberry 登陆系统 修改密码并解锁root账户 1 2 3 sudo passwd pi #修改pi的密码 sudo passwd root #修改root的密码 sudo passwd --unlock root #解锁root用户 然后使用root登陆 备份镜像源 1 2 cp /etc/apt/sources.list /etc/apt/sources.list.bak cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak 修改软件</description>
+    </item>
+    
+    <item>
+      <title>ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</title>
+      <link>https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/</guid>
+      <description>1.更新gcc编译器 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 yum install -y gcc gcc-c++ cmake ncurses ncurses-devel bison #先检查一下依赖 cd /usr/src wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.gz tar -zvxf gcc-7.3.0.tar.gz cd gcc-7.3.0 ./contrib/download_prerequisites ./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib make -j8 #八线程编译模式 CPU不行就低一些 这个实在是太慢了 rpm -q gcc #寻找已安装的gcc rpm -q gcc-c++ #寻找已安装的c++ rpm -e [包名] #上一部显示啥就卸载啥 make install #执行安装 which gcc</description>
     </item>
     
     <item>

@@ -76,17 +76,17 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/" title="Debian10以root用户自动登录">Debian10以root用户自动登录</a>
+                <a href="https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/" title="无法运行apt-key命令检查数字签名 _ Couldn&#39;t execute _usr_bin_apt-key to check">无法运行apt-key命令检查数字签名 _ Couldn&#39;t execute _usr_bin_apt-key to check</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年5月10日
         </date>
         
         <div class="post-content">
-            Debian 10 root用户自动登录： 注释掉 /etc/pam.d/gdm-autologin和/etc/pam.d/gdm-password文件中： 1 #auth required pam_succeed_if.so user != root quiet_success 注释掉。 在本行前加#，取消Debian不让root登录的限制。 修改gdm3的设定文件/etc/gdm3/daemon.conf 1……
+            某日随便敲apt-get命令发现如下错误 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 获取:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB] 错误:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease Couldn&#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspbian_raspbian_dists_buster_InRelease 获取:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease [25.2 kB] 错误:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease Couldn&#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspberrypi_dists_buster_InRelease 正在读取软件包列表... 完成 W: GPG 错误：http://mirror.tuna.tsinghua.edu.cn/raspbia……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/">阅读全文</a></p>
     </article>
     
     
@@ -94,17 +94,17 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" title="Centos7自动root登录(GNOME桌面环境)">Centos7自动root登录(GNOME桌面环境)</a>
+                <a href="https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/" title="Nginx使用OpenSSL库报错问题 _ 树莓派折腾日记#3">Nginx使用OpenSSL库报错问题 _ 树莓派折腾日记#3</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年4月30日
         </date>
         
         <div class="post-content">
-            vim /etc/gdm/custom.conf 在daemon下面添加 1 2 AutomaticLoginEnable=True AutomaticLogin=root……
+            修改Nginx源码 1 vi /usr/local/src/nginx-1.17.10/auto/lib/openssl/conf 找到 1 2 3 4 5 CORE_INCS=&#34;$CORE_INCS$OPENSSL/.openssl/include&#34; CORE_DEPS=&#34;$CORE_DEPS$OPENSSL/.openssl/include/openssl/ssl.h&#34; CORE_LIBS=&#34;$CORE_LIBS$OPENSSL/.openssl/lib/libssl.a&#34; CORE_LIBS=&#34;$CORE_LIBS$OPENSSL/.openssl/lib/libcrypto.a&#34; CORE_LIBS=&#34;$CORE_LIBS$NGX_LIBDL&#34; 修改为 1 2 3 4 5 CORE_INCS=&#34;$CORE_INCS$OPENSSL/.openssl/include&#34; CORE_DEPS=&#34;$CORE_DEPS$OPENSSL/include/openssl/ssl.h&#34; CORE_LIBS=&#34;$CORE_LIBS$OPENSSL/lib/libssl.a&#34; CORE_LIBS=&#34;$CORE_LIBS$OPENSSL/lib/libcrypto.a&#34; CORE_LIBS=&#34;$CORE_LIBS$NGX_LIBDL&#34; 编译Nginx时指定OpenSSL安装位置 1 ./configure --prefix=/usr/local/nginx --with-http_auth_request_module --with-http_ssl_module --with-http_v2_module --with-http_gunzip_module --with-pcre --with-pcre-jit --with-threads --with-ipv6 --with-http_realip_module --with-openssl=/usr/local/openssl/lib 1 make &amp;&amp; make install Enjoy :)……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/">阅读全文</a></p>
     </article>
     
     
@@ -112,17 +112,35 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/" title="ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等">ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</a>
+                <a href="https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/" title="树莓派折腾日记#1">树莓派折腾日记#1</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年4月29日
         </date>
         
         <div class="post-content">
-            准备环境 使用双硬盘方案为了不影响Win10的快速启动 注意：若要使用Linux写入NTFS硬盘您必须选择在Win10系统重启再进入Linux 安装时无线网卡不可用，请使用有线网络！！！ 请点此链接下载有线网卡补充驱动 Firmware-Realtek 并解包deb文件\data.tar\.\lib\firmware\*……
+            boot分区下新建文件 ssh 来启用ssh boot分区编辑config.txt最后一行加上 1 arm_64bit=1 来启用64位内核 使用 pi raspberry 登陆系统 修改密码并解锁root账户 1 2 3 sudo passwd pi #修改pi的密码 sudo passwd root #修改root的密码 sudo passwd --unlock root #解锁root用户 然后使用root登陆 备份镜像源 1 2 cp /etc/apt/sources.list /etc/apt/sources.list.bak cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak 修改软件……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/">阅读全文</a></p>
+    </article>
+    
+    
+    
+    <article class="post">
+        <header>
+            <h1 class="post-title">
+                <a href="https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/" title="OpenSSL编译报错：unknown architecture `armv8-a&#43;crypto&#39; _ 树莓派折腾日记#2">OpenSSL编译报错：unknown architecture `armv8-a&#43;crypto&#39; _ 树莓派折腾日记#2</a>
+            </h1>
+        </header>
+        <date class="post-meta meta-date">
+            2020年4月29日
+        </date>
+        
+        <div class="post-content">
+            RT 先说明，本人小白，搞树莓派的OpenSSL头都大了 这特喵是什么神奇的报错 1 unknown architecture `armv8-a+crypto&#39; ?????OpenSSL不支持armv8指令集???? 解决如下 1 2 3 4 5 6 7 8 cd /usr/src wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz tar -zvxf openssl-1.1.1g.tar.gz cd openssl-1.1.1g ./config no-asm shared zlib --prefix=/usr/local/openssl make depend make #别test了 慢的要死 make install 1 apt-get install libxml2-dev……
+        </div>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/">阅读全文</a></p>
     </article>
     
     
@@ -134,31 +152,24 @@
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年4月26日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/arm'>arm</a></span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/mysql'>mysql</a></span>
+            
+        </div>
         
         <div class="post-content">
             1.更新gcc编译器 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 yum install -y gcc gcc-c++ cmake ncurses ncurses-devel bison #先检查一下依赖 cd /usr/src wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.gz tar -zvxf gcc-7.3.0.tar.gz cd gcc-7.3.0 ./contrib/download_prerequisites ./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib make -j8 #八线程编译模式 CPU不行就低一些 这个实在是太慢了 rpm -q gcc #寻找已安装的gcc rpm -q gcc-c++ #寻找已安装的c++ rpm -e [包名] #上一部显示啥就卸载啥 make install #执行安装 which gcc……
         </div>
         <p class="readmore"><a href="https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/">阅读全文</a></p>
-    </article>
-    
-    
-    
-    <article class="post">
-        <header>
-            <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Candy-ServerStatus/" title="Candy-ServerStatus 糖果服务器云探针">Candy-ServerStatus 糖果服务器云探针</a>
-            </h1>
-        </header>
-        <date class="post-meta meta-date">
-            2020年7月4日
-        </date>
-        
-        <div class="post-content">
-            Candy-ServerStatus 糖果服务器云探针 2020 07 14 在线展示 https://icland.xyz/status/ 基于修改&amp;优化&amp;去杂 1 2 3 4 5 6 7 /client/* /server/src/main.h /server/src/main.cpp /web/index.html /web/css/hotaru_fix.css /web/js/serverstatus.js /web/img/* 食用方法: 1 2 3 4 git clone https://github.com/skyxingcheng/Candy-ServerStatus.git cd /Candy-ServerStatus/server make ./sergate -c config -d /usr/share/wwwroot/ -p 35601 客户端使用linux或跨平台的python文件直接启动即可 注意配置服务器和用户名密码 支持ipv4和ipv6支持检测双线 需在客户端设置自定义……
-        </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Candy-ServerStatus/">阅读全文</a></p>
     </article>
     
     
@@ -172,6 +183,21 @@
         <date class="post-meta meta-date">
             2020年4月22日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/arm'>arm</a></span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/nginx'>nginx</a></span>
+            
+            <span class="meta-category"><a href='/categories/php'>php</a></span>
+            
+            <span class="meta-category"><a href='/categories/centos'>centos</a></span>
+            
+        </div>
         
         <div class="post-content">
             前言 第一次写文章，有问题请见谅，文章有错误请指出，本文末尾会贴出所有用到的文章，感谢各位大佬。 所需软件: Busybox，Linux deploy 本文所用均为最新版 (都需要ROOT完整权限，没有root建议别浪费时间了) 测试环境: Mi6 — MIUI 11 开发版，Android 9.0，MagiskSU，6GB物……
@@ -288,14 +314,6 @@
     </li>
     
     <li>
-        <a href="https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/" title="ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3">ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/" title="ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等">ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</a>
-    </li>
-    
-    <li>
         <a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" title="Centos7自动root登录(GNOME桌面环境)">Centos7自动root登录(GNOME桌面环境)</a>
     </li>
     
@@ -305,6 +323,14 @@
     
     <li>
         <a href="https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/" title="Kali Linux xfce4无法使用fn进行屏幕亮度调节">Kali Linux xfce4无法使用fn进行屏幕亮度调节</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" title="Kali xfce4终端不能用TAB自动补全">Kali xfce4终端不能用TAB自动补全</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/" title="Kali安装后合上盖子不休眠问题">Kali安装后合上盖子不休眠问题</a>
     </li>
     
 </ul>
@@ -322,7 +348,21 @@
     
     <li><a href="https://blog.icland.xyz/categories/Wzfou/">Wzfou (1)</a></li>
     
+    <li><a href="https://blog.icland.xyz/categories/arm/">arm (2)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/centos/">centos (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/debian/">debian (1)</a></li>
+    
     <li><a href="https://blog.icland.xyz/categories/html5/">html5 (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/linux/">linux (3)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/mysql/">mysql (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/nginx/">nginx (2)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/php/">php (2)</a></li>
     
 </ul>
     </section>
@@ -333,11 +373,29 @@
     
     <a href="https://blog.icland.xyz/tags/Cloudflare/">Cloudflare</a>
     
+    <a href="https://blog.icland.xyz/tags/debian/">debian</a>
+    
+    <a href="https://blog.icland.xyz/tags/Raspiberry/">Raspiberry</a>
+    
     <a href="https://blog.icland.xyz/tags/Web/">Web</a>
     
     <a href="https://blog.icland.xyz/tags/Wzfou/">Wzfou</a>
     
+    <a href="https://blog.icland.xyz/tags/arm/">arm</a>
+    
+    <a href="https://blog.icland.xyz/tags/centos/">centos</a>
+    
+    <a href="https://blog.icland.xyz/tags/debian/">debian</a>
+    
     <a href="https://blog.icland.xyz/tags/html5/">html5</a>
+    
+    <a href="https://blog.icland.xyz/tags/linux/">linux</a>
+    
+    <a href="https://blog.icland.xyz/tags/mysql/">mysql</a>
+    
+    <a href="https://blog.icland.xyz/tags/nginx/">nginx</a>
+    
+    <a href="https://blog.icland.xyz/tags/php/">php</a>
     
 </div>
     </section>

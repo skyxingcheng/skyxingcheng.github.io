@@ -191,6 +191,21 @@
             2020年4月22日
         </date>
         
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/arm'>arm</a></span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/nginx'>nginx</a></span>
+            
+            <span class="meta-category"><a href='/categories/php'>php</a></span>
+            
+            <span class="meta-category"><a href='/categories/centos'>centos</a></span>
+            
+        </div>
+        
         
         <div class="post-meta">
             <span id="busuanzi_container_page_pv">|<span id="busuanzi_value_page_pv"></span><span>
@@ -207,35 +222,36 @@
 Busybox 去某安搜索就行了 第一个就是
 ====================本文以CentOS7作为演示====================</p>
 <h2 id="1软件安装与配置">1.软件安装与配置</h2>
-<p>首先打开busybox 安装位置选择 /system/xbin 点击 install 安装 (当然别的位置也行 与Linux deploy的位置一致就行)
+<p>首先打开busybox 安装位置选择 /system/xbin 点击 install 安装 (当然别的位置也行 与Linux deploy的位置一致就行)</p>
+<div class="docs-pictures">
 <img src="https://js-cdn.icland.xyz/static/images/200422/2020042120025185.jpg" width="25%">
-然后就是Linux deploy了 打开软件 选择左上角三道杠 点击配置文件 写一个你喜欢的名字就行
+<p>然后就是Linux deploy了 打开软件 选择左上角三道杠 点击配置文件 写一个你喜欢的名字就行</p>
 <img src="https://js-cdn.icland.xyz/static/images/200422/20200421201012976.jpg" width="25%">
 <img src="https://js-cdn.icland.xyz/static/images/200422/20200421201314289.jpg" width="25%">
-然后点击设置 勾选 锁定wifi，cpu唤醒 ，联网更新，ENV目录不用管它，path变量设置为busybox的安装目录，然后点击一次更新操作环境，最下面有个调试模式最好也勾选上，方便看信息
+<p>然后点击设置 勾选 锁定wifi，cpu唤醒 ，联网更新，ENV目录不用管它，path变量设置为busybox的安装目录，然后点击一次更新操作环境，最下面有个调试模式最好也勾选上，方便看信息</p>
 <img src="https://js-cdn.icland.xyz/static/images/200422/20200421201745674.jpg" width="25%">
 <img src="https://js-cdn.icland.xyz/static/images/200422/20200421201814416.jpg" width="25%">
-然后我们回到主界面选择右下角三道杠 如图设置即可
+<p>然后我们回到主界面选择右下角三道杠 如图设置即可
 源地址设置为阿里云：https://mirrors.aliyun.com/centos-altarch/
 镜像大小根据所需设置 我这里是32GB
 至于安装类型，，，基本用不到，(其他安装类型一个也没成功&hellip;)
-用户名密码自己设置就行了 (ps:截图的源地址打错了)
+用户名密码自己设置就行了 (ps:截图的源地址打错了)</p>
 <img src="https://js-cdn.icland.xyz/static/images/200422/20200421202733502.jpg" width="25%">
-勾选启用挂载和启用ssh 添加一个挂载点方便访问sd卡
+<p>勾选启用挂载和启用ssh 添加一个挂载点方便访问sd卡</p>
 <img src="https://js-cdn.icland.xyz/static/images/200422/20200421203119672.jpg" width="25%">
 <img src="https://js-cdn.icland.xyz/static/images/200422/2020042120334638.jpg" width="25%">
-至此基本配置就完成了</p>
+<p>至此基本配置就完成了</p>
 <h2 id="2基本系统安装与调试">2.基本系统安装与调试</h2>
-<p>回到主界面 选择右上角三个点 点击安装 然后等待安装完毕即可 理论应该不会出现什么问题
-安装完毕回显 &laquo;&lt;deploy 就可以了
+<p>回到主界面 选择右上角三个点 点击安装 然后等待安装完毕即可 理论应该不会出现什么问题</p>
+<p>安装完毕回显 &laquo;&lt;deploy 就可以了</p>
 <img src="https://js-cdn.icland.xyz/static/images/200422/20200421204938114.jpg" width="25%">
-然后我们点击启动 再用ssh工具连接 就和普通的没什么两样了 qwq
+<p>然后我们点击启动 再用ssh工具连接 就和普通的没什么两样了 qwq</p>
 <img src="https://js-cdn.icland.xyz/static/images/200422/20200421205143377.jpg" width="25%">
-设备内网IP:22
+<p>设备内网IP:22</p>
 <img src="https://js-cdn.icland.xyz/static/images/200422/20200421205302296.png" width="50%">
-用户名密码为软件中设置的密码
-<img src="https://js-cdn.icland.xyz/static/images/200422/20200421205506802.png" width="80%">
-<strong>更换YUM软件源</strong></p>
+<p>用户名密码为软件中设置的密码</p>
+<p><img src="https://js-cdn.icland.xyz/static/images/200422/20200421205506802.png" width="80%" /></p>
+<p><strong>更换YUM软件源</strong></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -521,8 +537,8 @@ colorscheme evening
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vi /etc/motd <span style="color:#998;font-style:italic">#随你怎么设置都行</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>操作完一波后就会像这样啦
-
+</div><p>操作完一波后就会像这样啦</p>
+<p>
         <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200421214549900.png" />   
     </p>
 <h2 id="4编译安装所需依赖包">4.编译安装所需依赖包</h2>
@@ -574,11 +590,11 @@ ln -s /usr/local/perl/bin/perl /usr/bin/perl
 perl -v
 </code></pre></td></tr></table>
 </div>
-</div><p>emmmm 121w这个数字是真的恐怖&hellip;.
-
+</div><p>emmmm 121w这个数字是真的恐怖&hellip;.</p>
+<p>
         <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200421233722761.png" />   
-    
-<strong>编译安装Pcre</strong></p>
+    </p>
+<p><strong>编译安装Pcre</strong></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
 <pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code><span style="margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1
@@ -707,8 +723,8 @@ ln -s /local-sd/ /root/local-sd
 ln -s /usr/local/ /root/local		<span style="color:#998;font-style:italic">#创建四个软连接方便访问</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>连接测试正常 读写正常
-
+</div><p>连接测试正常 读写正常</p>
+<p>
         <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200422003618666.png" />   
     </p>
 <h2 id="6编译安装nginx">6.编译安装Nginx</h2>
@@ -738,8 +754,8 @@ nginx &amp;
 netstat -antup | grep <span style="color:#099">80</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>浏览器打开看见如下界面 证明Nginx已经成功启动了
-
+</div><p>浏览器打开看见如下界面 证明Nginx已经成功启动了</p>
+<p>
         <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200422010203856.png" />   
     </p>
 <h2 id="7编译安装php7">7.编译安装PHP7</h2>
@@ -1166,8 +1182,8 @@ netstat -an | grep <span style="color:#099">9000</span> <span style="color:#998;
 netstat -an | grep <span style="color:#099">21</span> <span style="color:#998;font-style:italic">#检查21端口</span>
 </code></pre></td></tr></table>
 </div>
-</div><p>浏览器打开设备IP:80 不出意外就OK啦
-
+</div><p>浏览器打开设备IP:80 不出意外就OK啦</p>
+<p>
         <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200422132116381.png" />   
     </p>
 <h2 id="10frp内网穿透获取用户真实ip">10.frp内网穿透，获取用户真实IP</h2>
@@ -1251,8 +1267,8 @@ nginx -s reload
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>温馨提示：</strong> 由于启用了 <strong>proxy_protocol_v2</strong> 协议只能使用域名访问 内网IP不行的哦
-浏览器打开就看到你的真实IP地址了
-
+浏览器打开就看到你的真实IP地址了</p>
+<p>
         <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200422134530613.png" />   
     </p>
 <h2 id="后记">后记</h2>
@@ -1282,7 +1298,7 @@ nginx -s reload
 <a href="https://blog.csdn.net/cs_ing/article/details/8728769">https://blog.csdn.net/cs_ing/article/details/8728769</a></p>
 </blockquote>
 <p><strong>向各路大佬们致敬！！</strong></p>
-
+</div>
         </div>
 
         
@@ -1302,7 +1318,19 @@ nginx -s reload
 
         <div class="post-meta meta-tags">
             
-            没有标签
+            <ul class="clearfix">
+                
+                <li><a href='/tags/arm'>arm</a></li>
+                
+                <li><a href='/tags/linux'>linux</a></li>
+                
+                <li><a href='/tags/nginx'>nginx</a></li>
+                
+                <li><a href='/tags/php'>php</a></li>
+                
+                <li><a href='/tags/centos'>centos</a></li>
+                
+            </ul>
             
         </div>
     </article>
@@ -1381,14 +1409,6 @@ nginx -s reload
     </li>
     
     <li>
-        <a href="https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/" title="ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3">ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</a>
-    </li>
-    
-    <li>
-        <a href="https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/" title="ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等">ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</a>
-    </li>
-    
-    <li>
         <a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" title="Centos7自动root登录(GNOME桌面环境)">Centos7自动root登录(GNOME桌面环境)</a>
     </li>
     
@@ -1398,6 +1418,14 @@ nginx -s reload
     
     <li>
         <a href="https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/" title="Kali Linux xfce4无法使用fn进行屏幕亮度调节">Kali Linux xfce4无法使用fn进行屏幕亮度调节</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" title="Kali xfce4终端不能用TAB自动补全">Kali xfce4终端不能用TAB自动补全</a>
+    </li>
+    
+    <li>
+        <a href="https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/" title="Kali安装后合上盖子不休眠问题">Kali安装后合上盖子不休眠问题</a>
     </li>
     
 </ul>
@@ -1415,7 +1443,21 @@ nginx -s reload
     
     <li><a href="https://blog.icland.xyz/categories/Wzfou/">Wzfou (1)</a></li>
     
+    <li><a href="https://blog.icland.xyz/categories/arm/">arm (2)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/centos/">centos (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/debian/">debian (1)</a></li>
+    
     <li><a href="https://blog.icland.xyz/categories/html5/">html5 (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/linux/">linux (3)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/mysql/">mysql (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/nginx/">nginx (2)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/php/">php (2)</a></li>
     
 </ul>
     </section>
@@ -1426,11 +1468,29 @@ nginx -s reload
     
     <a href="https://blog.icland.xyz/tags/Cloudflare/">Cloudflare</a>
     
+    <a href="https://blog.icland.xyz/tags/debian/">debian</a>
+    
+    <a href="https://blog.icland.xyz/tags/Raspiberry/">Raspiberry</a>
+    
     <a href="https://blog.icland.xyz/tags/Web/">Web</a>
     
     <a href="https://blog.icland.xyz/tags/Wzfou/">Wzfou</a>
     
+    <a href="https://blog.icland.xyz/tags/arm/">arm</a>
+    
+    <a href="https://blog.icland.xyz/tags/centos/">centos</a>
+    
+    <a href="https://blog.icland.xyz/tags/debian/">debian</a>
+    
     <a href="https://blog.icland.xyz/tags/html5/">html5</a>
+    
+    <a href="https://blog.icland.xyz/tags/linux/">linux</a>
+    
+    <a href="https://blog.icland.xyz/tags/mysql/">mysql</a>
+    
+    <a href="https://blog.icland.xyz/tags/nginx/">nginx</a>
+    
+    <a href="https://blog.icland.xyz/tags/php/">php</a>
     
 </div>
     </section>

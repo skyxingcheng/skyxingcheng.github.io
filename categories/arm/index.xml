@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>arm on 蝴蝶飞不过沧海 | Blog</title>
+    <link>https://blog.icland.xyz/categories/arm/</link>
+    <description>Recent content in arm on 蝴蝶飞不过沧海 | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 26 Apr 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/arm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ARM平台编译安装MySQL5.7.29，gcc编译器更新7.3</title>
+      <link>https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/</link>
+      <pubDate>Sun, 26 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/ARM%E5%B9%B3%E5%8F%B0%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85MySQL5.7.29gcc%E7%BC%96%E8%AF%91%E5%99%A8%E6%9B%B4%E6%96%B07.3/</guid>
+      <description>1.更新gcc编译器 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 yum install -y gcc gcc-c++ cmake ncurses ncurses-devel bison #先检查一下依赖 cd /usr/src wget https://mirrors.ustc.edu.cn/gnu/gcc/gcc-7.3.0/gcc-7.3.0.tar.gz tar -zvxf gcc-7.3.0.tar.gz cd gcc-7.3.0 ./contrib/download_prerequisites ./configure --enable-checking=release --enable-languages=c,c++ --disable-multilib make -j8 #八线程编译模式 CPU不行就低一些 这个实在是太慢了 rpm -q gcc #寻找已安装的gcc rpm -q gcc-c++ #寻找已安装的c++ rpm -e [包名] #上一部显示啥就卸载啥 make install #执行安装 which gcc</description>
+    </item>
+    
+    <item>
+      <title>使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP</title>
+      <link>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8-Linux-deploy-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84Nginx&#43;PHP-Web%E6%9C%8D%E5%8A%A1%E5%99%A8FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/</link>
+      <pubDate>Wed, 22 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8-Linux-deploy-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84Nginx&#43;PHP-Web%E6%9C%8D%E5%8A%A1%E5%99%A8FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/</guid>
+      <description>前言 第一次写文章，有问题请见谅，文章有错误请指出，本文末尾会贴出所有用到的文章，感谢各位大佬。 所需软件: Busybox，Linux deploy 本文所用均为最新版 (都需要ROOT完整权限，没有root建议别浪费时间了) 测试环境: Mi6 — MIUI 11 开发版，Android 9.0，MagiskSU，6GB物</description>
+    </item>
+    
+  </channel>
+</rss>
