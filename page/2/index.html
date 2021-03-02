@@ -218,7 +218,7 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8-Linux-deploy-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84Nginx&#43;PHP-Web%E6%9C%8D%E5%8A%A1%E5%99%A8FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/" title="使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP">使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP</a>
+                <a href="https://blog.icland.xyz/post/%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3/" title="关闭小米路由器防火墙 放行端口">关闭小米路由器防火墙 放行端口</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
@@ -226,9 +226,9 @@
         </date>
         
         <div class="post-content">
-            前言 第一次写文章，有问题请见谅，文章有错误请指出，本文末尾会贴出所有用到的文章，感谢各位大佬。 所需软件: Busybox，Linux deploy 本文所用均为最新版 (都需要ROOT完整权限，没有root建议别浪费时间了) 测试环境: Mi6 — MIUI 11 开发版，Android 9.0，MagiskSU，6GB物……
+            1.刷开发版并开启ssh 自行百度 2.使用ssh登录路由器 1 vi /etc/config/firewall 修改default如下 1 2 3 4 5 6 7 config defaults option syn_flood &#39;0&#39; option input &#39;ACCEPT&#39; option output &#39;ACCEPT&#39; option forward &#39;ACCEPT&#39; option drop_invalid &#39;0&#39; option disable_ipv6 &#39;0&#39; 3.重启防火墙 1 /etc/init.d/firewall restart 不要自作聪明直接关掉防火墙，会造成无法访问互联网 。。。。。。。。。。 参考文章 https://www.cnblogs.com/EasonJim/p/9238533.html……
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8-Linux-deploy-%E6%90%AD%E5%BB%BA%E5%B1%9E%E4%BA%8E%E8%87%AA%E5%B7%B1%E7%9A%84Nginx&#43;PHP-Web%E6%9C%8D%E5%8A%A1%E5%99%A8FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F%E5%8F%AF%E8%8E%B7%E5%8F%96%E7%94%A8%E6%88%B7%E7%9C%9F%E5%AE%9EIP/">阅读全文</a></p>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3/">阅读全文</a></p>
     </article>
     
     

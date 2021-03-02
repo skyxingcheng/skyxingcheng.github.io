@@ -199,16 +199,15 @@
         <div class="post-content">
             <h1 id="使用githubhugo搭建静态个人博客">使用GitHub+hugo搭建静态个人博客</h1>
 <h2 id="优点">优点</h2>
-<pre><code>全是静态文件，访问速度快；
-免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台；
-可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的；
-数据绝对安全，基于github的版本管理，想恢复到哪个历史版本都行；
-博客内容可以轻松打包、转移、发布到其它平台；
+<pre><code>全是静态文件，访问速度快
+免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台
+可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的
+博客内容可以轻松打包、转移、发布到其它平台
 </code></pre><h2 id="准备工作">准备工作</h2>
 <p>已注册并验证邮箱的<a href="https://github.com">GitHub</a>账号</p>
 <p>确保您已安装<a href="https://git-scm.com/download/win">Git for Windows</a></p>
 <p>您已下载合适版本的<a href="https://github.com/gohugoio/hugo">Hugo</a></p>
-<img src="../../images/2021-02-12 222801.png">
+<img src="https://js-cdn.icland.xyz/static/images/210213/2021-02-12 222801.png">
 <h2 id="创建仓库">创建仓库</h2>
 <p>新建一个名为<code>&lt;你的用户名&gt;.github.io</code>的公开仓库，比如说，如果你的github用户名是test，那么你就新建test.github.io的仓库</p>
 <p><font color="#AA0000">必须是你的用户名，其它名称无效</font></p>
@@ -230,7 +229,7 @@
 <p>然后到你的github项目根目录新建一个名为CNAME的文件（无后缀），里面填写你的域名，例如</p>
 <pre><code>https://blog.icland.xyz/
 </code></pre><p><font color="#AA0000">另外说一句，在你绑定了新域名之后，原来的你的用户名.github.io就无法访问了，必须用你绑定的域名</font></p>
-<img src="../../images/2021-02-12 230737.png">
+<img src="https://js-cdn.icland.xyz/static/images/210213/2021-02-12 230737.png">
 <h2 id="配置文件夹及git用户登录">配置文件夹及Git用户登录</h2>
 <p>新建一个你喜欢的目录</p>
 <p>在该目录下右键打开<code>Git bash here</code></p>
@@ -245,7 +244,7 @@ git pull # 将仓库文件都拉到本地目录
 <pre><code>hugo version #通过检查版本号验证hugo是否运行正常
 hugo new site ./ --force #强制在当前目录创建网站
 </code></pre><p>你的文件目录结构就像这样</p>
-<img src="../../images/2021-02-12 232427.png">
+<img src="https://js-cdn.icland.xyz/static/images/210213/2021-02-12 232427.png">
 <h2 id="安装主题">安装主题</h2>
 <pre><code>git clone https://github.com/flysnow-org/maupassant-hugo.git themes/maupassant
 </code></pre><p>在根目录下的 <code>config.toml</code> 文件中添加一行</p>
@@ -255,12 +254,12 @@ hugo new site ./ --force #强制在当前目录创建网站
 <pre><code>hugo new post/my-first-post.md
 </code></pre><p>然后打开<code>post/my-first-post.md</code>文件将<code>draft: true</code>改为<code>draft: false</code> # 该选项为草稿不可见</p>
 <p>在下面几行随便写点东西</p>
-<p><img src="../../images/2021-02-13 111959.png" /></p>
+<p><img src="https://js-cdn.icland.xyz/static/images/210213/2021-02-13 111959.png" /></p>
 <p>启动Hugo</p>
 <pre><code>hugo server
 </code></pre><p>使用浏览器访问<code>localhost:1313</code></p>
 <p>即可打开本地预览</p>
-<p><img src="../../images/2021-02-13 112251.png" /></p>
+<p><img src="https://js-cdn.icland.xyz/static/images/210213/2021-02-13 112251.png" /></p>
 <h2 id="实战操作">实战操作</h2>
 <p>执行命令编译网站</p>
 <pre><code>hugo -d skyxingcheng.github.io # 替换你自己的目录 该目录为Git项目名，在前面你已经clone到本地

@@ -14,10 +14,10 @@
     <meta property="og:title" content="使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP - 蝴蝶飞不过沧海 | Blog">
     <meta property="og:type" content="article">
         
-    <meta property="article:published_time" content='2021-02-10T00:00:00&#43;08:00'>
+    <meta property="article:published_time" content='2020-04-22T00:00:00&#43;08:00'>
         
         
-    <meta property="article:modified_time" content='2021-02-10T00:00:00&#43;08:00'>
+    <meta property="article:modified_time" content='2020-04-22T00:00:00&#43;08:00'>
         
     <meta name="Keywords" content="">
     <meta name="description" content="使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP">
@@ -188,7 +188,7 @@
             <h1 class="post-title">使用 Linux deploy 搭建属于自己的Nginx&#43;PHP-Web服务器，FRP内网穿透，可获取用户真实IP</h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年4月22日
         </date>
         
         
@@ -208,33 +208,33 @@ Busybox 去某安搜索就行了 第一个就是
 ====================本文以CentOS7作为演示====================</p>
 <h2 id="1软件安装与配置">1.软件安装与配置</h2>
 <p>首先打开busybox 安装位置选择 /system/xbin 点击 install 安装 (当然别的位置也行 与Linux deploy的位置一致就行)
-<img src="https://img-blog.csdnimg.cn/2020042120025185.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/2020042120025185.jpg" width="25%">
 然后就是Linux deploy了 打开软件 选择左上角三道杠 点击配置文件 写一个你喜欢的名字就行
-<img src="https://img-blog.csdnimg.cn/20200421201012976.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
-<img src="https://img-blog.csdnimg.cn/20200421201314289.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421201012976.jpg" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421201314289.jpg" width="25%">
 然后点击设置 勾选 锁定wifi，cpu唤醒 ，联网更新，ENV目录不用管它，path变量设置为busybox的安装目录，然后点击一次更新操作环境，最下面有个调试模式最好也勾选上，方便看信息
-<img src="https://img-blog.csdnimg.cn/20200421201745674.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
-<img src="https://img-blog.csdnimg.cn/20200421201814416.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421201745674.jpg" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421201814416.jpg" width="25%">
 然后我们回到主界面选择右下角三道杠 如图设置即可
 源地址设置为阿里云：https://mirrors.aliyun.com/centos-altarch/
 镜像大小根据所需设置 我这里是32GB
 至于安装类型，，，基本用不到，(其他安装类型一个也没成功&hellip;)
 用户名密码自己设置就行了 (ps:截图的源地址打错了)
-<img src="https://img-blog.csdnimg.cn/20200421202733502.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421202733502.jpg" width="25%">
 勾选启用挂载和启用ssh 添加一个挂载点方便访问sd卡
-<img src="https://img-blog.csdnimg.cn/20200421203119672.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
-<img src="https://img-blog.csdnimg.cn/2020042120334638.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421203119672.jpg" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/2020042120334638.jpg" width="25%">
 至此基本配置就完成了</p>
 <h2 id="2基本系统安装与调试">2.基本系统安装与调试</h2>
 <p>回到主界面 选择右上角三个点 点击安装 然后等待安装完毕即可 理论应该不会出现什么问题
 安装完毕回显 &laquo;&lt;deploy 就可以了
-<img src="https://img-blog.csdnimg.cn/20200421204938114.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421204938114.jpg" width="25%">
 然后我们点击启动 再用ssh工具连接 就和普通的没什么两样了 qwq
-<img src="https://img-blog.csdnimg.cn/20200421205143377.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="25%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421205143377.jpg" width="25%">
 设备内网IP:22
-<img src="https://img-blog.csdnimg.cn/20200421205302296.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="50%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421205302296.png" width="50%">
 用户名密码为软件中设置的密码
-<img src="https://img-blog.csdnimg.cn/20200421205506802.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="80%">
+<img src="https://js-cdn.icland.xyz/static/images/200422/20200421205506802.png" width="80%">
 <strong>更换YUM软件源</strong></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
 <table style="border-spacing:0;padding:0;margin:0;border:0;width:auto;overflow:auto;display:block;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
@@ -422,7 +422,7 @@ rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-7
 yum makecache		<span style="color:#998;font-style:italic">#生成缓存</span>
 </code></pre></td></tr></table>
 </div>
-</div><img src="https://img-blog.csdnimg.cn/20200421212014948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" width="99%">
+</div><img src="https://js-cdn.icland.xyz/static/images/200422/20200421212014948.png" width="99%">
 <h2 id="3终端配色与基本美化">3.终端配色与基本美化</h2>
 <p><strong>终端配色</strong></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -523,7 +523,7 @@ colorscheme evening
 </div>
 </div><p>操作完一波后就会像这样啦
 
-        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200421214549900.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200421214549900.png" />   
     </p>
 <h2 id="4编译安装所需依赖包">4.编译安装所需依赖包</h2>
 <p><strong>请按本文顺序安装
@@ -576,7 +576,7 @@ perl -v
 </div>
 </div><p>emmmm 121w这个数字是真的恐怖&hellip;.
 
-        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200421233722761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200421233722761.png" />   
     
 <strong>编译安装Pcre</strong></p>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -709,7 +709,7 @@ ln -s /usr/local/ /root/local		<span style="color:#998;font-style:italic">#创�
 </div>
 </div><p>连接测试正常 读写正常
 
-        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422003618666.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200422003618666.png" />   
     </p>
 <h2 id="6编译安装nginx">6.编译安装Nginx</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -740,7 +740,7 @@ netstat -antup | grep <span style="color:#099">80</span>
 </div>
 </div><p>浏览器打开看见如下界面 证明Nginx已经成功启动了
 
-        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422010203856.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200422010203856.png" />   
     </p>
 <h2 id="7编译安装php7">7.编译安装PHP7</h2>
 <div class="highlight"><div style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4">
@@ -790,7 +790,7 @@ php-fpm -v
 </code></pre></td></tr></table>
 </div>
 </div><p>
-        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422102836815.png" />   
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200422102836815.png" />   
     </p>
 <h2 id="8关联nginx与php">8.关联Nginx与PHP</h2>
 <p>新建一个你喜欢的目录 设置权限 并创建软连接</p>
@@ -1168,7 +1168,7 @@ netstat -an | grep <span style="color:#099">21</span> <span style="color:#998;fo
 </div>
 </div><p>浏览器打开设备IP:80 不出意外就OK啦
 
-        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422132116381.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200422132116381.png" />   
     </p>
 <h2 id="10frp内网穿透获取用户真实ip">10.frp内网穿透，获取用户真实IP</h2>
 <p><strong>frp</strong>内网穿透原理自行百度
@@ -1253,7 +1253,7 @@ nginx -s reload
 </div><p><strong>温馨提示：</strong> 由于启用了 <strong>proxy_protocol_v2</strong> 协议只能使用域名访问 内网IP不行的哦
 浏览器打开就看到你的真实IP地址了
 
-        <img class="mx-auto" alt="在这里插入图片描述" src="https://img-blog.csdnimg.cn/20200422134530613.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3NreXhjMjMz,size_16,color_FFFFFF,t_70" />   
+        <img class="mx-auto" alt="在这里插入图片描述" src="https://js-cdn.icland.xyz/static/images/200422/20200422134530613.png" />   
     </p>
 <h2 id="后记">后记</h2>
 <p>由于MIUI系统限制，屏幕熄灭会限制wlan活动 所以我个人不建议使用MIUI
