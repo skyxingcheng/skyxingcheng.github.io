@@ -250,5 +250,23 @@
       <description>前言 第一次写文章，有问题请见谅，文章有错误请指出，本文末尾会贴出所有用到的文章，感谢各位大佬。 所需软件: Busybox，Linux deploy 本文所用均为最新版 (都需要ROOT完整权限，没有root建议别浪费时间了) 测试环境: Mi6 — MIUI 11 开发版，Android 9.0，MagiskSU，6GB物</description>
     </item>
     
+    <item>
+      <title>归档</title>
+      <link>https://blog.icland.xyz/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/archives/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>搜索</title>
+      <link>https://blog.icland.xyz/search/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/search/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
