@@ -13,7 +13,7 @@
       <pubDate>Sat, 01 Jan 2000 00:00:00 +0000</pubDate>
       
       <guid>https://blog.icland.xyz/post/about/</guid>
-      <description>感谢您访问我的博客 | Thank you for your visit! 蝴蝶飞不过沧海 | Blog 您在浏览文章有任何问题可以通过以下方式找到我! QQ@🥕zhou Email@skyxingcheng233@outlook.com CSDN@skyxingcheng HostGitHub PoweredHugo Modify蝴蝶飞不过沧海 DesignMaupassant</description>
+      <description>感谢您访问我的博客 | Thank you for your visit! 蝴蝶飞不过沧海 | Blog 您在浏览文章有任何问题可以通过以下方式找到我! QQ@🥕zhou Email@skyxingcheng233@outlook.com CSDN@skyxingcheng 本站点由Hugo生成，托管于Github，主题为maupassant-hugo HostGitHub PoweredHugo Modify蝴蝶飞不过沧海 DesignMaupassant</description>
     </item>
     
     <item>
@@ -185,15 +185,6 @@
       
       <guid>https://blog.icland.xyz/post/%E5%85%B3%E9%97%AD%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E9%98%B2%E7%81%AB%E5%A2%99-%E6%94%BE%E8%A1%8C%E7%AB%AF%E5%8F%A3/</guid>
       <description>1.刷开发版并开启ssh 自行百度 2.使用ssh登录路由器 1 vi /etc/config/firewall 修改default如下 1 2 3 4 5 6 7 config defaults option syn_flood &amp;#39;0&amp;#39; option input &amp;#39;ACCEPT&amp;#39; option output &amp;#39;ACCEPT&amp;#39; option forward &amp;#39;ACCEPT&amp;#39; option drop_invalid &amp;#39;0&amp;#39; option disable_ipv6 &amp;#39;0&amp;#39; 3.重启防火墙 1 /etc/init.d/firewall restart 不要自作聪明直接关掉防火墙，会造成无法访问互联网 。。。。。。。。。。 参考文章 https://www.cnblogs.com/EasonJim/p/9238533.html</description>
-    </item>
-    
-    <item>
-      <title>Candy-ServerStatus 糖果服务器云探针</title>
-      <link>https://blog.icland.xyz/post/Candy-ServerStatus/</link>
-      <pubDate>Sat, 04 Jul 2020 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.icland.xyz/post/Candy-ServerStatus/</guid>
-      <description>Candy-ServerStatus 糖果服务器云探针 2020 07 14 在线展示 https://icland.xyz/status/ 基于修改&amp;amp;优化&amp;amp;去杂 1 2 3 4 5 6 7 /client/* /server/src/main.h /server/src/main.cpp /web/index.html /web/css/hotaru_fix.css /web/js/serverstatus.js /web/img/* 食用方法: 1 2 3 4 git clone https://github.com/skyxingcheng/Candy-ServerStatus.git cd /Candy-ServerStatus/server make ./sergate -c config -d /usr/share/wwwroot/ -p 35601 客户端使用linux或跨平台的python文件直接启动即可 注意配置服务器和用户名密码 支持ipv4和ipv6支持检测双线 需在客户端设置自定义</description>
     </item>
     
     <item>

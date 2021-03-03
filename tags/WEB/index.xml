@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Web on 蝴蝶飞不过沧海 | Blog</title>
-    <link>https://blog.icland.xyz/tags/Web/</link>
-    <description>Recent content in Web on 蝴蝶飞不过沧海 | Blog</description>
+    <title>web on 蝴蝶飞不过沧海 | Blog</title>
+    <link>https://blog.icland.xyz/tags/web/</link>
+    <description>Recent content in web on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 28 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/tags/Web/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 28 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/tags/web/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Viewerjs-强大的Web图片插件</title>
       <link>https://blog.icland.xyz/post/Viewerjs-%E5%BC%BA%E5%A4%A7%E7%9A%84Web%E5%9B%BE%E7%89%87%E6%8F%92%E4%BB%B6/</link>
