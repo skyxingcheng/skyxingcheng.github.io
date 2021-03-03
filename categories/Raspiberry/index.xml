@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Raspiberry on 蝴蝶飞不过沧海 | Blog</title>
+    <link>https://blog.icland.xyz/categories/Raspiberry/</link>
+    <description>Recent content in Raspiberry on 蝴蝶飞不过沧海 | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Tue, 26 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/Raspiberry/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>解决树莓派重启后mac地址自动变更</title>
+      <link>https://blog.icland.xyz/post/%E8%A7%A3%E5%86%B3%E6%A0%91%E8%8E%93%E6%B4%BE%E9%87%8D%E5%90%AF%E5%90%8Emac%E5%9C%B0%E5%9D%80%E8%87%AA%E5%8A%A8%E5%8F%98%E6%9B%B4/</link>
+      <pubDate>Tue, 26 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E8%A7%A3%E5%86%B3%E6%A0%91%E8%8E%93%E6%B4%BE%E9%87%8D%E5%90%AF%E5%90%8Emac%E5%9C%B0%E5%9D%80%E8%87%AA%E5%8A%A8%E5%8F%98%E6%9B%B4/</guid>
+      <description>https://www.cnblogs.com/mph666/p/13256548.html 创建或编辑 /etc/NetworkManager/conf.d/100-disable-wifi-mac-randomization.conf 1 2 3 4 5 [connection] wifi.mac-address-randomization=1 [device] wifi.scan-rand-mac-address=no 重启树莓派</description>
+    </item>
+    
+    <item>
+      <title>树莓派无线中继为有线网络，第二局域网，DHCP服务器，支持ipv6上网</title>
+      <link>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%97%A0%E7%BA%BF%E4%B8%AD%E7%BB%A7%E4%B8%BA%E6%9C%89%E7%BA%BF%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E5%B1%80%E5%9F%9F%E7%BD%91DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%AF%E6%8C%81ipv6%E4%B8%8A%E7%BD%91/</link>
+      <pubDate>Wed, 15 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%97%A0%E7%BA%BF%E4%B8%AD%E7%BB%A7%E4%B8%BA%E6%9C%89%E7%BA%BF%E7%BD%91%E7%BB%9C%E7%AC%AC%E4%BA%8C%E5%B1%80%E5%9F%9F%E7%BD%91DHCP%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%94%AF%E6%8C%81ipv6%E4%B8%8A%E7%BD%91/</guid>
+      <description>0.环境 光猫&amp;mdash;&amp;gt;主路由器&amp;mdash;&amp;gt;5GWiFi&amp;mdash;&amp;gt;树莓派&amp;mdash;&amp;gt;交换机&amp;mdash;&amp;gt;电脑 1.安装依赖 提前连接好WiFi！！！ 1 apt-get install brctl dnsmasq radvd ndp6 2.配置DHCP与radvd以及nat转发设置 1 vi /etc/dnsmasq.conf 1 2 3 4 5 6 dhcp-sequential-ip dhcp-range=10.96.181.10,10.96.181.240,255.255.255.0,12h dhcp-range=fd00::22, fd00::44,</description>
+    </item>
+    
+    <item>
+      <title>无法运行apt-key命令检查数字签名 _ Couldn&#39;t execute _usr_bin_apt-key to check</title>
+      <link>https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/</link>
+      <pubDate>Sun, 10 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E6%97%A0%E6%B3%95%E8%BF%90%E8%A1%8Capt-key%E5%91%BD%E4%BB%A4%E6%A3%80%E6%9F%A5%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D-_-Couldnt-execute-_usr_bin_apt-key-to-check/</guid>
+      <description>某日随便敲apt-get命令发现如下错误 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 获取:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease [15.0 kB] 错误:1 http://mirror.tuna.tsinghua.edu.cn/raspbian/raspbian buster InRelease Couldn&amp;#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspbian_raspbian_dists_buster_InRelease 获取:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease [25.2 kB] 错误:2 http://mirror.tuna.tsinghua.edu.cn/raspberrypi buster InRelease Couldn&amp;#39;t execute /usr/bin/apt-key to check /var/lib/apt/lists/partial/mirror.tuna.tsinghua.edu.cn_raspberrypi_dists_buster_InRelease 正在读取软件包列表... 完成 W: GPG 错误：http://mirror.tuna.tsinghua.edu.cn/raspbia</description>
+    </item>
+    
+    <item>
+      <title>Nginx使用OpenSSL库报错问题 _ 树莓派折腾日记#3</title>
+      <link>https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/</link>
+      <pubDate>Thu, 30 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Nginx%E4%BD%BF%E7%94%A8OpenSSL%E5%BA%93%E6%8A%A5%E9%94%99%E9%97%AE%E9%A2%98-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#3/</guid>
+      <description>修改Nginx源码 1 vi /usr/local/src/nginx-1.17.10/auto/lib/openssl/conf 找到 1 2 3 4 5 CORE_INCS=&amp;#34;$CORE_INCS$OPENSSL/.openssl/include&amp;#34; CORE_DEPS=&amp;#34;$CORE_DEPS$OPENSSL/.openssl/include/openssl/ssl.h&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/.openssl/lib/libssl.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/.openssl/lib/libcrypto.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$NGX_LIBDL&amp;#34; 修改为 1 2 3 4 5 CORE_INCS=&amp;#34;$CORE_INCS$OPENSSL/.openssl/include&amp;#34; CORE_DEPS=&amp;#34;$CORE_DEPS$OPENSSL/include/openssl/ssl.h&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/lib/libssl.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$OPENSSL/lib/libcrypto.a&amp;#34; CORE_LIBS=&amp;#34;$CORE_LIBS$NGX_LIBDL&amp;#34; 编译Nginx时指定OpenSSL安装位置 1 ./configure --prefix=/usr/local/nginx --with-http_auth_request_module --with-http_ssl_module --with-http_v2_module --with-http_gunzip_module --with-pcre --with-pcre-jit --with-threads --with-ipv6 --with-http_realip_module --with-openssl=/usr/local/openssl/lib 1 make &amp;amp;&amp;amp; make install Enjoy :)</description>
+    </item>
+    
+    <item>
+      <title>OpenSSL编译报错：unknown architecture `armv8-a&#43;crypto&#39; _ 树莓派折腾日记#2</title>
+      <link>https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/OpenSSL%E7%BC%96%E8%AF%91%E6%8A%A5%E9%94%99unknown-architecture-armv8-a&#43;crypto-_-%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#2/</guid>
+      <description>RT 先说明，本人小白，搞树莓派的OpenSSL头都大了 这特喵是什么神奇的报错 1 unknown architecture `armv8-a+crypto&amp;#39; ?????OpenSSL不支持armv8指令集???? 解决如下 1 2 3 4 5 6 7 8 cd /usr/src wget https://www.openssl.org/source/openssl-1.1.1g.tar.gz tar -zvxf openssl-1.1.1g.tar.gz cd openssl-1.1.1g ./config no-asm shared zlib --prefix=/usr/local/openssl make depend make #别test了 慢的要死 make install 1 apt-get install libxml2-dev</description>
+    </item>
+    
+    <item>
+      <title>树莓派折腾日记#1</title>
+      <link>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/</link>
+      <pubDate>Wed, 29 Apr 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E6%A0%91%E8%8E%93%E6%B4%BE%E6%8A%98%E8%85%BE%E6%97%A5%E8%AE%B0#1/</guid>
+      <description>boot分区下新建文件 ssh 来启用ssh boot分区编辑config.txt最后一行加上 1 arm_64bit=1 来启用64位内核 使用 pi raspberry 登陆系统 修改密码并解锁root账户 1 2 3 sudo passwd pi #修改pi的密码 sudo passwd root #修改root的密码 sudo passwd --unlock root #解锁root用户 然后使用root登陆 备份镜像源 1 2 cp /etc/apt/sources.list /etc/apt/sources.list.bak cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak 修改软件</description>
+    </item>
+    
+  </channel>
+</rss>

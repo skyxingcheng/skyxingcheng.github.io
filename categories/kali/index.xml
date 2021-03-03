@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kali on 蝴蝶飞不过沧海 | Blog</title>
+    <link>https://blog.icland.xyz/categories/kali/</link>
+    <description>Recent content in kali on 蝴蝶飞不过沧海 | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Fri, 28 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/kali/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kali Linux xfce4无法使用fn进行屏幕亮度调节</title>
+      <link>https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/</link>
+      <pubDate>Fri, 28 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/</guid>
+      <description>检查xfce4的电源管理器是否禁用掉了按键 保持 管理显示器亮度调节按键(K) 为打开状态即可</description>
+    </item>
+    
+    <item>
+      <title>Kali xfce4终端不能用TAB自动补全</title>
+      <link>https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/</link>
+      <pubDate>Fri, 28 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/</guid>
+      <description>1、用编辑器打开 /etc/bash.bashrc文件 2、找到文件中的下列代码 1 2 3 4 5 6 7 8 #enable bash completion in interactive shells #if ! shopt -oq posix; then # if [-f /usr/share/bash-completion/bash_completion ]; then # . /usr/share/bash-completion/bash_completion # elif [ -f /etc/bash_completion]; then # . /etc/bash_completion # fi #fi 将注释符号#去掉，即改成 1 2 3 4 5 6 7 8 #enable bash completion in interactive shells if ! shopt -oq posix; then if [-f /usr/share/bash-completion/bash_completion ]; then . /usr/share/bash-completion/bash_completion elif [ -f /etc/bash_completion]; then . /etc/bash_completion fi fi 3、最后 source一下 /</description>
+    </item>
+    
+    <item>
+      <title>Kali安装后合上盖子不休眠问题</title>
+      <link>https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/</link>
+      <pubDate>Fri, 28 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/</guid>
+      <description>转载于 https://www.jianshu.com/p/f4f1ba2e92cf 安装工具包： 1 apt-get install pm-utils laptop-mode-tools -y 修改配置文件/etc/laptop-mode/laptop-mode.conf 1 2 3 ENABLE_LAPTOP_MODE_ON_BATTERY=1 #使用电池 ENABLE_LAPTOP_MODE_ON_AC=1 #使用电源 ENABLE_LAPTOP_MODE_WHEN_LID_CLOSED=1 #合上屏幕 重启服务 1 2 /etc/init.d/laptop-mode restart cat /proc/sys/vm/laptop_mode #检查配置 输出不是0就行 THE END 若要设置不休眠 修改 /etc/systemd/logind.conf 1 HandleLidSwitch=ignore 然后重启服务 1 systemctl restart systemd-logind.service</description>
+    </item>
+    
+    <item>
+      <title>Kali设置启动时输出日志，不显示logo</title>
+      <link>https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/</guid>
+      <description>编辑文件vi /boot/grub/grub.cfg 去掉linux行的splash参数即可 图片仅供参考</description>
+    </item>
+    
+    <item>
+      <title>Kali设置默认启动文本模式，不启动图形界面，减少占用</title>
+      <link>https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%96%87%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%87%8F%E5%B0%91%E5%8D%A0%E7%94%A8/</link>
+      <pubDate>Thu, 27 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%96%87%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%87%8F%E5%B0%91%E5%8D%A0%E7%94%A8/</guid>
+      <description>一个命令搞定！ 1 systemctl set-default multi-user.target 改回用这个 1 systemctl set-default graphical.target 转载于 https://blog.csdn.net/Alpha_B612/article/details/81053789?utm_source=blogxgwz8</description>
+    </item>
+    
+  </channel>
+</rss>

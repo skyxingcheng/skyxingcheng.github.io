@@ -16,5 +16,14 @@
       <description>Github-ViewerJS ViewerJS是一款过于强大的web前端图片查看插件，强大到不知道怎么使用awa 效果预览 : https://fengyuanchen.github.io/viewerjs/ 简单食用教程 你应正确引入css和js文件 &amp;lt;link href=&amp;quot;//cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt; &amp;lt;script src=&amp;quot;//cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 然后，你需要创建自己的css和js来启用此插件 下面只是例子 CSS .docs-pictures { list-style: none; margin: 0; padding: 0; } JS window.onload = function () { &#39;use strict&#39;; var Viewer = window.Viewer; var console = window.console || { log: function () {} }; var pictures = document.querySelector(&#39;.docs-pictures&#39;); var</description>
     </item>
     
+    <item>
+      <title>使用GitHub&#43;hugo搭建静态个人博客</title>
+      <link>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8GitHub&#43;hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Fri, 12 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8GitHub&#43;hugo%E6%90%AD%E5%BB%BA%E9%9D%99%E6%80%81%E4%B8%AA%E4%BA%BA%E5%8D%9A%E5%AE%A2/</guid>
+      <description>使用GitHub+hugo搭建静态个人博客 优点 全是静态文件，访问速度快 免费方便，不用花一分钱就可以搭建一个自由的个人博客，不需要服务器不需要后台 可以随意绑定自己的域名，不仔细看的话根本看不出来你的网站是基于github的 博客内容可以轻松打包、转移、发布到其它平台 准备工作 已注册并验</description>
+    </item>
+    
   </channel>
 </rss>

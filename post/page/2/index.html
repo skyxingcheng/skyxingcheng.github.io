@@ -76,17 +76,28 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/" title="Kali设置启动时输出日志，不显示logo">Kali设置启动时输出日志，不显示logo</a>
+                <a href="https://blog.icland.xyz/post/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89Samba%E8%B7%AF%E5%BE%84%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE%E7%A3%81%E7%9B%98%E6%A0%B9%E7%9B%AE%E5%BD%95/" title="小米路由器，设置自定义Samba路径，直接访问磁盘根目录">小米路由器，设置自定义Samba路径，直接访问磁盘根目录</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年8月30日
         </date>
         
-        <div class="post-content">
-            编辑文件vi /boot/grub/grub.cfg 去掉linux行的splash参数即可 图片仅供参考……
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/samba'>samba</a></span>
+            
+            <span class="meta-category"><a href='/categories/%E8%B7%AF%E7%94%B1%E5%99%A8'>路由器</a></span>
+            
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/">阅读全文</a></p>
+        
+        <div class="post-content">
+            确保您已开启SSH 确保您的外设正常使用且Samba插件可正常开启 首先关闭Samba插件 使用scp登录您的路由器 修改配置文件\extdisks\sda1\xiaomi_router\config\smb.conf 追加代码 1 2 3 4 5 6 7 8 [root] path = /extdisks/sda1 read only = no guest ok = yes create mask = 0666 directory mask = 0777 browseable = yes……
+        </div>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/%E5%B0%8F%E7%B1%B3%E8%B7%AF%E7%94%B1%E5%99%A8%E8%AE%BE%E7%BD%AE%E8%87%AA%E5%AE%9A%E4%B9%89Samba%E8%B7%AF%E5%BE%84%E7%9B%B4%E6%8E%A5%E8%AE%BF%E9%97%AE%E7%A3%81%E7%9B%98%E6%A0%B9%E7%9B%AE%E5%BD%95/">阅读全文</a></p>
     </article>
     
     
@@ -98,8 +109,19 @@
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年8月28日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/debian'>debian</a></span>
+            
+            <span class="meta-category"><a href='/categories/kali'>kali</a></span>
+            
+        </div>
         
         <div class="post-content">
             转载于 https://www.jianshu.com/p/f4f1ba2e92cf 安装工具包： 1 apt-get install pm-utils laptop-mode-tools -y 修改配置文件/etc/laptop-mode/laptop-mode.conf 1 2 3 ENABLE_LAPTOP_MODE_ON_BATTERY=1 #使用电池 ENABLE_LAPTOP_MODE_ON_AC=1 #使用电源 ENABLE_LAPTOP_MODE_WHEN_LID_CLOSED=1 #合上屏幕 重启服务 1 2 /etc/init.d/laptop-mode restart cat /proc/sys/vm/laptop_mode #检查配置 输出不是0就行 THE END 若要设置不休眠 修改 /etc/systemd/logind.conf 1 HandleLidSwitch=ignore 然后重启服务 1 systemctl restart systemd-logind.service……
@@ -116,8 +138,19 @@
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年8月28日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/debian'>debian</a></span>
+            
+            <span class="meta-category"><a href='/categories/kali'>kali</a></span>
+            
+        </div>
         
         <div class="post-content">
             1、用编辑器打开 /etc/bash.bashrc文件 2、找到文件中的下列代码 1 2 3 4 5 6 7 8 #enable bash completion in interactive shells #if ! shopt -oq posix; then # if [-f /usr/share/bash-completion/bash_completion ]; then # . /usr/share/bash-completion/bash_completion # elif [ -f /etc/bash_completion]; then # . /etc/bash_completion # fi #fi 将注释符号#去掉，即改成 1 2 3 4 5 6 7 8 #enable bash completion in interactive shells if ! shopt -oq posix; then if [-f /usr/share/bash-completion/bash_completion ]; then . /usr/share/bash-completion/bash_completion elif [ -f /etc/bash_completion]; then . /etc/bash_completion fi fi 3、最后 source一下 /……
@@ -134,8 +167,19 @@
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年8月28日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/debian'>debian</a></span>
+            
+            <span class="meta-category"><a href='/categories/kali'>kali</a></span>
+            
+        </div>
         
         <div class="post-content">
             检查xfce4的电源管理器是否禁用掉了按键 保持 管理显示器亮度调节按键(K) 为打开状态即可……
@@ -148,17 +192,28 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/" title="Debian10以root用户自动登录">Debian10以root用户自动登录</a>
+                <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%96%87%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%87%8F%E5%B0%91%E5%8D%A0%E7%94%A8/" title="Kali设置默认启动文本模式，不启动图形界面，减少占用">Kali设置默认启动文本模式，不启动图形界面，减少占用</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年8月27日
         </date>
         
-        <div class="post-content">
-            Debian 10 root用户自动登录： 注释掉 /etc/pam.d/gdm-autologin和/etc/pam.d/gdm-password文件中： 1 #auth required pam_succeed_if.so user != root quiet_success 注释掉。 在本行前加#，取消Debian不让root登录的限制。 修改gdm3的设定文件/etc/gdm3/daemon.conf 1……
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/debian'>debian</a></span>
+            
+            <span class="meta-category"><a href='/categories/kali'>kali</a></span>
+            
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/">阅读全文</a></p>
+        
+        <div class="post-content">
+            一个命令搞定！ 1 systemctl set-default multi-user.target 改回用这个 1 systemctl set-default graphical.target 转载于 https://blog.csdn.net/Alpha_B612/article/details/81053789?utm_source=blogxgwz8……
+        </div>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E9%BB%98%E8%AE%A4%E5%90%AF%E5%8A%A8%E6%96%87%E6%9C%AC%E6%A8%A1%E5%BC%8F%E4%B8%8D%E5%90%AF%E5%8A%A8%E5%9B%BE%E5%BD%A2%E7%95%8C%E9%9D%A2%E5%87%8F%E5%B0%91%E5%8D%A0%E7%94%A8/">阅读全文</a></p>
     </article>
     
     
@@ -166,17 +221,28 @@
     <article class="post">
         <header>
             <h1 class="post-title">
-                <a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/" title="Centos7自动root登录(GNOME桌面环境)">Centos7自动root登录(GNOME桌面环境)</a>
+                <a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/" title="Kali设置启动时输出日志，不显示logo">Kali设置启动时输出日志，不显示logo</a>
             </h1>
         </header>
         <date class="post-meta meta-date">
-            2021年2月10日
+            2020年8月27日
         </date>
         
-        <div class="post-content">
-            vim /etc/gdm/custom.conf 在daemon下面添加 1 2 AutomaticLoginEnable=True AutomaticLogin=root……
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/debian'>debian</a></span>
+            
+            <span class="meta-category"><a href='/categories/kali'>kali</a></span>
+            
         </div>
-        <p class="readmore"><a href="https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/">阅读全文</a></p>
+        
+        <div class="post-content">
+            编辑文件vi /boot/grub/grub.cfg 去掉linux行的splash参数即可 图片仅供参考……
+        </div>
+        <p class="readmore"><a href="https://blog.icland.xyz/post/Kali%E8%AE%BE%E7%BD%AE%E5%90%AF%E5%8A%A8%E6%97%B6%E8%BE%93%E5%87%BA%E6%97%A5%E5%BF%97%E4%B8%8D%E6%98%BE%E7%A4%BAlogo/">阅读全文</a></p>
     </article>
     
     
@@ -222,6 +288,17 @@
             2020年7月15日
         </date>
         
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/Raspiberry'>Raspiberry</a></span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/Debian'>Debian</a></span>
+            
+        </div>
+        
         <div class="post-content">
             0.环境 光猫&mdash;&gt;主路由器&mdash;&gt;5GWiFi&mdash;&gt;树莓派&mdash;&gt;交换机&mdash;&gt;电脑 1.安装依赖 提前连接好WiFi！！！ 1 apt-get install brctl dnsmasq radvd ndp6 2.配置DHCP与radvd以及nat转发设置 1 vi /etc/dnsmasq.conf 1 2 3 4 5 6 dhcp-sequential-ip dhcp-range=10.96.181.10,10.96.181.240,255.255.255.0,12h dhcp-range=fd00::22, fd00::44,……
         </div>
@@ -239,6 +316,15 @@
         <date class="post-meta meta-date">
             2020年7月11日
         </date>
+        
+        <div class="post-meta">
+            <span>|</span>
+            
+            <span class="meta-category"><a href='/categories/linux'>linux</a></span>
+            
+            <span class="meta-category"><a href='/categories/%E8%B7%AF%E7%94%B1%E5%99%A8'>路由器</a></span>
+            
+        </div>
         
         <div class="post-content">
             1.刷开发版并开启ssh 自行百度 2.使用ssh登录路由器 1 vi /etc/config/firewall 修改default如下 1 2 3 4 5 6 7 config defaults option syn_flood &#39;0&#39; option input &#39;ACCEPT&#39; option output &#39;ACCEPT&#39; option forward &#39;ACCEPT&#39; option drop_invalid &#39;0&#39; option disable_ipv6 &#39;0&#39; 3.重启防火墙 1 /etc/init.d/firewall restart 不要自作聪明直接关掉防火墙，会造成无法访问互联网 。。。。。。。。。。 参考文章 https://www.cnblogs.com/EasonJim/p/9238533.html……
@@ -363,19 +449,19 @@
     </li>
     
     <li>
-        <a href="https://blog.icland.xyz/post/Debian10%E4%BB%A5root%E7%94%A8%E6%88%B7%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95/" title="Debian10以root用户自动登录">Debian10以root用户自动登录</a>
+        <a href="https://blog.icland.xyz/post/Linux%E5%9F%BA%E7%A1%80%E8%AE%BE%E7%BD%AE/" title="Linux基础设置">Linux基础设置</a>
     </li>
     
     <li>
-        <a href="https://blog.icland.xyz/post/Kali-Linux-xfce4%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8fn%E8%BF%9B%E8%A1%8C%E5%B1%8F%E5%B9%95%E4%BA%AE%E5%BA%A6%E8%B0%83%E8%8A%82/" title="Kali Linux xfce4无法使用fn进行屏幕亮度调节">Kali Linux xfce4无法使用fn进行屏幕亮度调节</a>
+        <a href="https://blog.icland.xyz/post/%E8%A7%A3%E5%86%B3%E6%A0%91%E8%8E%93%E6%B4%BE%E9%87%8D%E5%90%AF%E5%90%8Emac%E5%9C%B0%E5%9D%80%E8%87%AA%E5%8A%A8%E5%8F%98%E6%9B%B4/" title="解决树莓派重启后mac地址自动变更">解决树莓派重启后mac地址自动变更</a>
     </li>
     
     <li>
-        <a href="https://blog.icland.xyz/post/Kali-xfce4%E7%BB%88%E7%AB%AF%E4%B8%8D%E8%83%BD%E7%94%A8TAB%E8%87%AA%E5%8A%A8%E8%A1%A5%E5%85%A8/" title="Kali xfce4终端不能用TAB自动补全">Kali xfce4终端不能用TAB自动补全</a>
+        <a href="https://blog.icland.xyz/post/Windows10%E6%9C%80%E6%96%B020H2%E7%89%88%E6%9C%AC%E5%85%B3%E9%97%ADMicrosoft-Defender%E9%98%B2%E7%97%85%E6%AF%92%E7%A8%8B%E5%BA%8F/" title="Windows10最新20H2版本关闭Microsoft Defender防病毒程序">Windows10最新20H2版本关闭Microsoft Defender防病毒程序</a>
     </li>
     
     <li>
-        <a href="https://blog.icland.xyz/post/Kali%E5%AE%89%E8%A3%85%E5%90%8E%E5%90%88%E4%B8%8A%E7%9B%96%E5%AD%90%E4%B8%8D%E4%BC%91%E7%9C%A0%E9%97%AE%E9%A2%98/" title="Kali安装后合上盖子不休眠问题">Kali安装后合上盖子不休眠问题</a>
+        <a href="https://blog.icland.xyz/post/Windows10%E5%AD%90%E7%B3%BB%E7%BB%9F%E5%88%87%E6%8D%A2%E9%BB%98%E8%AE%A4%E7%94%A8%E6%88%B7%E5%B9%B6%E8%AE%BE%E7%BD%AE%E8%BD%AF%E4%BB%B6%E5%BC%80%E6%9C%BA%E8%87%AA%E5%90%AF%E5%8A%A8/" title="Windows10子系统切换默认用户，并设置软件开机自启动">Windows10子系统切换默认用户，并设置软件开机自启动</a>
     </li>
     
 </ul>
@@ -387,27 +473,41 @@
         <h3 class="widget-title"><a href='/categories/'>分类</a></h3>
 <ul class="widget-list">
     
-    <li><a href="https://blog.icland.xyz/categories/Cloudflare/">Cloudflare (2)</a></li>
+    <li><a href="https://blog.icland.xyz/categories/Cloudflare/">Cloudflare (3)</a></li>
     
-    <li><a href="https://blog.icland.xyz/categories/Web/">Web (3)</a></li>
+    <li><a href="https://blog.icland.xyz/categories/debian/">debian (5)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/Raspiberry/">Raspiberry (5)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/Web/">Web (4)</a></li>
     
     <li><a href="https://blog.icland.xyz/categories/Wzfou/">Wzfou (1)</a></li>
     
     <li><a href="https://blog.icland.xyz/categories/arm/">arm (2)</a></li>
     
-    <li><a href="https://blog.icland.xyz/categories/centos/">centos (1)</a></li>
+    <li><a href="https://blog.icland.xyz/categories/centos/">centos (2)</a></li>
     
-    <li><a href="https://blog.icland.xyz/categories/debian/">debian (1)</a></li>
+    <li><a href="https://blog.icland.xyz/categories/debian/">debian (10)</a></li>
     
-    <li><a href="https://blog.icland.xyz/categories/html5/">html5 (1)</a></li>
+    <li><a href="https://blog.icland.xyz/categories/html5/">html5 (2)</a></li>
     
-    <li><a href="https://blog.icland.xyz/categories/linux/">linux (3)</a></li>
+    <li><a href="https://blog.icland.xyz/categories/kali/">kali (5)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/linux/">linux (20)</a></li>
     
     <li><a href="https://blog.icland.xyz/categories/mysql/">mysql (1)</a></li>
     
     <li><a href="https://blog.icland.xyz/categories/nginx/">nginx (2)</a></li>
     
     <li><a href="https://blog.icland.xyz/categories/php/">php (2)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/Raspiberry/">Raspiberry (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/samba/">samba (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/windows/">windows (1)</a></li>
+    
+    <li><a href="https://blog.icland.xyz/categories/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器 (2)</a></li>
     
 </ul>
     </section>
@@ -434,6 +534,8 @@
     
     <a href="https://blog.icland.xyz/tags/html5/">html5</a>
     
+    <a href="https://blog.icland.xyz/tags/kali/">kali</a>
+    
     <a href="https://blog.icland.xyz/tags/linux/">linux</a>
     
     <a href="https://blog.icland.xyz/tags/mysql/">mysql</a>
@@ -441,6 +543,14 @@
     <a href="https://blog.icland.xyz/tags/nginx/">nginx</a>
     
     <a href="https://blog.icland.xyz/tags/php/">php</a>
+    
+    <a href="https://blog.icland.xyz/tags/Raspiberry/">Raspiberry</a>
+    
+    <a href="https://blog.icland.xyz/tags/samba/">samba</a>
+    
+    <a href="https://blog.icland.xyz/tags/windows/">windows</a>
+    
+    <a href="https://blog.icland.xyz/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">路由器</a>
     
 </div>
     </section>
