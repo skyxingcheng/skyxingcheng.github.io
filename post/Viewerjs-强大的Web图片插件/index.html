@@ -211,8 +211,8 @@
     </p>
 <h3 id="简单食用教程">简单食用教程</h3>
 <p><font color="#FF0099">你应正确引入css和js文件</font></p>
-<pre><code>&lt;link  href=&quot;//cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.css&quot; rel=&quot;stylesheet&quot;&gt;
-&lt;script src=&quot;//cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.js&quot;&gt;&lt;/script&gt;
+<pre><code>&lt;link  href=&quot;https://cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.js&quot;&gt;&lt;/script&gt;
 </code></pre><p><font color="#f173ac">然后，你需要创建自己的css和js来启用此插件</font></p>
 <p><font color="#f173ac">下面只是例子</font></p>
 <p>CSS</p>
@@ -227,69 +227,51 @@
   var Viewer = window.Viewer;
   var console = window.console || { log: function () {} };
   var pictures = document.querySelector('.docs-pictures');
-  var options = {
-    ready: function (e) {
-      console.log(e.type);
-    },
-    show: function (e) {
-      console.log(e.type);
-    },
-    shown: function (e) {
-      console.log(e.type);
-    },
-    hide: function (e) {
-      console.log(e.type);
-    },
-    hidden: function (e) {
-      console.log(e.type);
-    },
-    view: function (e) {
-      console.log(e.type);
-    },
-    viewed: function (e) {
-      console.log(e.type);
-    },
-    move: function (e) {
-      console.log(e.type);
-    },
-    moved: function (e) {
-      console.log(e.type);
-    },
-    rotate: function (e) {
-      console.log(e.type);
-    },
-    rotated: function (e) {
-      console.log(e.type);
-    },
-    scale: function (e) {
-      console.log(e.type);
-    },
-    scaled: function (e) {
-      console.log(e.type);
-    },
-    zoom: function (e) {
-      console.log(e.type);
-    },
-    zoomed: function (e) {
-      console.log(e.type);
-    },
-    play: function (e) {
-      console.log(e.type);
-    },
-    stop: function (e) {
-      console.log(e.type);
-    }
+  var options = {}
   };
   var viewer = new Viewer(pictures, options);
 };
 
 </code></pre><p>别忘记引入你的CSS和JS</p>
-<p>然后你需要将所有图片都放在一个div标签里</p>
+<p>最后你需要将所有图片都放在一个div标签里</p>
 <p>就像这样</p>
 <pre><code>&lt;div class=&quot;docs-pictures&quot;&gt;
 &lt;img src=&quot;https://js-cdn.icland.xyz/static/images/210227/2021-02-27 091643.png&quot; /&gt;
 &lt;img src=&quot;https://js-cdn.icland.xyz/static/images/210227/20210227091802.png&quot; /&gt;
 &lt;/div&gt;
+</code></pre><p>小白请看完整代码</p>
+<pre><code>&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;demo&lt;/title&gt;
+&lt;link  href=&quot;https://cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+&lt;script src=&quot;https://cdn.bootcdn.net/ajax/libs/viewerjs/1.9.0/viewer.min.js&quot; &gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;style&gt;
+        .docs-pictures {
+         list-style: none;
+         margin: 0;
+         padding: 0;
+        }
+    &lt;/style&gt;
+
+    &lt;div class=&quot;docs-pictures&quot;&gt;
+        &lt;img src=&quot;https://js-cdn.icland.xyz/static/images/210227/2021-02-27 091643.png&quot;&gt;
+        &lt;img src=&quot;https://js-cdn.icland.xyz/static/images/210227/20210227091802.png&quot;&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
+        window.onload = function () {
+            'use strict';
+            var Viewer = window.Viewer;
+            var console = window.console || { log: function () {} };
+            var pictures = document.querySelector('.docs-pictures');
+            var options = {};
+            var viewer = new Viewer(pictures, options);
+        };
+&lt;/script&gt;
+&lt;/html&gt;
+
 </code></pre><p>获取更多帮助请访问该项目GitHub页面<a href="https://github.com/fengyuanchen/viewerjs">ViewerJS</a></p>
 <h1 id="font-colorff55ffend-for-pagefont"><font color="#FF55FF">End For Page</font></h1>
 
