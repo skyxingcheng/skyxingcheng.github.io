@@ -6,7 +6,7 @@
     <description>Recent content on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 28 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>置顶#关于本站</title>
       <link>https://blog.icland.xyz/post/about/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://blog.icland.xyz/post/about/</guid>
       <description>感谢您访问我的博客 | Thank you for your visit! 蝴蝶飞不过沧海 | Blog 您在浏览文章有任何问题可以通过以下方式找到我! QQ@🥕zhou Email@skyxingcheng233@outlook.com CSDN@skyxingcheng 本站点由Hugo生成，托管于Github，主题为maupassant-hugo HostGitHub PoweredHugo Modify蝴蝶飞不过沧海 DesignMaupassant</description>
+    </item>
+    
+    <item>
+      <title>Nginx配置PHP遇到错误：No inputfile specified</title>
+      <link>https://blog.icland.xyz/post/Nginx%E9%85%8D%E7%BD%AEPHP%E9%81%87%E5%88%B0%E9%94%99%E8%AF%AFNo-inputfile-specified/</link>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Nginx%E9%85%8D%E7%BD%AEPHP%E9%81%87%E5%88%B0%E9%94%99%E8%AF%AFNo-inputfile-specified/</guid>
+      <description>编辑你的PHP配置文件php.ini # 修改此配置 cgi.fix_pathinfo=1 # 此项留空 doc_root= # 此项注释掉 #open_basedir = 重启Nginx服务器即可</description>
     </item>
     
     <item>

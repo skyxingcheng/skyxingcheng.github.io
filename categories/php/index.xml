@@ -6,7 +6,16 @@
     <description>Recent content in php on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Thu, 27 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nginx配置PHP遇到错误：No inputfile specified</title>
+      <link>https://blog.icland.xyz/post/Nginx%E9%85%8D%E7%BD%AEPHP%E9%81%87%E5%88%B0%E9%94%99%E8%AF%AFNo-inputfile-specified/</link>
+      <pubDate>Fri, 05 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Nginx%E9%85%8D%E7%BD%AEPHP%E9%81%87%E5%88%B0%E9%94%99%E8%AF%AFNo-inputfile-specified/</guid>
+      <description>编辑你的PHP配置文件php.ini # 修改此配置 cgi.fix_pathinfo=1 # 此项留空 doc_root= # 此项注释掉 #open_basedir = 重启Nginx服务器即可</description>
+    </item>
+    
     <item>
       <title>ASUS天选-Kali_Linux-安装指南-AMD_R7_4800H-Nvidia_RTX2060，双硬盘双UEFI引导方案，不影响快速启动，理论适用于同系列机型&amp;Debian等</title>
       <link>https://blog.icland.xyz/post/ASUS%E5%A4%A9%E9%80%89-Kali_Linux-%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97-AMD_R7_4800H-Nvidia_RTX2060%E5%8F%8C%E7%A1%AC%E7%9B%98%E5%8F%8CUEFI%E5%BC%95%E5%AF%BC%E6%96%B9%E6%A1%88%E4%B8%8D%E5%BD%B1%E5%93%8D%E5%BF%AB%E9%80%9F%E5%90%AF%E5%8A%A8%E7%90%86%E8%AE%BA%E9%80%82%E7%94%A8%E4%BA%8E%E5%90%8C%E7%B3%BB%E5%88%97%E6%9C%BA%E5%9E%8BDebian%E7%AD%89/</link>
