@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Fri, 05 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 08 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>置顶#关于本站</title>
       <link>https://blog.icland.xyz/post/about/</link>
@@ -14,6 +14,15 @@
       
       <guid>https://blog.icland.xyz/post/about/</guid>
       <description>感谢您访问我的博客 | Thank you for your visit! 蝴蝶飞不过沧海 | Blog 您在浏览文章有任何问题可以通过以下方式找到我! QQ@🥕zhou Email@skyxingcheng233@outlook.com CSDN@skyxingcheng 本站点由Hugo生成，托管于Github，主题为maupassant-hugo HostGitHub PoweredHugo Modify蝴蝶飞不过沧海 DesignMaupassant</description>
+    </item>
+    
+    <item>
+      <title>Debian配置ipv6静态路由</title>
+      <link>https://blog.icland.xyz/post/Debian%E9%85%8D%E7%BD%AEipv6%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1/</link>
+      <pubDate>Mon, 08 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Debian%E9%85%8D%E7%BD%AEipv6%E9%9D%99%E6%80%81%E8%B7%AF%E7%94%B1/</guid>
+      <description>编辑网卡文件 vi /etc/network/interfaces allow-hotplug eth0 iface eth0 inet6 static address 2a03:xxxx:xxxx::xxxx/48 gateway 2a03:xxxx:xxxx::1 iface eth0 inet static address 92.xxx.xxx.xxx/24 gateway 92.xxx.xxx.xxx dns-nameservers 8.8.8.8 2001:4860:4860::8844 重启Debian服务器即可</description>
     </item>
     
     <item>
