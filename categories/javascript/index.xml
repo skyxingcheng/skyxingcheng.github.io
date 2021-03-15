@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>javascript on 蝴蝶飞不过沧海 | Blog</title>
+    <link>https://blog.icland.xyz/categories/javascript/</link>
+    <description>Recent content in javascript on 蝴蝶飞不过沧海 | Blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <lastBuildDate>Sun, 14 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HTML5播放HLS码流视频</title>
+      <link>https://blog.icland.xyz/post/HTML5%E6%92%AD%E6%94%BEHLS%E7%A0%81%E6%B5%81%E8%A7%86%E9%A2%91/</link>
+      <pubDate>Sun, 14 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/HTML5%E6%92%AD%E6%94%BEHLS%E7%A0%81%E6%B5%81%E8%A7%86%E9%A2%91/</guid>
+      <description>&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/hls.js/latest/hls.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;video id=&amp;quot;video&amp;quot;&amp;gt;&amp;lt;/video&amp;gt; &amp;lt;script&amp;gt; if(Hls.isSupported()) { var video = document.getElementById(&#39;video&#39;); var hls = new Hls(); hls.loadSource(&#39;https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/media/TheWindRises_mv/210314.m3u8&#39;); hls.attachMedia(video); hls.on(Hls.Events.MANIFEST_PARSED,function() { video.play(); document.body.addEventListener(&#39;click&#39;, function() { video.play(); }, false); }); } End</description>
+    </item>
+    
+    <item>
+      <title>FontAwesome---HTML5图标库</title>
+      <link>https://blog.icland.xyz/post/FontAwesome-HTML5%E5%9B%BE%E6%A0%87%E5%BA%93/</link>
+      <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/FontAwesome-HTML5%E5%9B%BE%E6%A0%87%E5%BA%93/</guid>
+      <description>Font Awesome 官网 Font Awesome 中文网 此图标库付费版比免费版要多出很多，如有需要可购入付费版 你只需在网站引入css样式 &amp;lt;html&amp;gt; &amp;lt;head&amp;gt; &amp;lt;link href=&amp;quot;https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/css/font-awesome.min.css&amp;quot; rel=&amp;quot;stylesheet&amp;quot;&amp;gt; &amp;lt;style&amp;gt; body { background-color: #f58f98; min-height: 100%; min-weight: 100%; height: auto; weight: auto; } .icons { text-align: center; } .icons a { width: 128px; height: 128px; color: #fff; background: rgba(7, 10, 12, 0.5); display: inline-table; text-align: center; font-size: 50px; margin-left: 5px; margin-bottom: 30px; } .icons a i{ display: table-cell; vertical-align: middle; } &amp;lt;/style&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;div class=&amp;quot;icons&amp;quot;&amp;gt; &amp;lt;a href=&amp;quot;#&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-facebook&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;a href=&amp;quot;#&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-twitter&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;a href=&amp;quot;#&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-linkedin&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;a href=&amp;quot;#&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;&amp;lt;i class=&amp;quot;fa fa-pinterest&amp;quot;&amp;gt;&amp;lt;/i&amp;gt;&amp;lt;/a&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt; 你可以在这里</description>
+    </item>
+    
+  </channel>
+</rss>

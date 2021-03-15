@@ -6,7 +6,16 @@
     <description>Recent content in cloudflare on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 27 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/cloudflare/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 13 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/cloudflare/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>使用CloudflareWorkers托管网页并使用自定义域名</title>
+      <link>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8CloudflareWorkers%E6%89%98%E7%AE%A1%E7%BD%91%E9%A1%B5%E5%B9%B6%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/</link>
+      <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E4%BD%BF%E7%94%A8CloudflareWorkers%E6%89%98%E7%AE%A1%E7%BD%91%E9%A1%B5%E5%B9%B6%E4%BD%BF%E7%94%A8%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9F%9F%E5%90%8D/</guid>
+      <description>演示站点 I&amp;rsquo;M 蝴蝶飞不过沧海 Cloudflare Workers 创建一个workers 将以下代码填入并保存 &amp;lt;html&amp;gt; const html = `&amp;lt;!DOCTYPE html&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;你的HTML代码处&amp;lt;/h1&amp;gt; &amp;lt;p&amp;gt;即 &#39; &#39; 之间&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt;` async function handleRequest(request) { return new Response(html, { headers: { &amp;quot;content-type&amp;quot;: &amp;quot;text/html;charset=UTF-8&amp;quot;, }, }) } addEventListener(&amp;quot;fetch&amp;quot;, event =&amp;gt; { return event.respondWith(handleRequest(event.request)) }) 然后点击保存并部署 然后返回cloudfla</description>
+    </item>
+    
     <item>
       <title>未备案域名使用Cloudflare进行301重定向</title>
       <link>https://blog.icland.xyz/post/%E6%9C%AA%E5%A4%87%E6%A1%88%E5%9F%9F%E5%90%8D%E4%BD%BF%E7%94%A8Cloudflare%E8%BF%9B%E8%A1%8C301%E9%87%8D%E5%AE%9A%E5%90%91/</link>
