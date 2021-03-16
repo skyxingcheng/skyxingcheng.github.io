@@ -111,7 +111,7 @@
         </date>
         
         <div class="post-content">
-            十六进制颜色名称对照表 鸨色#f7acbc 赤白橡#deab8a 油色#817936 绀桔梗#444693 踯躅色#ef5b9c 肌色#fedcbd 伽罗色#7f7522 花色#2b4490 桜色#feeeed 橙色#f47920 青丹#80752c 瑠璃色#2a5caa 蔷薇色#f05b72 灰茶#905……
+            .input_style { width:50px; height:25px } .result_vaule { width:50px; height:25px } td, table, tr, tbody { font-family: initial !important; } input { width:100px; height:25px; } function showRGB(){ hexcode="#"; for(x=0;x255)return alert("数字在0-255之间！"); var c="0123456789ABCDEF", b="", a=n%16; b=c.substr(a,1); a=(n-a)/16; hexcode+=c.substr(a,1)+b; } document.getElementById("color1").bgColor=a_mo2.innerHTML=hexcode; } function showRGB2(){ var a=document.getElementsByName("rgb2")[0].value; if(a.substr(0,1)=="#")a=a.substring(1); var len=a.length; if(len!=6&&len!=3)return alert("十六进制颜色码为六位或三位！"); else if (/[^0-9a-f]/i.test(a))return alert("请输入正确的十六进制颜色码！"); document.getElementById("color2").bgColor="#"+a; a=a.toLowerCase(); b=new Array(); for(x=0;x RGB颜色值转换成十六进制颜色码：……
         </div>
         <p class="readmore"><a href="https://blog.icland.xyz/tools/color/">阅读全文</a></p>
     </article>
