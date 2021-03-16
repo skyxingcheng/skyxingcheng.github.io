@@ -6,7 +6,16 @@
     <description>Recent content in Tools on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sat, 13 Feb 2021 13:17:58 +0800</lastBuildDate><atom:link href="https://blog.icland.xyz/tools/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/tools/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Unicode与中文互转</title>
+      <link>https://blog.icland.xyz/tools/Unicode%E4%B8%8E%E4%B8%AD%E6%96%87%E4%BA%92%E8%BD%AC/</link>
+      <pubDate>Tue, 16 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/tools/Unicode%E4%B8%8E%E4%B8%AD%E6%96%87%E4%BA%92%E8%BD%AC/</guid>
+      <description>var classObj= { ToUnicode:function(str) { return escape(str).replace(/%/g,&#34;\\&#34;).toLowerCase(); }, UnUnicode:function(str) { return unescape(str.replace(/\\/g, &#34;%&#34;)); }, copyingTxt:function(str) { document.getElementById(str).select(); document.execCommand(&#34;Copy&#34;); } } &amp;lt;input type=button value=转为Unicode onclick=javascript:codes.value=classObj.ToUnicode(codes.value)&amp;gt; &amp;lt;input type=button value=转为中文 onclick=javascript:codes.value=classObj.UnUnicode(codes.value)&amp;gt; &amp;lt;input type=button value=复制 onclick=javascript:classObj.copyingTxt(&amp;ldquo;codes&amp;rdquo;)&amp;gt; &amp;lt;input type=button value=清空 onclick=javascript:codes.value=&amp;quot;&amp;quot;&amp;gt; End</description>
+    </item>
+    
     <item>
       <title>十六进制颜色码表</title>
       <link>https://blog.icland.xyz/tools/color/</link>
