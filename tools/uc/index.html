@@ -138,11 +138,7 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents">
-  <ul>
-    <li><a href="#这款工具能够实现unicode与中文之间的相互转换功能用户可根据需要输入中文或unicode编码点击下方对应按钮实现转换对应unicode编码与中文的功能">这款工具能够实现Unicode与中文之间的相互转换功能，用户可根据需要输入中文或Unicode编码，点击下方对应按钮实现转换对应Unicode编码与中文的功能</a></li>
-  </ul>
-</nav>
+        <nav id="TableOfContents"></nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -197,14 +193,28 @@
         
         
         <div class="post-content">
-            <link href="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/css/font-awesome.min.css" rel="stylesheet">
-<link href="http://tools.jb51.net/static/api/code/jquery-linedtextarea.css" rel="stylesheet">
+            <!--ALL Css-->
+<link href="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/css/font-awesome.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/css/jquery-linedtextarea.css" rel="stylesheet">
+<!-- ALL Js-->
 <script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jquery-2.1.4.min.js"></script>
-<script src="http://tools.jb51.net/static/api/code/jquery-linedtextarea.js"></script>
-<script src="http://tools.jb51.net/static/api/code/jsl.interactions.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jquery-linedtextarea.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jsl.interactions.js"></script>
 <style>
+    .font-alert-succ {
+    color: #3c763d;
+    background: #dff0d8;
+    font-size: 16px;
+    margin: 0px auto;
+    /*两边缩进*/
+    padding:0 2em;
+    /*首行缩进*/
+    text-indent:2em;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-bottom: auto;
+    }
 	.icons {
-
 	}
 	.icons a {
     min-width: 120px;
@@ -262,7 +272,7 @@
     border-radius:4px;
     }
 </style>
-<h2 id="这款工具能够实现unicode与中文之间的相互转换功能用户可根据需要输入中文或unicode编码点击下方对应按钮实现转换对应unicode编码与中文的功能">这款工具能够实现Unicode与中文之间的相互转换功能，用户可根据需要输入中文或Unicode编码，点击下方对应按钮实现转换对应Unicode编码与中文的功能</h2>
+<p class="font-alert-succ">这款工具能够实现Unicode与中文之间的相互转换功能，用户可根据需要输入中文或Unicode编码，点击下方对应按钮实现转换对应Unicode编码与中文的功能</p>
 <div>
 <textarea id="json_input" name="json_input" class="json_input" rows="30" cols="100" spellcheck="false" placeholder="Enter Code Here"></textarea>
 </div>
