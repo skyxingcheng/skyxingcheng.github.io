@@ -6,7 +6,16 @@
     <description>Recent content in centos on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 01 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/centos/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 31 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/categories/centos/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Centos强制修改root登录密码</title>
+      <link>https://blog.icland.xyz/post/Centos%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9root%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Centos%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9root%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81/</guid>
+      <description>启动机器在grub界面按E进入编辑模式 找到以linux16开头的行在ro后面加上 rd.break 改完按ctrl+x键引导系统 键入以下命令： !!! 一个一个输入 mount -o remount,rw /sysroot //重新挂载系统 chroot /sysroot //置换根目录 LANG=en //设置语言为英文 passwd root //接下来在交互模式下输入两次密码（提示BAD PASSWORD不用管） touch /.autorelabel exit</description>
+    </item>
+    
     <item>
       <title>Centos7自动root登录(GNOME桌面环境)</title>
       <link>https://blog.icland.xyz/post/Centos7%E8%87%AA%E5%8A%A8root%E7%99%BB%E5%BD%95GNOME%E6%A1%8C%E9%9D%A2%E7%8E%AF%E5%A2%83/</link>

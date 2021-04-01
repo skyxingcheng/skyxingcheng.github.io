@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 15 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 01 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>置顶#关于本站</title>
       <link>https://blog.icland.xyz/post/about/</link>
@@ -14,6 +14,24 @@
       
       <guid>https://blog.icland.xyz/post/about/</guid>
       <description>感谢您访问我的博客 | Thank you for your visit! 我的个人主页===&amp;raquo;I&amp;rsquo;M 蝴蝶飞不过沧海 您在浏览文章有任何问题可以通过以下方式找到我! QQ@🥕zhou Email@skyxingcheng233@outlook.com CSDN@skyxingcheng 本站点由Hugo生成，托管于Github，主题为maupassant-hugo 蝴蝶飞不过沧海 | Blog © 2021 IC浮生大陆 HostGitHub PoweredHugo Mo</description>
+    </item>
+    
+    <item>
+      <title>Linux强制修改MySQL密码</title>
+      <link>https://blog.icland.xyz/post/Linux%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9MySQL%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Thu, 01 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Linux%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9MySQL%E5%AF%86%E7%A0%81/</guid>
+      <description>一、停掉mysql服务 service mysqld stop 二、启动mysql，禁止权限验证 #在mysql安装目录的bin目录下执行(&amp;amp;后台执行) mysqld_safe --skip-grant-tables &amp;amp; 三、本地登录，更改密码 本地 localhost登录无需密码 mysql -u root #切换数据库 use mysql; #更改密码 update user set password=password(&amp;quot;newpasswd&amp;quot;) where user=&amp;quot;root&amp;quot;; #刷新权限 flush privileges; #退出 exit; 四、启动mysql 先停掉已经跳</description>
+    </item>
+    
+    <item>
+      <title>Centos强制修改root登录密码</title>
+      <link>https://blog.icland.xyz/post/Centos%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9root%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Wed, 31 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Centos%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9root%E7%99%BB%E5%BD%95%E5%AF%86%E7%A0%81/</guid>
+      <description>启动机器在grub界面按E进入编辑模式 找到以linux16开头的行在ro后面加上 rd.break 改完按ctrl+x键引导系统 键入以下命令： !!! 一个一个输入 mount -o remount,rw /sysroot //重新挂载系统 chroot /sysroot //置换根目录 LANG=en //设置语言为英文 passwd root //接下来在交互模式下输入两次密码（提示BAD PASSWORD不用管） touch /.autorelabel exit</description>
     </item>
     
     <item>
