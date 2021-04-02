@@ -195,11 +195,6 @@
             <!--ALL Css-->
 <link href="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/css/jquery-linedtextarea.css" rel="stylesheet">
-<!-- ALL Js-->
-<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jquery-2.1.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jquery-linedtextarea.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jsl.interactions.js"></script>
-<script src="http://www.msxindl.com/tools/js/unicode16.js"></script>
 <style>
     .font-alert-succ {
     color: #3c763d;
@@ -278,11 +273,16 @@
 </div>
 <label><input type="checkbox" id="onlyzw" checked />  不转换字母、数字等,只转换中文</label>
 <div class="icons">
-    <a href="javascript:" onclick='json_input.value=classObj.zu(json_input.value)'><i class="fa fa-lock"> 加密</i></a>
-    <a href="javascript:" onclick='json_input.value=classObj.uz(json_input.value)'><i class="fa fa-key"> 解密</i></a>
+    <a href="javascript:" onclick='json_input.value=zu(json_input.value)'><i class="fa fa-lock"> 加密</i></a>
+    <a href="javascript:" onclick='json_input.value=uz(json_input.value)'><i class="fa fa-key"> 解密</i></a>
     <a href="javascript:" onclick='classObj.copyingTxt("json_input")'><i class="fa fa-copy"> 复制</i></a>
     <a href="javascript:" onclick='json_input.value=""'><i class="fa fa-trash"> 清空</i></a>
 </div>
+<!-- ALL Js-->
+<!--<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jquery-2.1.4.min.js"></script>-->
+<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jquery-linedtextarea.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jsl.interactions.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/unicode16.js"></script>
 <script Language=Javascript>
     var classObj= {
         copyingTxt:function(str) {
