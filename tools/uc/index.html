@@ -68,7 +68,7 @@
 
     <div id="body">
         <div class="container">
-            <div class="col-group">
+            <div class="col-group docs-pictures">
 
                 <div class="col-8" id="main">
                     
@@ -196,10 +196,8 @@
 <link href="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/css/jquery-linedtextarea.css" rel="stylesheet">
 <!-- ALL Js-->
-<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jquery-2.1.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jquery-linedtextarea.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/jsl.interactions.js"></script>
-<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/unicode16.js"></script>
 <style>
     .font-alert-succ {
     color: #3c763d;
@@ -278,13 +276,36 @@
 </div>
 <label><input type="checkbox" id="onlyzw" checked />  不转换字母、数字等,只转换中文</label>
 <div class="icons">
-    <a href="javascript:" onclick="zu();"><i class="fa fa-lock"> 加密</i></a>
-    <a href="javascript:" onclick="uz();"><i class="fa fa-key"> 解密</i></a>
+    <a href="javascript:" onclick='zu();'><i class="fa fa-lock"> 加密</i></a>
+    <!--<a href="javascript:" onclick='json_input.value=classObj.ToUnicode(json_input.value)'><i class="fa fa-lock"> 加密</i></a>-->
+    <a href="javascript:" onclick='json_input.value=classObj.UnUnicode(json_input.value)'><i class="fa fa-key"> 解密</i></a>
     <a href="javascript:" onclick='classObj.copyingTxt("json_input")'><i class="fa fa-copy"> 复制</i></a>
     <a href="javascript:" onclick='json_input.value=""'><i class="fa fa-trash"> 清空</i></a>
 </div>
+<!--<script src="https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/js/unicode16.js"></script>-->
 <script Language=Javascript>
+    function zu(){
+        var v = json_input.value;
+        var ascii = "";
+        for (var i = 0; i < v.length; i++) {
+            var code = Number(v[i].charCodeAt(0));
+            if (!onlyzw.checked || code > 127) {
+                var charAscii = code.toString(16);
+                charAscii = new String("0000").substring(charAscii.length, 4) + charAscii;
+                ascii += "\\u" + charAscii;
+            } else {
+                ascii += v[i];
+            }
+        }
+        json_input.value = ascii;
+    }
     var classObj= {
+        //ToUnicode:function(str) {
+        //    return escape(str).replace(/%/g,"\\").toLowerCase();
+        //},
+        UnUnicode:function(str) {
+            return unescape(str.replace(/\\/g, "%"));
+        },
         copyingTxt:function(str) {
             document.getElementById(str).select(); document.execCommand("Copy");
         }
