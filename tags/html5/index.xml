@@ -6,7 +6,16 @@
     <description>Recent content in html5 on 蝴蝶飞不过沧海 | Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 16 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/tags/html5/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 09 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://blog.icland.xyz/tags/html5/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>绕过校园网认证实现无密码上网</title>
+      <link>https://blog.icland.xyz/post/%E7%BB%95%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E8%AE%A4%E8%AF%81%E5%AE%9E%E7%8E%B0%E6%97%A0%E5%AF%86%E7%A0%81%E4%B8%8A%E7%BD%91/</link>
+      <pubDate>Fri, 09 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/%E7%BB%95%E8%BF%87%E6%A0%A1%E5%9B%AD%E7%BD%91%E8%AE%A4%E8%AF%81%E5%AE%9E%E7%8E%B0%E6%97%A0%E5%AF%86%E7%A0%81%E4%B8%8A%E7%BD%91/</guid>
+      <description>前言 本教程仅用于学习测试用途，请勿用于不正当的途径！ 本文参考 https://blog.csdn.net/Asnet_/article/details/100408034 首先我们连接到校园网，然后随便打开一个网页发现会被重定向到指定的登录页面 我们发现，某些udp的端口还是开放的，毕竟由于他们的特殊作用，如图 现在我们得知，在未登录情况下，如用于DNS查询的53端口是开放的 我们设置ssh服</description>
+    </item>
+    
     <item>
       <title>Unicode与中文互转</title>
       <link>https://blog.icland.xyz/tools/uc/</link>
