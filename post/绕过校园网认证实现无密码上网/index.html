@@ -202,22 +202,24 @@
         
         
         <div class="post-content">
-            <h2 id="前言">前言</h2>
+            <p>4月11日补充</p>
+<p>请注意，监听其他端口务必同时监听TCP管理服务，否则会造成TLS握手失败</p>
+<p>如图</p>
+<p><img src=https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/images/210411/20210411150402.png /></p>
+<p>=====以下为正文=====</p>
+<h2 id="前言">前言</h2>
 <p><code>本教程仅用于学习测试用途，请勿用于不正当的途径！</code></p>
 <p>本文参考</p>
 <blockquote>
-<blockquote>
 <p><a href="https://blog.csdn.net/Asnet_/article/details/100408034">https://blog.csdn.net/Asnet_/article/details/100408034</a></p>
-</blockquote>
 </blockquote>
 <p>首先我们连接到校园网，然后随便打开一个网页发现会被重定向到指定的登录页面</p>
 <p><img src=https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/images/210409/20210409182601.png /></p>
 <p><img src=https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/images/210409/20210409182602.png /></p>
 <p>我们发现，某些udp的端口还是开放的，毕竟由于他们的特殊作用，如图</p>
 <p><img src=https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/images/210409/20210409182603.png /></p>
-<p>现在我们得知，在未登录情况下，如用于DNS查询的53端口是开放的
-我们设置ssh服务监听53端口，并在未登录校园网情况下进行连接测试，发现可以连接</p>
-<p><img src=https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/images/210409/20210409182604.png /></p>
+<p>现在我们得知，在未登录情况下，如用于DNS查询的53端口是开放的</p>
+<p>我们设置ssh服务监听53端口，并在未登录校园网情况下进行连接测试，发现可以连接</p>
 <h2 id="服务搭建">服务搭建</h2>
 <h3 id="服务端">服务端</h3>
 <p>将文件拉到本地并解压</p>
@@ -260,10 +262,11 @@ make
 <p><img src=https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/images/210409/20210409193057.png /></p>
 <p>Just Enjoy !!</p>
 <p>文中文件无法下载可使用下面的连接</p>
-<pre><code>https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/other/exe/open-install-2.4.6-I602.zip
-https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/other/exe/softether-server_bridge-v4.27-9668-beta-2018.05.29-windows-x86_x64-intel.7z.001
-https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/other/exe/softether-server_bridge-v4.27-9668-beta-2018.05.29-windows-x86_x64-intel.7z.002
-https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/other/exe/softether-server_bridge-v4.27-9668-beta-2018.05.29-windows-x86_x64-intel.7z.003
+<pre><code>https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/software/softether-vpnserver-v4.28-9669-beta-2018.09.11-linux-x64-64bit.tar.gz
+https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/software/open-install-2.4.6-I602.zip
+https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/software/softether-server_bridge-v4.27-9668-beta-2018.05.29-windows-x86_x64-intel.7z.001
+https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/software/softether-server_bridge-v4.27-9668-beta-2018.05.29-windows-x86_x64-intel.7z.002
+https://cdn.jsdelivr.net/gh/skyxingcheng/ic-cdn@master/static/software/softether-server_bridge-v4.27-9668-beta-2018.05.29-windows-x86_x64-intel.7z.003
 </code></pre><p>End</p>
 
         </div>
