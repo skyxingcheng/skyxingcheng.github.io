@@ -151,5 +151,14 @@
       <description>boot分区下新建文件 ssh 来启用ssh boot分区编辑config.txt最后一行加上 1 arm_64bit=1 来启用64位内核 使用 pi raspberry 登陆系统 修改密码并解锁root账户 1 2 3 sudo passwd pi #修改pi的密码 sudo passwd root #修改root的密码 sudo passwd --unlock root #解锁root用户 然后使用root登陆 备份镜像源 1 2 cp /etc/apt/sources.list /etc/apt/sources.list.bak cp /etc/apt/sources.list.d/raspi.list /etc/apt/sources.list.d/raspi.list.bak 修改软件</description>
     </item>
     
+    <item>
+      <title>Debian强制修改密码</title>
+      <link>https://blog.icland.xyz/post/Debian%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.icland.xyz/post/Debian%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81/</guid>
+      <description>debian root 密码修改 1. 在grub选项下选择&amp;rsquo;Debian GNU/Linux,&amp;hellip;(recovery mode)&#39;，按e进入编辑模式 2. 编辑kernel那行最后面的 ro single 改成 rw single init=/bin/bash，按b执行boot 3. 进入后执行下列指令 root@(none)#mount -a root@(none)#passwd root root@(none)#reboot 4. 重开机即可。 End</description>
+    </item>
+    
   </channel>
 </rss>
