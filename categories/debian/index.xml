@@ -157,7 +157,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.icland.xyz/post/Debian%E5%BC%BA%E5%88%B6%E4%BF%AE%E6%94%B9%E5%AF%86%E7%A0%81/</guid>
-      <description>debian root 密码修改 1. 在grub选项下选择&amp;rsquo;Debian GNU/Linux,&amp;hellip;(recovery mode)&#39;，按e进入编辑模式 2. 编辑kernel那行最后面的 ro single 改成 rw single init=/bin/bash，按b执行boot 3. 进入后执行下列指令 root@(none)#mount -a root@(none)#passwd root root@(none)#reboot 4. 重开机即可。 End</description>
+      <description>1、在grub选项下选择&amp;rsquo;Debian GNU/Linux,&amp;hellip;(recovery mode)&#39;，按e进入编辑模式 2、编辑kernel那行最后面的 ro single 改成 rw single init=/bin/bash，按b执行boot 3、进入后执行修改密码 root@(none)#passwd root 4、重开机即可。 PS：如果是root无法登陆图形界面可能是桌面软件的限制 1、普通用</description>
     </item>
     
   </channel>

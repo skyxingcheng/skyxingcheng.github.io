@@ -133,7 +133,11 @@
 <div class="post-toc" style="position: absolute; top: 188px;">
     <h2 class="post-toc-title">文章目录</h2>
     <div class="post-toc-content">
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ps如果是root无法登陆图形界面可能是桌面软件的限制">PS：如果是root无法登陆图形界面可能是桌面软件的限制</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 <script type="text/javascript">
@@ -188,18 +192,21 @@
         
         
         <div class="post-content">
-            <p>debian root 密码修改
-　　
-　　　　1. 在grub选项下选择&rsquo;Debian GNU/Linux,&hellip;(recovery mode)'，按e进入编辑模式
-　　
-　　　　2. 编辑kernel那行最后面的 ro single 改成 rw single init=/bin/bash，按b执行boot
-　　
-　　　　3. 进入后执行下列指令
-　　　　root@(none)#mount -a
-　　　　root@(none)#passwd root
-　　　　root@(none)#reboot
-　　
-　　　　4. 重开机即可。</p>
+            <p>1、在grub选项下选择&rsquo;Debian GNU/Linux,&hellip;(recovery mode)'，按e进入编辑模式</p>
+<p>2、编辑kernel那行最后面的 ro single 改成 rw single init=/bin/bash，按b执行boot</p>
+<p>3、进入后执行修改密码</p>
+<p><code>root@(none)#passwd root</code></p>
+<p>4、重开机即可。</p>
+<h2 id="ps如果是root无法登陆图形界面可能是桌面软件的限制">PS：如果是root无法登陆图形界面可能是桌面软件的限制</h2>
+<p>1、普通用户登录su - root</p>
+<p>2、<code>vi /etc/gdm3/daemon.conf</code></p>
+<p>在 security 下面添加 <code>AllowRoot=true</code></p>
+<p>保存后退出</p>
+<p>3、<code>vi /etc/pam.d/gdm-password</code></p>
+<p>注释掉这一行</p>
+<pre><code>#auth required pam_succeed_if.so user != root quiet_success
+</code></pre><p>保存后退出vi</p>
+<p>4、重新以root登录即可</p>
 <p>End</p>
 
         </div>
